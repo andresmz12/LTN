@@ -22,7 +22,7 @@ export default function AdminAnuncios() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
-    const payload = { ...form, paisesTarget: form.paisesTarget.split(',').map(p => p.trim().toUpperCase()), presupuesto: Number(form.presupuesto) }
+    const payload = { ...form, paisesTarget: form.paisesTarget.split(',').map((p: any) => p.trim().toUpperCase()), presupuesto: Number(form.presupuesto) }
     const res = await fetch('/api/anuncios', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     if (res.ok) { setMsg('Creado'); load() } else { const d = await res.json(); setMsg(d.error) }
   }
@@ -41,14 +41,14 @@ export default function AdminAnuncios() {
         <form onSubmit={submit} className="bg-white rounded-xl shadow p-6 space-y-3">
           <h2 className="font-bold text-gray-800 mb-2">Nuevo anuncio</h2>
           <select value={form.tipo} onChange={set('tipo')} className="w-full border rounded-lg px-3 py-2 text-sm">
-            {['banner', 'card', 'popup'].map(t => <option key={t}>{t}</option>)}
+            {['banner', 'card', 'popup'].map((t: any) => <option key={t}>{t}</option>)}
           </select>
           <input type="text" placeholder="Título" value={form.titulo} onChange={set('titulo')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <input type="text" placeholder="Descripción" value={form.descripcion} onChange={set('descripcion')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <input type="url" placeholder="URL destino" value={form.enlaceDestino} onChange={set('enlaceDestino')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <select value={form.clienteId} onChange={set('clienteId')} required className="w-full border rounded-lg px-3 py-2 text-sm">
             <option value="">Seleccionar cliente</option>
-            {clientes.map(c => <option key={c.id} value={c.id}>{c.nombreEmpresa}</option>)}
+            {clientes.map((c: any) => <option key={c.id} value={c.id}>{c.nombreEmpresa}</option>)}
           </select>
           <input type="text" placeholder="Países (MX,CO)" value={form.paisesTarget} onChange={set('paisesTarget')} className="w-full border rounded-lg px-3 py-2 text-sm" />
           <input type="number" placeholder="Presupuesto $" value={form.presupuesto} onChange={set('presupuesto')} className="w-full border rounded-lg px-3 py-2 text-sm" />
@@ -56,7 +56,7 @@ export default function AdminAnuncios() {
         </form>
 
         <div className="space-y-3">
-          {anuncios.map(a => (
+          {anuncios.map((a: any) => (
             <div key={a.id} className="bg-white rounded-xl shadow p-4">
               <div className="flex justify-between items-start mb-2">
                 <div>

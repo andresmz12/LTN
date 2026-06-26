@@ -36,7 +36,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
             <div className="mb-6">
               <h2 className="font-bold text-gray-800 mb-3">📄 Documentos necesarios</h2>
               <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-                {tramite.documentosNecesarios.map((doc, i) => <li key={i}>{doc}</li>)}
+                {tramite.documentosNecesarios.map((doc: any, i: number) => <li key={i}>{doc}</li>)}
               </ul>
             </div>
           )}
@@ -45,7 +45,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
             <div className="mb-6">
               <h2 className="font-bold text-gray-800 mb-3">📝 Pasos a seguir</h2>
               <ol className="space-y-3">
-                {pasos.map((paso, i) => (
+                {pasos.map((paso: any, i: number) => (
                   <li key={i} className="flex gap-3 text-sm text-gray-700">
                     <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
                       {i + 1}

@@ -23,7 +23,7 @@ export default async function NoticiasPage({ params }: { params: { pais: string 
         <p className="text-gray-500 mb-8">Las últimas noticias relevantes para tu comunidad.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {noticias.map(n => (
+          {noticias.map((n: any) => (
             <NoticiaCard key={n.id} {...n} pais={pais} />
           ))}
         </div>

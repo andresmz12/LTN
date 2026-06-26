@@ -37,14 +37,14 @@ export default function AdminTramites() {
           <select value={form.pais} onChange={set('pais')} className="w-full border rounded-lg px-3 py-2 text-sm">
             {Object.entries(PAIS_NOMBRES).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select>
-          {['titulo', 'slug', 'descripcion', 'tiempoPromedio', 'costo'].map(f => (
+          {['titulo', 'slug', 'descripcion', 'tiempoPromedio', 'costo'].map((f: any) => (
             <input key={f} type="text" placeholder={f} value={(form as any)[f]} onChange={set(f)} className="w-full border rounded-lg px-3 py-2 text-sm" />
           ))}
           <textarea placeholder="Contenido HTML" value={form.contenidoHtml} onChange={set('contenidoHtml')} rows={3} className="w-full border rounded-lg px-3 py-2 text-sm" />
           <button type="submit" className="w-full bg-blue-700 text-white py-2 rounded-lg font-semibold">Crear</button>
         </form>
         <div className="space-y-3">
-          {tramites.map(t => (
+          {tramites.map((t: any) => (
             <div key={t.id} className="bg-white rounded-xl shadow p-4 flex justify-between items-start">
               <div>
                 <p className="font-semibold text-gray-800 text-sm">{t.titulo}</p>

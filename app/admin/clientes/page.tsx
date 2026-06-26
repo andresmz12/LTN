@@ -16,7 +16,7 @@ export default function AdminClientes() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
-    const payload = { ...form, paisServicio: form.paisServicio.split(',').map(p => p.trim().toUpperCase()) }
+    const payload = { ...form, paisServicio: form.paisServicio.split(',').map((p: any) => p.trim().toUpperCase()) }
     const res = await fetch('/api/clientes', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
     if (res.ok) { setMsg('Creado'); load() } else { const d = await res.json(); setMsg(d.error) }
   }
@@ -32,7 +32,7 @@ export default function AdminClientes() {
           <h2 className="font-bold text-gray-800 mb-2">Nuevo cliente</h2>
           <input type="text" placeholder="Empresa" value={form.nombreEmpresa} onChange={set('nombreEmpresa')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <select value={form.tipo} onChange={set('tipo')} className="w-full border rounded-lg px-3 py-2 text-sm">
-            {tipos.map(t => <option key={t}>{t}</option>)}
+            {tipos.map((t: any) => <option key={t}>{t}</option>)}
           </select>
           <input type="email" placeholder="Email contacto" value={form.emailContacto} onChange={set('emailContacto')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <input type="tel" placeholder="Teléfono" value={form.telefono} onChange={set('telefono')} className="w-full border rounded-lg px-3 py-2 text-sm" />
@@ -41,7 +41,7 @@ export default function AdminClientes() {
           <button type="submit" className="w-full bg-blue-700 text-white py-2 rounded-lg font-semibold">Crear</button>
         </form>
         <div className="space-y-3">
-          {clientes.map(c => (
+          {clientes.map((c: any) => (
             <div key={c.id} className="bg-white rounded-xl shadow p-4">
               <p className="font-semibold text-gray-800">{c.nombreEmpresa}</p>
               <p className="text-sm text-gray-500">{c.tipo} · {c.emailContacto}</p>

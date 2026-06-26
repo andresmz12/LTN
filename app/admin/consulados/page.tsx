@@ -51,7 +51,7 @@ export default function AdminConsulados() {
           <select value={form.pais} onChange={set('pais')} className="w-full border rounded-lg px-3 py-2 text-sm">
             {Object.entries(PAIS_NOMBRES).map(([k, v]) => <option key={k} value={k}>{v}</option>)}
           </select>
-          {['ciudad', 'nombre', 'direccion', 'telefono', 'email', 'horarioLunes', 'horarioSabado'].map(f => (
+          {['ciudad', 'nombre', 'direccion', 'telefono', 'email', 'horarioLunes', 'horarioSabado'].map((f: any) => (
             <input key={f} type="text" placeholder={f} value={(form as any)[f]} onChange={set(f)}
               className="w-full border rounded-lg px-3 py-2 text-sm" />
           ))}
@@ -62,7 +62,7 @@ export default function AdminConsulados() {
         </form>
 
         <div className="space-y-3">
-          {consulados.map(c => (
+          {consulados.map((c: any) => (
             <div key={c.id} className="bg-white rounded-xl shadow p-4 flex justify-between items-start">
               <div>
                 <p className="font-semibold text-gray-800">{c.nombre}</p>

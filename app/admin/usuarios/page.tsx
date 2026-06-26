@@ -15,7 +15,7 @@ export default async function AdminUsuarios() {
       <div className="grid md:grid-cols-3 gap-4 mb-8">
         <div className="bg-white rounded-xl shadow p-4">
           <p className="text-xs text-gray-500 mb-2">Por país de origen</p>
-          {byPais.filter(b => b.paisOrigen).map(b => (
+          {byPais.filter((b: any) => b.paisOrigen).map((b: any) => (
             <div key={b.paisOrigen} className="flex justify-between text-sm">
               <span>{b.paisOrigen}</span>
               <span className="font-semibold">{b._count}</span>
@@ -24,7 +24,7 @@ export default async function AdminUsuarios() {
         </div>
         <div className="bg-white rounded-xl shadow p-4">
           <p className="text-xs text-gray-500 mb-2">Top estados EE.UU.</p>
-          {byEstado.filter(b => b.estadoUS).map(b => (
+          {byEstado.filter((b: any) => b.estadoUS).map((b: any) => (
             <div key={b.estadoUS} className="flex justify-between text-sm">
               <span>{b.estadoUS}</span>
               <span className="font-semibold">{b._count}</span>
@@ -33,7 +33,7 @@ export default async function AdminUsuarios() {
         </div>
         <div className="bg-white rounded-xl shadow p-4">
           <p className="text-xs text-gray-500 mb-2">Últimos eventos</p>
-          {recentEvents.map((e, i) => (
+          {recentEvents.map((e: any, i: number) => (
             <div key={i} className="text-xs text-gray-600 py-1 border-b last:border-0">
               {e.evento} · {e.seccion || e.pais || '–'} · {e.deviceType}
             </div>
@@ -54,7 +54,7 @@ export default async function AdminUsuarios() {
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100">
-            {users.map(u => (
+            {users.map((u: any) => (
               <tr key={u.id}>
                 <td className="px-4 py-3">{u.nombre} {u.apellido}</td>
                 <td className="px-4 py-3 text-gray-500">{u.email}</td>

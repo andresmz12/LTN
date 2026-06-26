@@ -35,7 +35,7 @@ export default async function AdminDashboard() {
       <h1 className="text-2xl font-bold text-gray-900 mb-8">Dashboard Admin</h1>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-        {stats.map(s => (
+        {stats.map((s: any) => (
           <div key={s.label} className="bg-white rounded-xl shadow p-4">
             <div className="text-2xl mb-1">{s.icon}</div>
             <div className="text-2xl font-bold text-gray-900">{s.value.toLocaleString()}</div>
@@ -57,7 +57,7 @@ export default async function AdminDashboard() {
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100">
-              {recentUsers.map(u => (
+              {recentUsers.map((u: any) => (
                 <tr key={u.email}>
                   <td className="py-2">{u.nombre} {u.apellido}</td>
                   <td className="py-2 text-gray-600">{u.email}</td>

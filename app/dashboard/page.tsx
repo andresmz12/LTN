@@ -52,7 +52,7 @@ export default async function DashboardPage() {
               <p className="text-sm text-gray-500">No tienes consulados guardados.</p>
             ) : (
               <div className="space-y-2">
-                {savedConsulados.map(c => (
+                {savedConsulados.map((c: any) => (
                   <Link key={c.id} href={`/${c.pais}/consulados/${c.id}`}
                     className="block text-sm text-blue-600 hover:underline">
                     {c.nombre} – {c.ciudad}

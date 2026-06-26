@@ -21,7 +21,7 @@ export default function AdminNoticias() {
 
   async function submit(e: React.FormEvent) {
     e.preventDefault()
-    const payload = { ...form, paises: form.paises.split(',').map(p => p.trim().toUpperCase()) }
+    const payload = { ...form, paises: form.paises.split(',').map((p: any) => p.trim().toUpperCase()) }
     const method = editSlug ? 'PUT' : 'POST'
     const url = editSlug ? `/api/noticias/${editSlug}` : '/api/noticias'
     const res = await fetch(url, { method, headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload) })
@@ -49,7 +49,7 @@ export default function AdminNoticias() {
           <input type="text" placeholder="Slug (ej: noticia-importante)" value={form.slug} onChange={set('slug')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <input type="text" placeholder="Resumen" value={form.resumen} onChange={set('resumen')} required className="w-full border rounded-lg px-3 py-2 text-sm" />
           <select value={form.categoria} onChange={set('categoria')} className="w-full border rounded-lg px-3 py-2 text-sm">
-            {categorias.map(c => <option key={c}>{c}</option>)}
+            {categorias.map((c: any) => <option key={c}>{c}</option>)}
           </select>
           <input type="text" placeholder="Países (MX,CO,VE)" value={form.paises} onChange={set('paises')} className="w-full border rounded-lg px-3 py-2 text-sm" />
           <textarea placeholder="Contenido HTML" value={form.contenidoHtml} onChange={set('contenidoHtml')} rows={4} className="w-full border rounded-lg px-3 py-2 text-sm" />
@@ -64,7 +64,7 @@ export default function AdminNoticias() {
         </form>
 
         <div className="space-y-3">
-          {noticias.map(n => (
+          {noticias.map((n: any) => (
             <div key={n.id} className="bg-white rounded-xl shadow p-4 flex justify-between items-start">
               <div>
                 <p className="font-semibold text-gray-800 text-sm">{n.titulo}</p>

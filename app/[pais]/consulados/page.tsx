@@ -23,7 +23,7 @@ export default async function ConsultadosPage({ params }: { params: { pais: stri
         <p className="text-gray-500 mb-8">{consulados.length} consulado(s) disponibles</p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {consulados.map(c => (
+          {consulados.map((c: any) => (
             <ConsultadoCard key={c.id} {...c} pais={pais} />
           ))}
         </div>

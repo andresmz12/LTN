@@ -23,7 +23,7 @@ export default async function TramitesPage({ params }: { params: { pais: string 
         <p className="text-gray-500 mb-8">Guías paso a paso para tus documentos y trámites en EE.UU.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tramites.map(t => (
+          {tramites.map((t: any) => (
             <TramiteCard key={t.id} {...t} pais={pais} />
           ))}
         </div>

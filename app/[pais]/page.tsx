@@ -32,7 +32,7 @@ export default async function PaisPage({ params }: { params: { pais: string } })
               <Link href={`/${pais}/consulados`} className="text-sm text-blue-600 hover:underline">Ver todos</Link>
             </div>
             <div className="space-y-3">
-              {consulados.map(c => (
+              {consulados.map((c: any) => (
                 <Link key={c.id} href={`/${pais}/consulados/${c.id}`}
                   className="block bg-white rounded-lg p-4 shadow hover:shadow-md transition">
                   <p className="font-semibold text-gray-800">{c.nombre}</p>
@@ -48,7 +48,7 @@ export default async function PaisPage({ params }: { params: { pais: string } })
               <Link href={`/${pais}/tramites`} className="text-sm text-blue-600 hover:underline">Ver todos</Link>
             </div>
             <div className="space-y-3">
-              {tramites.map(t => (
+              {tramites.map((t: any) => (
                 <Link key={t.id} href={`/${pais}/tramites/${t.slug}`}
                   className="block bg-white rounded-lg p-4 shadow hover:shadow-md transition">
                   <p className="font-semibold text-gray-800">{t.titulo}</p>
@@ -64,7 +64,7 @@ export default async function PaisPage({ params }: { params: { pais: string } })
               <Link href={`/${pais}/noticias`} className="text-sm text-blue-600 hover:underline">Ver todas</Link>
             </div>
             <div className="space-y-3">
-              {noticias.map(n => (
+              {noticias.map((n: any) => (
                 <Link key={n.id} href={`/${pais}/noticias/${n.slug}`}
                   className="block bg-white rounded-lg p-4 shadow hover:shadow-md transition">
                   <p className="font-semibold text-gray-800 line-clamp-2">{n.titulo}</p>

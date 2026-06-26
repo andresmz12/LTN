@@ -21,7 +21,7 @@ export async function GET(req: NextRequest) {
   // Track impressions
   if (anuncios.length > 0) {
     await prisma.anuncio.updateMany({
-      where: { id: { in: anuncios.map(a => a.id) } },
+      where: { id: { in: anuncios.map((a: any) => a.id) } },
       data: { impresiones: { increment: 1 } },
     })
   }
