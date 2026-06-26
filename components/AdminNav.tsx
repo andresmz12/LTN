@@ -11,6 +11,7 @@ const links = [
   { href: '/admin/anuncios', label: '📣 Anuncios' },
   { href: '/admin/clientes', label: '🏢 Clientes' },
   { href: '/admin/usuarios', label: '👥 Usuarios' },
+  { href: '/admin/generar-contenido', label: '✨ Generar' },
 ]
 
 export default function AdminNav() {
