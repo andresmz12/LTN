@@ -1,0 +1,146 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum Role {
+  user
+  admin
+}
+
+model User {
+  id              String   @id @default(cuid())
+  email           String   @unique
+  phone           String?
+  passwordHash    String
+  nombre          String
+  apellido        String
+  paisOrigen      String?
+  estadoUS        String?
+  savedConsulados String[]
+  role            Role     @default(user)
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  lastLogin       DateTime?
+
+  analytics Analytics[]
+
+  @@map("users")
+}
+
+model Consulado {
+  id              String   @id @default(cuid())
+  pais            String
+  ciudad          String
+  nombre          String
+  direccion       String
+  telefono        String?
+  email           String?
+  horarioLunes    String?
+  horarioSabado   String?
+  servicios       Json?
+  updatedAt       DateTime @updatedAt
+
+  @@map("consulados")
+}
+
+model Tramite {
+  id                   String   @id @default(cuid())
+  pais                 String
+  titulo               String
+  slug                 String   @unique
+  descripcion          String
+  contenidoHtml        String
+  pasos                Json?
+  documentosNecesarios String[]
+  tiempoPromedio       String?
+  costo                String?
+  linksExternos        Json?
+  publishedAt          DateTime @default(now())
+  updatedAt            DateTime @updatedAt
+
+  @@map("tramites")
+}
+
+model Noticia {
+  id              String   @id @default(cuid())
+  titulo          String
+  slug            String   @unique
+  contenidoHtml   String
+  resumen         String
+  categoria       String
+  paises          String[]
+  publicado       Boolean  @default(false)
+  publishedAt     DateTime @default(now())
+  fuente          String?
+  enlaceOriginal  String?
+  verificadoPor   String?
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+
+  @@map("noticias")
+}
+
+model Cliente {
+  id             String   @id @default(cuid())
+  nombreEmpresa  String
+  tipo           String
+  emailContacto  String
+  telefono       String?
+  sitioWeb       String?
+  descripcion    String?
+  logoUrl        String?
+  paisServicio   String[]
+  activo         Boolean  @default(true)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  anuncios Anuncio[]
+
+  @@map("clientes")
+}
+
+model Anuncio {
+  id             String   @id @default(cuid())
+  tipo           String
+  titulo         String
+  descripcion    String
+  imagenUrl      String?
+  enlaceDestino  String
+  clienteId      String
+  paisesTarget   String[]
+  activo         Boolean  @default(true)
+  fechaInicio    DateTime @default(now())
+  fechaFin       DateTime?
+  presupuesto    Float    @default(0)
+  gastado        Float    @default(0)
+  impresiones    Int      @default(0)
+  clicks         Int      @default(0)
+  conversiones   Int      @default(0)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  cliente Cliente @relation(fields: [clienteId], references: [id])
+
+  @@map("anuncios")
+}
+
+model Analytics {
+  id         String   @id @default(cuid())
+  userId     String?
+  evento     String
+  seccion    String?
+  pais       String?
+  estadoUS   String?
+  deviceType String?
+  referrer   String?
+  timestamp  DateTime @default(now())
+
+  user User? @relation(fields: [userId], references: [id])
+
+  @@map("analytics")
+}
