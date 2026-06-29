@@ -1,8 +1,18 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import { PAISES, formatDate } from '@/lib/utils'
+import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, formatDate } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+
+const CATEGORIA_COLORS: Record<string, string> = {
+  'Inmigración': '#1d4ed8',
+  'Salud': '#15803d',
+  'Educación': '#854d0e',
+  'Trabajo': '#c2410c',
+  'Comunidad': '#6d28d9',
+  'Legal': '#dc2626',
+  'Economía': '#0369a1',
+}
 
 export default async function NoticiaDetailPage({ params }: { params: { pais: string; slug: string } }) {
   const pais = params.pais.toUpperCase()
@@ -11,40 +21,82 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
   const noticia = await prisma.noticia.findUnique({ where: { slug: params.slug } })
   if (!noticia || !noticia.publicado) notFound()
 
+  const accentColor = CATEGORIA_COLORS[noticia.categoria] || '#1d4ed8'
+
   return (
     <>
       <Navbar pais={pais} />
-      <main className="max-w-3xl mx-auto px-4 py-10">
-        <Link href={`/${pais}/noticias`} className="text-sm text-blue-600 hover:underline mb-4 inline-block">
-          ← Volver a noticias
-        </Link>
+      <main className="max-w-2xl mx-auto px-4 py-10">
 
-        <article className="bg-white rounded-2xl shadow p-8">
-          <span className="inline-block bg-blue-100 text-blue-700 text-xs font-semibold px-2 py-1 rounded mb-4">
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+          <Link href={`/${pais}`} className="hover:text-gray-700">
+            {PAIS_FLAGS[pais]} {PAIS_NOMBRES[pais]}
+          </Link>
+          <span>/</span>
+          <Link href={`/${pais}/noticias`} className="hover:text-gray-700">Noticias</Link>
+        </div>
+
+        <article>
+          {/* Category pill */}
+          <span
+            className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full"
+            style={{ color: accentColor, background: `${accentColor}15` }}
+          >
             {noticia.categoria}
           </span>
 
-          <h1 className="text-2xl font-bold text-gray-900 mb-4">{noticia.titulo}</h1>
+          {/* Title */}
+          <h1 className="text-2xl font-bold text-gray-900 leading-tight mt-4 mb-3">
+            {noticia.titulo}
+          </h1>
 
-          <div className="flex items-center gap-4 text-sm text-gray-400 mb-6">
-            <span>{formatDate(noticia.publishedAt)}</span>
-            {noticia.fuente && <span>Fuente: {noticia.fuente}</span>}
+          {/* Meta */}
+          <div className="flex items-center gap-3 text-sm text-gray-400 mb-6 pb-6 border-b border-gray-100">
+            <time>{formatDate(noticia.publishedAt)}</time>
+            {noticia.fuente && (
+              <>
+                <span>·</span>
+                <span>{noticia.fuente}</span>
+              </>
+            )}
           </div>
 
-          <p className="text-gray-600 text-base mb-6 italic">{noticia.resumen}</p>
+          {/* Lead / Summary */}
+          <p className="text-base text-gray-600 leading-relaxed mb-6 font-medium">
+            {noticia.resumen}
+          </p>
 
-          <div className="prose prose-sm max-w-none text-gray-700"
-            dangerouslySetInnerHTML={{ __html: noticia.contenidoHtml }} />
+          {/* Body */}
+          <div
+            className="text-gray-700 leading-relaxed space-y-4 [&>p]:text-base [&>h2]:text-lg [&>h2]:font-bold [&>h2]:text-gray-900 [&>h2]:mt-6 [&>h2]:mb-2 [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1 [&>li]:text-sm"
+            dangerouslySetInnerHTML={{ __html: noticia.contenidoHtml }}
+          />
 
+          {/* Source link */}
           {noticia.enlaceOriginal && (
-            <div className="mt-8 pt-6 border-t">
-              <a href={noticia.enlaceOriginal} target="_blank" rel="noopener noreferrer"
-                className="text-sm text-blue-600 hover:underline">
+            <div className="mt-10 pt-6 border-t border-gray-100">
+              <a
+                href={noticia.enlaceOriginal}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sm text-blue-600 hover:underline"
+              >
                 Ver noticia original →
               </a>
             </div>
           )}
         </article>
+
+        {/* Back */}
+        <div className="mt-8">
+          <Link
+            href={`/${pais}/noticias`}
+            className="text-sm text-gray-500 hover:text-gray-800"
+          >
+            ← Ver todas las noticias
+          </Link>
+        </div>
       </main>
     </>
   )

@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
+import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 
 export default async function TramiteDetailPage({ params }: { params: { pais: string; slug: string } }) {
@@ -17,64 +17,109 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
   return (
     <>
       <Navbar pais={pais} />
-      <main className="max-w-3xl mx-auto px-4 py-10">
-        <Link href={`/${pais}/tramites`} className="text-sm text-blue-600 hover:underline mb-4 inline-block">
-          ← Volver a trámites
-        </Link>
+      <main className="max-w-2xl mx-auto px-4 py-10">
 
-        <div className="bg-white rounded-2xl shadow p-8">
-          <h1 className="text-2xl font-bold text-gray-900 mb-3">{tramite.titulo}</h1>
+        {/* Breadcrumb */}
+        <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+          <Link href={`/${pais}`} className="hover:text-gray-700">
+            {PAIS_FLAGS[pais]} {PAIS_NOMBRES[pais]}
+          </Link>
+          <span>/</span>
+          <Link href={`/${pais}/tramites`} className="hover:text-gray-700">Trámites</Link>
+        </div>
 
-          <div className="flex gap-6 text-sm text-gray-500 mb-6">
-            {tramite.tiempoPromedio && <span>⏱ {tramite.tiempoPromedio}</span>}
-            {tramite.costo && <span>💵 {tramite.costo}</span>}
-          </div>
+        {/* Header */}
+        <div className="mb-8">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4">{tramite.titulo}</h1>
 
-          <p className="text-gray-700 mb-6">{tramite.descripcion}</p>
-
-          {tramite.documentosNecesarios.length > 0 && (
-            <div className="mb-6">
-              <h2 className="font-bold text-gray-800 mb-3">📄 Documentos necesarios</h2>
-              <ul className="list-disc list-inside space-y-1 text-sm text-gray-700">
-                {tramite.documentosNecesarios.map((doc: any, i: number) => <li key={i}>{doc}</li>)}
-              </ul>
-            </div>
-          )}
-
-          {pasos && pasos.length > 0 && (
-            <div className="mb-6">
-              <h2 className="font-bold text-gray-800 mb-3">📝 Pasos a seguir</h2>
-              <ol className="space-y-3">
-                {pasos.map((paso: any, i: number) => (
-                  <li key={i} className="flex gap-3 text-sm text-gray-700">
-                    <span className="bg-blue-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs font-bold flex-shrink-0">
-                      {i + 1}
-                    </span>
-                    <span>{paso}</span>
-                  </li>
-                ))}
-              </ol>
-            </div>
-          )}
-
-          {tramite.contenidoHtml && (
-            <div className="prose prose-sm max-w-none mb-6"
-              dangerouslySetInnerHTML={{ __html: tramite.contenidoHtml }} />
-          )}
-
-          {links && links.length > 0 && (
-            <div>
-              <h2 className="font-bold text-gray-800 mb-3">🔗 Links útiles</h2>
-              <div className="space-y-2">
-                {links.map((l, i) => (
-                  <a key={i} href={l.url} target="_blank" rel="noopener noreferrer"
-                    className="block text-sm text-blue-600 hover:underline">
-                    {l.texto} →
-                  </a>
-                ))}
+          {/* Quick info pills */}
+          <div className="flex flex-wrap gap-3">
+            {tramite.tiempoPromedio && (
+              <div className="flex items-center gap-2 bg-blue-50 text-blue-700 text-sm px-3 py-1.5 rounded-xl">
+                <span className="font-medium">Tiempo:</span> {tramite.tiempoPromedio}
               </div>
+            )}
+            {tramite.costo && (
+              <div className="flex items-center gap-2 bg-green-50 text-green-700 text-sm px-3 py-1.5 rounded-xl">
+                <span className="font-medium">Costo:</span> {tramite.costo}
+              </div>
+            )}
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="text-gray-600 leading-relaxed mb-8 text-base">
+          {tramite.descripcion}
+        </p>
+
+        {/* Documents */}
+        {tramite.documentosNecesarios.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-base font-bold text-gray-800 mb-3 pb-2 border-b border-gray-100">
+              Documentos necesarios
+            </h2>
+            <ul className="space-y-2">
+              {tramite.documentosNecesarios.map((doc: any, i: number) => (
+                <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
+                  <span className="text-blue-500 mt-0.5 shrink-0">✓</span>
+                  {doc}
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
+        {/* Steps */}
+        {pasos && pasos.length > 0 && (
+          <section className="mb-8">
+            <h2 className="text-base font-bold text-gray-800 mb-3 pb-2 border-b border-gray-100">
+              Pasos a seguir
+            </h2>
+            <ol className="space-y-4">
+              {pasos.map((paso: any, i: number) => (
+                <li key={i} className="flex gap-3">
+                  <span className="shrink-0 w-6 h-6 rounded-full bg-blue-700 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                    {i + 1}
+                  </span>
+                  <span className="text-sm text-gray-700 leading-relaxed">{paso}</span>
+                </li>
+              ))}
+            </ol>
+          </section>
+        )}
+
+        {/* Extra content */}
+        {tramite.contenidoHtml && (
+          <section className="mb-8 text-sm text-gray-700 leading-relaxed space-y-3
+            [&>h2]:text-base [&>h2]:font-bold [&>h2]:text-gray-800 [&>h2]:mt-4 [&>h2]:mb-2
+            [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1
+            [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-1
+            [&>p]:leading-relaxed"
+            dangerouslySetInnerHTML={{ __html: tramite.contenidoHtml }}
+          />
+        )}
+
+        {/* Links */}
+        {links && links.length > 0 && (
+          <section className="pt-6 border-t border-gray-100">
+            <h2 className="text-sm font-bold text-gray-600 uppercase tracking-wide mb-3">
+              Recursos oficiales
+            </h2>
+            <div className="space-y-2">
+              {links.map((l, i) => (
+                <a key={i} href={l.url} target="_blank" rel="noopener noreferrer"
+                  className="flex items-center gap-2 text-sm text-blue-700 hover:underline">
+                  <span className="text-blue-400">→</span> {l.texto}
+                </a>
+              ))}
             </div>
-          )}
+          </section>
+        )}
+
+        <div className="mt-10">
+          <Link href={`/${pais}/tramites`} className="text-sm text-gray-400 hover:text-gray-700">
+            ← Ver todos los trámites
+          </Link>
         </div>
       </main>
     </>
