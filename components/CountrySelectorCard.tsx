@@ -5,10 +5,10 @@ export default function CountrySelectorCard({ pais }: { pais: string }) {
   return (
     <Link
       href={`/${pais}`}
-      className="flex flex-col items-center justify-center p-8 bg-white rounded-2xl shadow hover:shadow-lg hover:-translate-y-1 transition-all border border-gray-100"
+      className="flex flex-col items-center justify-center p-5 bg-white rounded-2xl shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all border border-gray-100"
     >
-      <span className="text-5xl mb-3">{PAIS_FLAGS[pais]}</span>
-      <span className="text-lg font-semibold text-gray-800">{PAIS_NOMBRES[pais]}</span>
+      <span className="text-4xl mb-2">{PAIS_FLAGS[pais]}</span>
+      <span className="text-sm font-semibold text-gray-800 text-center leading-tight">{PAIS_NOMBRES[pais]}</span>
     </Link>
   )
 }

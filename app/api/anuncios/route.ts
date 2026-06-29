@@ -6,7 +6,20 @@ import { anuncioSchema } from '@/lib/validations'
 
 export async function GET(req: NextRequest) {
   const pais = req.nextUrl.searchParams.get('pais')
+  const all = req.nextUrl.searchParams.get('all') === 'true'
   const now = new Date()
+
+  if (all) {
+    const session = await getServerSession(authOptions)
+    if ((session?.user as any)?.role !== 'admin') {
+      return NextResponse.json({ error: 'Forbidden' }, { status: 403 })
+    }
+    const anuncios = await prisma.anuncio.findMany({
+      include: { cliente: { select: { nombreEmpresa: true, logoUrl: true } } },
+      orderBy: { createdAt: 'desc' },
+    })
+    return NextResponse.json(anuncios)
+  }
 
   const anuncios = await prisma.anuncio.findMany({
     where: {
@@ -18,7 +31,6 @@ export async function GET(req: NextRequest) {
     include: { cliente: { select: { nombreEmpresa: true, logoUrl: true } } },
   })
 
-  // Track impressions
   if (anuncios.length > 0) {
     await prisma.anuncio.updateMany({
       where: { id: { in: anuncios.map((a: any) => a.id) } },

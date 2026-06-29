@@ -5,7 +5,7 @@ import { PAIS_NOMBRES } from '@/lib/utils'
 
 interface Tramite { id: string; pais: string; titulo: string; slug: string; descripcion: string; tiempoPromedio?: string; costo?: string }
 
-const emptyForm = { pais: 'MX', titulo: '', slug: '', descripcion: '', contenidoHtml: '', tiempoPromedio: '', costo: '' }
+const emptyForm = { pais: 'GENERAL', titulo: '', slug: '', descripcion: '', contenidoHtml: '', tiempoPromedio: '', costo: '' }
 
 const inputClass = 'w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:border-transparent'
 const labelClass = 'block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide'
@@ -90,7 +90,8 @@ export default function AdminTramites() {
           className="border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white"
         >
           <option value="">Todos los países</option>
-          {Object.entries(PAIS_NOMBRES).map(([k, v]) => <option key={k} value={k}>{v as string}</option>)}
+          <option value="GENERAL">🌎 Recursos Generales</option>
+          {Object.entries(PAIS_NOMBRES).filter(([k]) => k !== 'GENERAL').map(([k, v]) => <option key={k} value={k}>{v as string}</option>)}
         </select>
       </div>
 
@@ -166,7 +167,10 @@ export default function AdminTramites() {
                 <div>
                   <label className={labelClass}>País</label>
                   <select value={form.pais} onChange={set('pais')} className={inputClass}>
-                    {Object.entries(PAIS_NOMBRES).map(([k, v]) => <option key={k} value={k}>{v as string}</option>)}
+                    <option value="GENERAL">🌎 Recursos Generales (todos los países)</option>
+                    {Object.entries(PAIS_NOMBRES).filter(([k]) => k !== 'GENERAL').map(([k, v]) => (
+                      <option key={k} value={k}>{v as string}</option>
+                    ))}
                   </select>
                 </div>
                 {[

@@ -1,4 +1,4 @@
-export const PAISES = ['MX', 'CO', 'VE', 'SV'] as const
+export const PAISES = ['MX', 'CO', 'VE', 'SV', 'GT', 'HN', 'NI', 'CU', 'DO', 'EC', 'PE'] as const
 export type Pais = typeof PAISES[number]
 
 export const PAIS_NOMBRES: Record<string, string> = {
@@ -6,6 +6,14 @@ export const PAIS_NOMBRES: Record<string, string> = {
   CO: 'Colombia',
   VE: 'Venezuela',
   SV: 'El Salvador',
+  GT: 'Guatemala',
+  HN: 'Honduras',
+  NI: 'Nicaragua',
+  CU: 'Cuba',
+  DO: 'Rep. Dominicana',
+  EC: 'Ecuador',
+  PE: 'Perú',
+  GENERAL: 'Recursos Generales',
 }
 
 export const PAIS_FLAGS: Record<string, string> = {
@@ -13,6 +21,14 @@ export const PAIS_FLAGS: Record<string, string> = {
   CO: '🇨🇴',
   VE: '🇻🇪',
   SV: '🇸🇻',
+  GT: '🇬🇹',
+  HN: '🇭🇳',
+  NI: '🇳🇮',
+  CU: '🇨🇺',
+  DO: '🇩🇴',
+  EC: '🇪🇨',
+  PE: '🇵🇪',
+  GENERAL: '🌎',
 }
 
 export function slugify(text: string): string {

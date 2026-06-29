@@ -8,8 +8,8 @@ const navItems = [
   { href: '/admin/consulados', label: 'Consulados', icon: '🏛' },
   { href: '/admin/tramites', label: 'Trámites', icon: '📋' },
   { href: '/admin/noticias', label: 'Noticias', icon: '📰' },
+  { href: '/admin/clientes', label: 'Patrocinadores', icon: '🤝' },
   { href: '/admin/anuncios', label: 'Anuncios', icon: '📢' },
-  { href: '/admin/clientes', label: 'Clientes', icon: '🤝' },
   { href: '/admin/usuarios', label: 'Usuarios', icon: '👥' },
 ]
 
@@ -21,6 +21,9 @@ export default function AdminNav() {
         <span className="text-2xl font-bold text-white">Compa</span>
         <span className="text-xs text-blue-300 mt-1">Admin</span>
       </Link>
+
+      <div className="text-xs text-blue-400 uppercase tracking-widest px-3 mb-1">Contenido</div>
+
       {navItems.map(({ href, label, icon, gold, exact }) => {
         const active = exact ? pathname === href : pathname.startsWith(href)
         return (
@@ -46,8 +49,17 @@ export default function AdminNav() {
           </Link>
         )
       })}
-      <div className="mt-auto px-3 pt-4 border-t border-white/10">
-        <Link href="/" className="text-xs text-blue-300 hover:text-white transition">← Ver sitio</Link>
+
+      <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1">
+        <Link href="/general" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
+          🌎 Ver Recursos Generales
+        </Link>
+        <Link href="/patrocinadores" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
+          🤝 Ver Patrocinadores
+        </Link>
+        <Link href="/" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
+          ← Ver sitio
+        </Link>
       </div>
     </aside>
   )
