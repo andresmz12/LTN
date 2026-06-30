@@ -5,6 +5,20 @@ import { prisma } from '@/lib/db'
 
 const PRIORIDAD_ORDER: Record<string, number> = { critico: 0, alto: 1, importante: 2, relevante: 3 }
 
+const CATEGORIA_ORDER = [
+  'Migración y Seguridad',
+  'Migración y Estatus',
+  'Protección al Consumidor',
+  'Dinero e Impuestos',
+  'Trabajo',
+  'Transporte',
+  'Salud',
+  'Vivienda',
+  'Identidad y Documentos',
+  'Educación',
+  'Seguridad y Emergencias',
+]
+
 const PRIORIDAD_BADGE: Record<string, { label: string; className: string }> = {
   critico:    { label: 'Crítico',    className: 'bg-red-100 text-red-700' },
   alto:       { label: 'Alta prioridad', className: 'bg-orange-100 text-orange-700' },
@@ -69,10 +83,16 @@ export default async function Home() {
     items.sort((a: TramiteRow, b: TramiteRow) => prioridadOf(a) - prioridadOf(b))
   }
 
-  // Sort categories by the highest-priority item they contain
+  // Sort categories by the fixed order; unknown categories go at the end alphabetically
   const categorias: [string, TramiteRow[]][] = Object.entries(byCategoria).sort(
-    ([, a], [, b]) =>
-      Math.min(...a.map(prioridadOf)) - Math.min(...b.map(prioridadOf))
+    ([a], [b]) => {
+      const ia = CATEGORIA_ORDER.indexOf(a)
+      const ib = CATEGORIA_ORDER.indexOf(b)
+      if (ia === -1 && ib === -1) return a.localeCompare(b)
+      if (ia === -1) return 1
+      if (ib === -1) return -1
+      return ia - ib
+    }
   )
 
   let cardIndex = 0
