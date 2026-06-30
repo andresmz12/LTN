@@ -51,7 +51,7 @@ export default function AdminNav() {
       })}
 
       <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1">
-        <Link href="/general" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
+        <Link href="/" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
           🌎 Ver Recursos Generales
         </Link>
         <Link href="/patrocinadores" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">

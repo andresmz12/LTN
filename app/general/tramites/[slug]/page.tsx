@@ -19,7 +19,7 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 py-10">
         <div className="mb-6">
-          <Link href="/general" className="text-sm text-blue-600 hover:underline">
+          <Link href="/" className="text-sm text-blue-600 hover:underline">
             ← Recursos Generales
           </Link>
         </div>

@@ -20,9 +20,9 @@ export default function Navbar({ pais }: { pais?: string }) {
         {/* Main nav — always visible */}
         <div className="flex items-center gap-1 text-sm">
           <Link
-            href="/general"
+            href="/"
             className={`px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
-              pathname?.startsWith('/general')
+              pathname === '/' || pathname?.startsWith('/general')
                 ? 'bg-blue-700 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
