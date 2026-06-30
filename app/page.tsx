@@ -92,7 +92,7 @@ async function getAnuncios() {
 
   if (anuncios.length > 0) {
     await prisma.anuncio.updateMany({
-      where: { id: { in: anuncios.map((a) => a.id) } },
+      where: { id: { in: anuncios.map((a: any) => a.id) } },
       data: { impresiones: { increment: 1 } },
     }).catch(() => {})
   }
@@ -133,7 +133,7 @@ export default async function Home() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {TEMAS.map((tema, i) => {
-              const tramite = tramitesGenerales.find((t) => t.slug === tema.slug)
+              const tramite = tramitesGenerales.find((t: any) => t.slug === tema.slug)
               const href = tramite ? `/general/tramites/${tema.slug}` : '#'
               const anuncio = anuncios.length > 0 ? anuncios[Math.floor(i / 3) % anuncios.length] : null
               const showAdAfter = anuncios.length > 0 && i > 0 && (i + 1) % 3 === 0
