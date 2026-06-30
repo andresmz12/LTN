@@ -49,10 +49,10 @@ model Consulado {
 }
 
 model Tramite {
-  id                   String   @id @default(cuid())
+  id                   String    @id @default(cuid())
   pais                 String
   titulo               String
-  slug                 String   @unique
+  slug                 String    @unique
   descripcion          String
   contenidoHtml        String
   pasos                Json?
@@ -60,8 +60,12 @@ model Tramite {
   tiempoPromedio       String?
   costo                String?
   linksExternos        Json?
-  publishedAt          DateTime @default(now())
-  updatedAt            DateTime @updatedAt
+  categoria            String?
+  prioridad            String?
+  fechaVerificacion    DateTime?
+  nivelVolatilidad     String?
+  publishedAt          DateTime  @default(now())
+  updatedAt            DateTime  @updatedAt
 
   @@map("tramites")
 }
