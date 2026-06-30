@@ -3,71 +3,14 @@ import Navbar from '@/components/Navbar'
 import AnuncioCard from '@/components/AnuncioCard'
 import { prisma } from '@/lib/db'
 
-const TEMAS = [
-  {
-    icono: '🪪',
-    titulo: 'ITIN — Número de Identificación Tributaria',
-    slug: 'itin-como-solicitarlo',
-    descripcion: 'El ITIN te permite pagar impuestos, abrir cuentas bancarias y acceder a servicios financieros sin necesidad de número de Seguro Social.',
-    tags: ['Formulario W-7', 'IRS', 'Sin estatus migratorio'],
-  },
-  {
-    icono: '🧾',
-    titulo: 'Declaración de Impuestos',
-    slug: 'declaracion-impuestos',
-    descripcion: 'Aprende cómo declarar tus impuestos en EE.UU. usando tu ITIN o SSN. Disponible para todos, sin importar tu estatus migratorio.',
-    tags: ['IRS', 'Formulario 1040', 'Gratuito con VITA'],
-  },
-  {
-    icono: '🏢',
-    titulo: 'Cómo Crear una LLC',
-    slug: 'crear-llc',
-    descripcion: 'Forma tu propio negocio en EE.UU. abriendo una LLC, incluso sin ser ciudadano o residente. Protege tus bienes personales.',
-    tags: ['LLC', 'EIN', 'Negocio propio'],
-  },
-  {
-    icono: '🚗',
-    titulo: 'Licencia de Conducir',
-    slug: 'licencia-conducir',
-    descripcion: 'Cómo obtener tu licencia de conducir en EE.UU. Varios estados permiten a inmigrantes sin documentos obtener una licencia.',
-    tags: ['REAL ID', 'DMV', 'Por estado'],
-  },
-  {
-    icono: '🏥',
-    titulo: 'Seguro Médico',
-    slug: 'seguro-medico',
-    descripcion: 'Opciones de seguro médico para inmigrantes: Medicaid, ACA (Obamacare), centros de salud comunitarios y más.',
-    tags: ['Medicaid', 'ACA', 'Community Health'],
-  },
-  {
-    icono: '🏦',
-    titulo: 'Cómo Abrir una Cuenta Bancaria',
-    slug: 'cuenta-bancaria',
-    descripcion: 'Abre tu cuenta bancaria en EE.UU. con o sin SSN. Muchos bancos aceptan ITIN o pasaporte extranjero.',
-    tags: ['ITIN', 'Sin SSN', 'Bancos y crédito'],
-  },
-  {
-    icono: '💼',
-    titulo: 'Derechos Laborales',
-    slug: 'derechos-laborales',
-    descripcion: 'Conoce tus derechos como trabajador en EE.UU.: salario mínimo, horas extra, condiciones de trabajo y cómo reportar abusos.',
-    tags: ['DOL', 'Salario mínimo', 'Sin discriminación'],
-  },
-  {
-    icono: '🏠',
-    titulo: 'Ayuda con Vivienda',
-    slug: 'ayuda-vivienda',
-    descripcion: 'Programas de asistencia de vivienda, cómo rentar un apartamento, tus derechos como inquilino y organizaciones de ayuda.',
-    tags: ['HUD', 'Renta', 'Derechos inquilinos'],
-  },
-  {
-    icono: '📚',
-    titulo: 'Educación',
-    slug: 'educacion',
-    descripcion: 'Escuelas públicas, ESL (inglés), GED, universidades comunitarias y becas disponibles para inmigrantes.',
-    tags: ['ESL', 'GED', 'Community College', 'DACA'],
-  },
-]
+const PRIORIDAD_ORDER: Record<string, number> = { critico: 0, alto: 1, importante: 2, relevante: 3 }
+
+const PRIORIDAD_BADGE: Record<string, { label: string; className: string }> = {
+  critico:    { label: 'Crítico',    className: 'bg-red-100 text-red-700' },
+  alto:       { label: 'Alta prioridad', className: 'bg-orange-100 text-orange-700' },
+  importante: { label: 'Importante', className: 'bg-yellow-100 text-yellow-700' },
+  relevante:  { label: 'Relevante',  className: 'bg-blue-50 text-blue-600' },
+}
 
 const RECURSOS_OFICIALES = [
   { nombre: 'IRS — Impuestos en español', url: 'https://www.irs.gov/es', desc: 'Declaración de impuestos y ITIN' },
@@ -100,10 +43,39 @@ async function getAnuncios() {
 }
 
 export default async function Home() {
-  const [tramitesGenerales, anuncios] = await Promise.all([
-    prisma.tramite.findMany({ where: { pais: 'GENERAL' }, orderBy: { titulo: 'asc' } }).catch(() => []),
+  const [tramites, anuncios] = await Promise.all([
+    prisma.tramite.findMany({
+      where: { pais: 'GENERAL' },
+      orderBy: { titulo: 'asc' },
+    }).catch(() => []),
     getAnuncios(),
   ])
+
+  type TramiteRow = (typeof tramites)[number]
+
+  // Group by categoria
+  const byCategoria: Record<string, TramiteRow[]> = {}
+  for (const t of tramites) {
+    const cat: string = (t as any).categoria ?? 'General'
+    if (!byCategoria[cat]) byCategoria[cat] = []
+    byCategoria[cat].push(t)
+  }
+
+  const prioridadOf = (t: TramiteRow) =>
+    PRIORIDAD_ORDER[(t as any).prioridad ?? 'relevante'] ?? 3
+
+  // Sort tramites within each category by prioridad
+  for (const items of Object.values(byCategoria)) {
+    items.sort((a: TramiteRow, b: TramiteRow) => prioridadOf(a) - prioridadOf(b))
+  }
+
+  // Sort categories by the highest-priority item they contain
+  const categorias: [string, TramiteRow[]][] = Object.entries(byCategoria).sort(
+    ([, a], [, b]) =>
+      Math.min(...a.map(prioridadOf)) - Math.min(...b.map(prioridadOf))
+  )
+
+  let cardIndex = 0
 
   return (
     <>
@@ -120,56 +92,58 @@ export default async function Home() {
           </p>
         </div>
 
-        {/* Recursos Generales — main content */}
-        <div className="mb-10">
-          <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
-            Recursos para todos los latinos
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            {TEMAS.map((tema, i) => {
-              const tramite = tramitesGenerales.find((t: any) => t.slug === tema.slug)
-              const href = tramite ? `/general/tramites/${tema.slug}` : '#'
-              const anuncio = anuncios.length > 0 ? anuncios[Math.floor(i / 3) % anuncios.length] : null
-              const showAdAfter = anuncios.length > 0 && i > 0 && (i + 1) % 3 === 0
+        {tramites.length === 0 ? (
+          <p className="text-gray-400 text-sm italic py-8">No hay recursos disponibles aún.</p>
+        ) : (
+          categorias.map(([categoria, items]) => (
+            <div key={categoria} className="mb-10">
+              <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+                {categoria}
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {items.map((tramite: TramiteRow) => {
+                  const prioridad = (tramite as any).prioridad as string | null
+                  const badge = prioridad ? PRIORIDAD_BADGE[prioridad] : null
+                  const idx = cardIndex++
+                  const showAdAfter = anuncios.length > 0 && idx > 0 && (idx + 1) % 3 === 0
+                  const anuncio = showAdAfter ? anuncios[Math.floor(idx / 3) % anuncios.length] : null
 
-              return (
-                <div key={tema.slug} className="contents">
-                  <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow">
-                    <div className="flex items-start gap-4">
-                      <span className="text-3xl shrink-0">{tema.icono}</span>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-bold text-gray-900 mb-1 text-base">{tema.titulo}</h3>
-                        <p className="text-sm text-gray-500 mb-3">{tema.descripcion}</p>
-                        <div className="flex flex-wrap gap-1.5 mb-3">
-                          {tema.tags.map(tag => (
-                            <span key={tag} className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">{tag}</span>
-                          ))}
+                  return (
+                    <div key={tramite.id} className="contents">
+                      <Link
+                        href={`/general/tramites/${tramite.slug}`}
+                        className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+                      >
+                        <div className="flex items-start justify-between gap-3 mb-2">
+                          <h3 className="font-bold text-gray-900 text-base leading-snug">{tramite.titulo}</h3>
+                          {badge && (
+                            <span className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap ${badge.className}`}>
+                              {badge.label}
+                            </span>
+                          )}
                         </div>
-                        {tramite ? (
-                          <Link href={href} className="text-sm font-semibold text-blue-700 hover:underline">
-                            Ver guía completa →
-                          </Link>
-                        ) : (
-                          <span className="text-xs text-gray-400 italic">Guía próximamente</span>
-                        )}
-                      </div>
+                        <p className="text-sm text-gray-500 mb-4 line-clamp-3">{tramite.descripcion}</p>
+                        <span className="text-sm font-semibold text-blue-700">
+                          Ver guía completa →
+                        </span>
+                      </Link>
+                      {showAdAfter && anuncio && (
+                        <AnuncioCard
+                          id={anuncio.id}
+                          titulo={anuncio.titulo}
+                          descripcion={anuncio.descripcion}
+                          imagenUrl={anuncio.imagenUrl}
+                          enlaceDestino={anuncio.enlaceDestino}
+                          tipo={anuncio.tipo}
+                        />
+                      )}
                     </div>
-                  </div>
-                  {showAdAfter && anuncio && (
-                    <AnuncioCard
-                      id={anuncio.id}
-                      titulo={anuncio.titulo}
-                      descripcion={anuncio.descripcion}
-                      imagenUrl={anuncio.imagenUrl}
-                      enlaceDestino={anuncio.enlaceDestino}
-                      tipo={anuncio.tipo}
-                    />
-                  )}
-                </div>
-              )
-            })}
-          </div>
-        </div>
+                  )
+                })}
+              </div>
+            </div>
+          ))
+        )}
 
         {/* Recursos oficiales */}
         <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 mb-8">
