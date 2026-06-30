@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
-import CountrySelector from '@/components/CountrySelector'
 import AnuncioCard from '@/components/AnuncioCard'
 import { prisma } from '@/lib/db'
 
@@ -119,11 +118,6 @@ export default async function Home() {
           <p className="text-gray-500 max-w-2xl">
             Todo lo que necesitas saber para vivir, trabajar y prosperar en Estados Unidos — sin importar tu país de origen o estatus migratorio.
           </p>
-        </div>
-
-        {/* Country selector — quick access if you want your country's info */}
-        <div className="mb-12">
-          <CountrySelector />
         </div>
 
         {/* Recursos Generales — main content */}

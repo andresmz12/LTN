@@ -30,7 +30,7 @@ export default function Navbar({ pais }: { pais?: string }) {
         </Link>
 
         {/* Main nav — always visible */}
-        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm overflow-x-auto">
+        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm">
           <Link
             href="/"
             className={`px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
@@ -64,7 +64,7 @@ export default function Navbar({ pais }: { pais?: string }) {
             </button>
 
             {paisMenuOpen && (
-              <div className="absolute z-50 mt-2 left-0 w-72 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 grid grid-cols-2 gap-1 max-h-80 overflow-y-auto">
+              <div className="fixed inset-x-4 top-16 z-50 sm:absolute sm:inset-x-auto sm:top-auto sm:left-0 sm:mt-2 sm:w-72 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 grid grid-cols-2 gap-1 max-h-80 overflow-y-auto">
                 {PAISES.map((p) => (
                   <button
                     key={p}
