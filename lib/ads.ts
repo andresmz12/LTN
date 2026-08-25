@@ -1,8 +1,14 @@
 import { prisma } from '@/lib/db'
 
-export async function getAnunciosPara(target: string) {
+/**
+ * Anuncios targeteados por país (o GENERAL), con targeting de estado opcional:
+ * un anuncio con estadosTarget vacío se muestra a cualquiera dentro del país target;
+ * un anuncio con estadosTarget definido solo se muestra si conocemos el estado del
+ * visitante (cookie de LocationBanner) y coincide.
+ */
+export async function getAnunciosPara(target: string, estado?: string | null) {
   const now = new Date()
-  const anuncios = await prisma.anuncio.findMany({
+  const candidatos = await prisma.anuncio.findMany({
     where: {
       activo: true,
       fechaInicio: { lte: now },
@@ -10,6 +16,10 @@ export async function getAnunciosPara(target: string) {
       paisesTarget: { has: target },
     },
   }).catch(() => [])
+
+  const anuncios = candidatos.filter(
+    (a: any) => a.estadosTarget.length === 0 || (estado && a.estadosTarget.includes(estado))
+  )
 
   if (anuncios.length > 0) {
     await prisma.anuncio.updateMany({

@@ -36,6 +36,7 @@ model Consulado {
   id              String   @id @default(cuid())
   pais            String
   ciudad          String
+  estadoUS        String?
   nombre          String
   direccion       String
   telefono        String?
@@ -104,6 +105,7 @@ model Cliente {
   updatedAt      DateTime @updatedAt
 
   anuncios Anuncio[]
+  empleos  Empleo[]
 
   @@map("clientes")
 }
@@ -117,6 +119,7 @@ model Anuncio {
   enlaceDestino  String
   clienteId      String
   paisesTarget   String[]
+  estadosTarget  String[]
   activo         Boolean  @default(true)
   fechaInicio    DateTime @default(now())
   fechaFin       DateTime?
@@ -131,6 +134,33 @@ model Anuncio {
   cliente Cliente @relation(fields: [clienteId], references: [id])
 
   @@map("anuncios")
+}
+
+model Empleo {
+  id              String    @id @default(cuid())
+  titulo          String
+  slug            String    @unique
+  empresa         String
+  descripcion     String
+  categoria       String
+  tipoEmpleo      String
+  estadoUS        String
+  ciudad          String?
+  salario         String?
+  requisitos      String[]
+  comoAplicar     String
+  clienteId       String?
+  destacado       Boolean   @default(false)
+  activo          Boolean   @default(true)
+  presupuesto     Float     @default(0)
+  pagado          Boolean   @default(false)
+  publishedAt     DateTime  @default(now())
+  fechaExpiracion DateTime?
+  updatedAt       DateTime  @updatedAt
+
+  cliente Cliente? @relation(fields: [clienteId], references: [id])
+
+  @@map("empleos")
 }
 
 model Analytics {

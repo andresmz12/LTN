@@ -31,6 +31,40 @@ export const PAIS_FLAGS: Record<string, string> = {
   GENERAL: '🌎',
 }
 
+export const ESTADOS_US: Record<string, string> = {
+  AL: 'Alabama', AK: 'Alaska', AZ: 'Arizona', AR: 'Arkansas', CA: 'California',
+  CO: 'Colorado', CT: 'Connecticut', DE: 'Delaware', DC: 'Washington DC', FL: 'Florida',
+  GA: 'Georgia', HI: 'Hawái', ID: 'Idaho', IL: 'Illinois', IN: 'Indiana',
+  IA: 'Iowa', KS: 'Kansas', KY: 'Kentucky', LA: 'Luisiana', ME: 'Maine',
+  MD: 'Maryland', MA: 'Massachusetts', MI: 'Míchigan', MN: 'Minnesota', MS: 'Misisipi',
+  MO: 'Misuri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'Nuevo Hampshire',
+  NJ: 'Nueva Jersey', NM: 'Nuevo México', NY: 'Nueva York', NC: 'Carolina del Norte',
+  ND: 'Dakota del Norte', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregón', PA: 'Pensilvania',
+  RI: 'Rhode Island', SC: 'Carolina del Sur', SD: 'Dakota del Sur', TN: 'Tennessee',
+  TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington',
+  WV: 'Virginia Occidental', WI: 'Wisconsin', WY: 'Wyoming',
+}
+
+export const EMPLEO_CATEGORIAS = [
+  'Construcción',
+  'Limpieza',
+  'Restaurantes y Cocina',
+  'Cuidado de Niños y Ancianos',
+  'Transporte y Delivery',
+  'Bodega y Almacén',
+  'Manufactura',
+  'Oficina y Administración',
+  'Salud',
+  'Belleza y Estética',
+  'Agricultura',
+  'Ventas',
+  'Otro',
+]
+
+export const EMPLEO_TIPOS = ['Tiempo completo', 'Medio tiempo', 'Temporal', 'Por día', 'Contrato']
+
+export const ESTADO_COOKIE = 'compa_estado'
+
 export function slugify(text: string): string {
   return text
     .toLowerCase()

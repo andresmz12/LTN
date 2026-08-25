@@ -2,9 +2,11 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import AnuncioCard from '@/components/AnuncioCard'
 import Footer from '@/components/Footer'
+import LocationBanner from '@/components/LocationBanner'
 import { IconLink, IconArrowRight } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
+import { getEstadoCookie } from '@/lib/location'
 
 const PRIORIDAD_ORDER: Record<string, number> = { critico: 0, alto: 1, importante: 2, relevante: 3 }
 
@@ -39,12 +41,13 @@ const RECURSOS_OFICIALES = [
 ]
 
 export default async function Home() {
+  const estado = getEstadoCookie()
   const [tramites, anuncios] = await Promise.all([
     prisma.tramite.findMany({
       where: { pais: 'GENERAL' },
       orderBy: { titulo: 'asc' },
     }).catch(() => []),
-    getAnunciosPara('GENERAL'),
+    getAnunciosPara('GENERAL', estado),
   ])
 
   type TramiteRow = (typeof tramites)[number]
@@ -104,6 +107,10 @@ export default async function Home() {
       </div>
 
       <main className="max-w-5xl mx-auto px-4 py-10">
+
+        <div className="mb-8">
+          <LocationBanner />
+        </div>
 
         {tramites.length === 0 ? (
           <p className="text-gray-400 text-sm italic py-8">No hay recursos disponibles aún.</p>

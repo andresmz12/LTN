@@ -6,18 +6,26 @@ import AnuncioCard from '@/components/AnuncioCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
+import { getEstadoCookie } from '@/lib/location'
 
 export default async function ConsultadosPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
   if (!PAISES.includes(pais as any)) notFound()
 
-  const [consulados, anuncios] = await Promise.all([
+  const estado = getEstadoCookie()
+
+  const [consuladosRaw, anuncios] = await Promise.all([
     prisma.consulado.findMany({
       where: { pais },
       orderBy: { ciudad: 'asc' },
     }),
-    getAnunciosPara(pais),
+    getAnunciosPara(pais, estado),
   ])
+
+  // Si conocemos el estado del visitante, el consulado de su estado va primero.
+  const consulados = estado
+    ? [...consuladosRaw].sort((a: any, b: any) => (b.estadoUS === estado ? 1 : 0) - (a.estadoUS === estado ? 1 : 0))
+    : consuladosRaw
 
   return (
     <>

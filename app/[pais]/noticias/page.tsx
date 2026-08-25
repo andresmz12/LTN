@@ -6,6 +6,7 @@ import AnuncioCard from '@/components/AnuncioCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
+import { getEstadoCookie } from '@/lib/location'
 
 export default async function NoticiasPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
@@ -16,7 +17,7 @@ export default async function NoticiasPage({ params }: { params: { pais: string 
       where: { publicado: true, paises: { has: pais } },
       orderBy: { publishedAt: 'desc' },
     }),
-    getAnunciosPara(pais),
+    getAnunciosPara(pais, getEstadoCookie()),
   ])
 
   return (

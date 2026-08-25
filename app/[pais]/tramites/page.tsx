@@ -6,6 +6,7 @@ import AnuncioCard from '@/components/AnuncioCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
+import { getEstadoCookie } from '@/lib/location'
 
 export default async function TramitesPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
@@ -16,7 +17,7 @@ export default async function TramitesPage({ params }: { params: { pais: string 
       where: { pais },
       orderBy: { titulo: 'asc' },
     }),
-    getAnunciosPara(pais),
+    getAnunciosPara(pais, getEstadoCookie()),
   ])
 
   return (

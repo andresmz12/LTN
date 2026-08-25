@@ -5,14 +5,14 @@ import { PAIS_NOMBRES } from '@/lib/utils'
 
 interface Anuncio {
   id: string; titulo: string; tipo: string; activo: boolean; impresiones: number;
-  clicks: number; paisesTarget: string[]; presupuesto?: number; descripcion?: string;
+  clicks: number; paisesTarget: string[]; estadosTarget: string[]; presupuesto?: number; descripcion?: string;
   enlaceDestino?: string; clienteId?: string;
 }
 interface Cliente { id: string; nombreEmpresa: string }
 
 const emptyForm = {
   tipo: 'banner', titulo: '', descripcion: '', enlaceDestino: 'https://',
-  clienteId: '', paisesTarget: 'MX', presupuesto: 0,
+  clienteId: '', paisesTarget: 'MX', estadosTarget: '', presupuesto: 0,
 }
 
 const inputClass = 'w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:border-transparent'
@@ -60,6 +60,7 @@ export default function AdminAnuncios() {
       enlaceDestino: a.enlaceDestino || 'https://',
       clienteId: a.clienteId || '',
       paisesTarget: a.paisesTarget.join(','),
+      estadosTarget: (a.estadosTarget || []).join(','),
       presupuesto: a.presupuesto || 0,
     })
     setShowModal(true)
@@ -69,7 +70,8 @@ export default function AdminAnuncios() {
     e.preventDefault()
     const payload = {
       ...form,
-      paisesTarget: form.paisesTarget.split(',').map((p: string) => p.trim().toUpperCase()),
+      paisesTarget: form.paisesTarget.split(',').map((p: string) => p.trim().toUpperCase()).filter(Boolean),
+      estadosTarget: form.estadosTarget.split(',').map((s: string) => s.trim().toUpperCase()).filter(Boolean),
       presupuesto: Number(form.presupuesto),
     }
     const method = editId ? 'PUT' : 'POST'
@@ -149,6 +151,9 @@ export default function AdminAnuncios() {
               <div className="flex flex-wrap gap-1 mb-4">
                 {(a.paisesTarget as string[]).map((p: string) => (
                   <span key={p} className="text-xs bg-blue-50 text-blue-700 px-2 py-0.5 rounded-full">{p}</span>
+                ))}
+                {((a.estadosTarget || []) as string[]).map((s: string) => (
+                  <span key={s} className="text-xs bg-amber-50 text-amber-700 px-2 py-0.5 rounded-full">📍 {s}</span>
                 ))}
               </div>
 
@@ -236,6 +241,13 @@ export default function AdminAnuncios() {
                   <label className={labelClass}>Países (ej: MX,CO,VE o GENERAL)</label>
                   <input type="text" value={form.paisesTarget} onChange={set('paisesTarget')} className={inputClass} />
                   <p className="text-xs text-gray-400 mt-1">Separados por coma. Usa GENERAL para todos los países.</p>
+                </div>
+                <div>
+                  <label className={labelClass}>Estados (opcional, ej: TX,CA,FL)</label>
+                  <input type="text" value={form.estadosTarget} onChange={set('estadosTarget')} className={inputClass} />
+                  <p className="text-xs text-gray-400 mt-1">
+                    Déjalo vacío para mostrar en todo el país. Si lo llenas, solo se muestra a visitantes que compartieron su ubicación y están en uno de esos estados.
+                  </p>
                 </div>
                 <div>
                   <label className={labelClass}>Presupuesto $</label>

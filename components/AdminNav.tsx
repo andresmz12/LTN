@@ -10,6 +10,7 @@ const navItems = [
   { href: '/admin/noticias', label: 'Noticias', icon: '📰' },
   { href: '/admin/clientes', label: 'Patrocinadores', icon: '🤝' },
   { href: '/admin/anuncios', label: 'Anuncios', icon: '📢' },
+  { href: '/admin/trabajos', label: 'Trabajos', icon: '💼' },
   { href: '/admin/usuarios', label: 'Usuarios', icon: '👥' },
 ]
 

@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { PAIS_NOMBRES, PAIS_FLAGS, PAISES } from '@/lib/utils'
 import Logo from '@/components/Logo'
-import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper } from '@/components/icons'
+import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper, IconBriefcase } from '@/components/icons'
 
 export default function Navbar({ pais }: { pais?: string }) {
   const { data: session } = useSession()
@@ -29,8 +29,11 @@ export default function Navbar({ pais }: { pais?: string }) {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2 sm:gap-4">
         <Logo />
 
-        {/* Main nav */}
-        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm">
+        {/* Main nav — scrolls horizontally below sm instead of pushing "Entrar" off-screen.
+            Safe to clip overflow here only below sm: the país dropdown uses `fixed` positioning
+            on mobile (escapes ancestor clipping) and switches to `sm:absolute` at sm+, where we
+            restore overflow-visible so the dropdown panel isn't cut off. */}
+        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm overflow-x-auto sm:overflow-visible min-w-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
           <Link
             href="/"
             className={`px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
@@ -76,6 +79,18 @@ export default function Navbar({ pais }: { pais?: string }) {
               </div>
             )}
           </div>
+
+          <Link
+            href="/trabajos"
+            className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+              pathname?.startsWith('/trabajos')
+                ? 'bg-brand-700 text-white'
+                : 'text-gray-600 hover:bg-gray-100'
+            }`}
+          >
+            <IconBriefcase className="w-3.5 h-3.5 sm:hidden" />
+            Trabajos
+          </Link>
 
           <Link
             href="/patrocinadores"

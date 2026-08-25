@@ -3,20 +3,25 @@ import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import AnuncioCard from '@/components/AnuncioCard'
-import { IconBuilding, IconClipboard, IconNewspaper } from '@/components/icons'
-import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
+import LocationBanner from '@/components/LocationBanner'
+import { IconBuilding, IconClipboard, IconNewspaper, IconMapPin } from '@/components/icons'
+import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, ESTADOS_US } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
+import { getEstadoCookie } from '@/lib/location'
 
 export default async function PaisPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
   if (!PAISES.includes(pais as any)) notFound()
 
-  const [consulados, tramites, noticias, anuncios] = await Promise.all([
+  const estado = getEstadoCookie()
+
+  const [consulados, tramites, noticias, anuncios, consuladoCercano] = await Promise.all([
     prisma.consulado.findMany({ where: { pais }, take: 2, orderBy: { ciudad: 'asc' } }),
     prisma.tramite.findMany({ where: { pais }, take: 3, orderBy: { titulo: 'asc' } }),
     prisma.noticia.findMany({ where: { publicado: true, paises: { has: pais } }, take: 3, orderBy: { publishedAt: 'desc' } }),
-    getAnunciosPara(pais),
+    getAnunciosPara(pais, estado),
+    estado ? prisma.consulado.findFirst({ where: { pais, estadoUS: estado } }) : Promise.resolve(null),
   ])
   const anuncio = anuncios[0] ?? null
 
@@ -34,6 +39,23 @@ export default async function PaisPage({ params }: { params: { pais: string } })
       </div>
 
       <main className="max-w-5xl mx-auto px-4 py-10">
+        <div className="mb-8">
+          <LocationBanner />
+        </div>
+
+        {consuladoCercano && (
+          <Link
+            href={`/${pais}/consulados/${consuladoCercano.id}`}
+            className="block mb-8 bg-white rounded-2xl border-2 border-brand-200 p-5 hover:border-brand-400 hover:shadow-md transition"
+          >
+            <div className="flex items-center gap-2 text-xs font-semibold text-brand-600 uppercase tracking-wide mb-2">
+              <IconMapPin className="w-4 h-4" /> Consulado más cercano a ti en {ESTADOS_US[estado!]}
+            </div>
+            <p className="font-bold text-gray-900">{consuladoCercano.nombre}</p>
+            <p className="text-sm text-gray-500">{consuladoCercano.ciudad}, {ESTADOS_US[estado!]}</p>
+          </Link>
+        )}
+
         <div className="grid md:grid-cols-3 gap-8">
           <section>
             <div className="flex justify-between items-center mb-4">

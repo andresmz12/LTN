@@ -60,9 +60,30 @@ export const anuncioSchema = z.object({
   enlaceDestino: z.string().url(),
   clienteId: z.string().min(1),
   paisesTarget: z.array(z.string()),
+  estadosTarget: z.array(z.string()).optional(),
   activo: z.boolean().optional(),
   fechaFin: z.string().optional(),
   presupuesto: z.number().optional(),
+})
+
+export const empleoSchema = z.object({
+  titulo: z.string().min(1),
+  slug: z.string().min(1),
+  empresa: z.string().min(1),
+  descripcion: z.string().min(1),
+  categoria: z.string().min(1),
+  tipoEmpleo: z.string().min(1),
+  estadoUS: z.string().min(2),
+  ciudad: z.string().optional(),
+  salario: z.string().optional(),
+  requisitos: z.array(z.string()).optional(),
+  comoAplicar: z.string().min(1),
+  clienteId: z.string().optional(),
+  destacado: z.boolean().optional(),
+  activo: z.boolean().optional(),
+  presupuesto: z.number().optional(),
+  pagado: z.boolean().optional(),
+  fechaExpiracion: z.string().optional(),
 })
 
 export const clienteSchema = z.object({

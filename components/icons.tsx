@@ -188,6 +188,17 @@ export function IconArrowLeft(props: IconProps) {
   )
 }
 
+export function IconBriefcase(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="7.5" width="18" height="12" rx="2" />
+      <path d="M8 7.5V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v1.5" />
+      <path d="M3 12.5h18" />
+      <path d="M10.5 12.5h3v1.5h-3z" />
+    </svg>
+  )
+}
+
 export function IconSparkles(props: IconProps) {
   return (
     <svg {...base} {...props}>
