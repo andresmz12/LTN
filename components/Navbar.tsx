@@ -29,8 +29,8 @@ export default function Navbar({ pais }: { pais?: string }) {
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2 sm:gap-4">
         <Logo />
 
-        {/* Main nav — scrolls horizontally on very narrow screens rather than pushing auth off-screen */}
-        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm overflow-x-auto min-w-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Main nav */}
+        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm">
           <Link
             href="/"
             className={`px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
@@ -79,14 +79,13 @@ export default function Navbar({ pais }: { pais?: string }) {
 
           <Link
             href="/patrocinadores"
-            className={`px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+            className={`hidden sm:block px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
               pathname === '/patrocinadores'
                 ? 'bg-brand-700 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <span className="hidden sm:inline">Patrocinadores</span>
-            <span className="sm:hidden">Sponsors</span>
+            Patrocinadores
           </Link>
         </div>
 
