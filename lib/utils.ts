@@ -40,6 +40,7 @@ export const ESTADOS_US: Record<string, string> = {
   MO: 'Misuri', MT: 'Montana', NE: 'Nebraska', NV: 'Nevada', NH: 'Nuevo Hampshire',
   NJ: 'Nueva Jersey', NM: 'Nuevo México', NY: 'Nueva York', NC: 'Carolina del Norte',
   ND: 'Dakota del Norte', OH: 'Ohio', OK: 'Oklahoma', OR: 'Oregón', PA: 'Pensilvania',
+  PR: 'Puerto Rico',
   RI: 'Rhode Island', SC: 'Carolina del Sur', SD: 'Dakota del Sur', TN: 'Tennessee',
   TX: 'Texas', UT: 'Utah', VT: 'Vermont', VA: 'Virginia', WA: 'Washington',
   WV: 'Virginia Occidental', WI: 'Wisconsin', WY: 'Wyoming',

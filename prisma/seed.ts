@@ -1,7 +1,26 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { splitCiudadEstado } from './data/helpers'
+import { consuladosCO, tramitesCO, noticiasCO } from './data/co'
+import { consuladosVE, tramitesVE, noticiasVE } from './data/ve'
+import { consuladosSV, tramitesSV, noticiasSV } from './data/sv'
+import { consuladosGT, tramitesGT, noticiasGT } from './data/gt'
+import { consuladosHN, tramitesHN, noticiasHN } from './data/hn'
 
 const prisma = new PrismaClient()
+
+// Datos verificados con fuentes oficiales (cancillerías / consulados). Reemplazan
+// por completo lo que había para estos 5 países en consulados y trámites.
+const CONSULADOS_VERIFICADOS = [consuladosCO, consuladosVE, consuladosSV, consuladosGT, consuladosHN]
+  .flat()
+  .map((c: any) => {
+    const { ciudad, estadoUS } = splitCiudadEstado(c.ciudad)
+    return { ...c, ciudad, estadoUS }
+  })
+const TRAMITES_VERIFICADOS = [tramitesCO, tramitesVE, tramitesSV, tramitesGT, tramitesHN].flat()
+const NOTICIAS_VERIFICADAS = [noticiasCO, noticiasVE, noticiasSV, noticiasGT, noticiasHN]
+  .flat()
+  .map((n: any) => ({ ...n, publicado: true }))
 
 async function main() {
   console.log('🌱 Seeding database...')
@@ -21,28 +40,7 @@ async function main() {
     { pais: 'MX', ciudad: 'Chicago', estadoUS: 'IL', nombre: 'Consulado General de México en Chicago', direccion: '204 S Ashland Ave, Chicago, IL 60607', telefono: '(312) 738-2383', email: 'cgchicago@sre.gob.mx', horarioLunes: '8:00am – 3:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Matrícula Consular'] },
     { pais: 'MX', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado General de México en Nueva York', direccion: '27 E 39th St, New York, NY 10016', telefono: '(212) 217-6400', email: 'cgnuevayork@sre.gob.mx', horarioLunes: '9:00am – 2:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Matrícula Consular', 'Notarial'] },
 
-    { pais: 'CO', ciudad: 'Miami', estadoUS: 'FL', nombre: 'Consulado de Colombia en Miami', direccion: '280 Aragon Ave, Coral Gables, FL 33134', telefono: '(305) 441-1369', email: 'cmiami@cancilleria.gov.co', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cédula', 'Registro civil'] },
-    { pais: 'CO', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado de Colombia en Nueva York', direccion: '10 E 46th St, New York, NY 10017', telefono: '(212) 949-9898', email: 'cnewyork@cancilleria.gov.co', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Poderes notariales'] },
-    { pais: 'CO', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de Colombia en Los Ángeles', direccion: '8383 Wilshire Blvd #420, Beverly Hills, CA 90211', telefono: '(323) 653-4299', email: 'closangeles@cancilleria.gov.co', horarioLunes: '9:00am – 3:30pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cédula'] },
-    { pais: 'CO', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado de Colombia en Houston', direccion: '5851 San Felipe St #300, Houston, TX 77057', telefono: '(713) 527-8919', email: 'chouston@cancilleria.gov.co', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos'] },
-
-    { pais: 'VE', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado de Venezuela en Houston', direccion: '2925 Briarpark Dr #900, Houston, TX 77042', telefono: '(713) 974-0028', email: 'chouston@mppre.gob.ve', horarioLunes: '8:00am – 12:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos consulares'] },
-    { pais: 'VE', ciudad: 'Miami', estadoUS: 'FL', nombre: 'Consulado de Venezuela en Miami', direccion: '7373 N Kendall Dr, Miami, FL 33156', telefono: '(305) 271-1212', email: 'cmiami@mppre.gob.ve', horarioLunes: '8:00am – 12:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Apostilla'] },
-    { pais: 'VE', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado de Venezuela en Nueva York', direccion: '7 E 51st St, New York, NY 10022', telefono: '(212) 826-1660', email: 'cnewyork@mppre.gob.ve', horarioLunes: '9:00am – 12:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte'] },
-    { pais: 'VE', ciudad: 'Chicago', estadoUS: 'IL', nombre: 'Consulado de Venezuela en Chicago', direccion: '20 N Michigan Ave, Chicago, IL 60602', telefono: '(312) 236-9655', email: 'cchicago@mppre.gob.ve', horarioLunes: '9:00am – 12:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos'] },
-
-    { pais: 'SV', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de El Salvador en Los Ángeles', direccion: '3550 Wilshire Blvd #1030, Los Angeles, CA 90010', telefono: '(213) 383-5776', email: 'cgelosangeles@rree.gob.sv', horarioLunes: '8:00am – 4:00pm', horarioSabado: '8:00am – 12:00pm', servicios: ['Pasaporte', 'Carnet de residente', 'Actas', 'DUI'] },
-    { pais: 'SV', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado de El Salvador en Houston', direccion: '6420 Hillcroft St #100, Houston, TX 77081', telefono: '(713) 270-6239', email: 'cghouston@rree.gob.sv', horarioLunes: '8:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DUI'] },
-    { pais: 'SV', ciudad: 'Washington DC', estadoUS: 'DC', nombre: 'Embajada de El Salvador en Washington DC', direccion: '1400 16th St NW #100, Washington, DC 20036', telefono: '(202) 265-9671', email: 'embajada@rree.gob.sv', horarioLunes: '9:00am – 5:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Visa', 'Documentos'] },
-    { pais: 'SV', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado de El Salvador en Nueva York', direccion: '46 Park Ave, New York, NY 10016', telefono: '(212) 889-3608', email: 'cgnewyork@rree.gob.sv', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DUI', 'Actas'] },
-
-    { pais: 'GT', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de Guatemala en Los Ángeles', direccion: '1605 W Olympic Blvd #400, Los Angeles, CA 90015', telefono: '(213) 365-9251', email: 'cglosangeles@minex.gob.gt', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DPI', 'Actas', 'Poderes notariales'] },
-    { pais: 'GT', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado de Guatemala en Houston', direccion: '3013 W 36th St, Houston, TX 77018', telefono: '(713) 953-9531', email: 'cghouston@minex.gob.gt', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DPI', 'Documentos'] },
-    { pais: 'GT', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado de Guatemala en Nueva York', direccion: '57 Park Ave, New York, NY 10016', telefono: '(212) 686-3837', email: 'cgnewyork@minex.gob.gt', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DPI', 'Actas'] },
-
-    { pais: 'HN', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de Honduras en Los Ángeles', direccion: '3450 Wilshire Blvd #980, Los Angeles, CA 90010', telefono: '(213) 383-9244', email: 'cglosangeles@sre.gob.hn', horarioLunes: '8:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Tarjeta de identidad', 'Actas'] },
-    { pais: 'HN', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado de Honduras en Houston', direccion: '4151 Southwest Fwy #490, Houston, TX 77027', telefono: '(713) 622-4572', email: 'cghouston@sre.gob.hn', horarioLunes: '8:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos'] },
-    { pais: 'HN', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado de Honduras en Nueva York', direccion: '255 W 36th St, New York, NY 10018', telefono: '(212) 269-3611', email: 'cgnewyork@sre.gob.hn', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Tarjeta de identidad'] },
+    // CO, VE, SV, GT, HN: ver CONSULADOS_VERIFICADOS más abajo (datos oficiales verificados).
 
     { pais: 'NI', ciudad: 'Miami', estadoUS: 'FL', nombre: 'Consulado de Nicaragua en Miami', direccion: '8532 SW 8th St, Miami, FL 33144', telefono: '(305) 265-1415', email: 'cgmiami@cancilleria.gob.ni', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Actas'] },
     { pais: 'NI', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de Nicaragua en Los Ángeles', direccion: '3550 Wilshire Blvd #1430, Los Angeles, CA 90010', telefono: '(213) 252-1170', email: 'cglosangeles@cancilleria.gob.ni', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos'] },
@@ -57,6 +55,7 @@ async function main() {
 
     { pais: 'PE', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado del Peru en Nueva York', direccion: '241 E 49th St, New York, NY 10017', telefono: '(212) 481-7410', email: 'cgnewyork@consulado.pe', horarioLunes: '9:00am – 1:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DNI', 'Actas', 'Apostillas'] },
     { pais: 'PE', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado del Peru en Los Ángeles', direccion: '3450 Wilshire Blvd #1010, Los Angeles, CA 90010', telefono: '(213) 252-5765', email: 'cglosangeles@consulado.pe', horarioLunes: '8:30am – 4:30pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DNI', 'Documentos'] },
+    ...CONSULADOS_VERIFICADOS,
   ]
 
   for (const c of consulados) {
@@ -91,90 +90,6 @@ async function main() {
       pasos: ['Agenda cita consular', 'Presenta identificación oficial', 'Llena el formulario de solicitud', 'Paga derechos correspondientes', 'Recibe el documento en 15 días hábiles'],
       documentosNecesarios: ['Pasaporte o INE vigente', 'Huellas dactilares', 'Pago de derechos'],
       tiempoPromedio: '15 días hábiles', costo: '$45 USD',
-      linksExternos: [],
-    },
-
-    {
-      pais: 'CO', titulo: 'Renovación de Pasaporte Colombiano', slug: 'pasaporte-co',
-      descripcion: 'Cómo renovar tu pasaporte colombiano desde EE.UU.',
-      contenidoHtml: '<p>Los colombianos en EE.UU. pueden renovar su pasaporte en los consulados de Colombia.</p>',
-      pasos: ['Agenda cita online', 'Descarga y completa el formulario', 'Paga las tarifas online', 'Asiste a la cita con documentos', 'Recibe el pasaporte por correo o en consulado'],
-      documentosNecesarios: ['Pasaporte anterior', 'Cédula de ciudadanía', 'Foto fondo blanco', 'Comprobante de pago'],
-      tiempoPromedio: '2-3 semanas', costo: '$153 USD',
-      linksExternos: [{ texto: 'Cancillería Colombia', url: 'https://www.cancilleria.gov.co' }],
-    },
-    {
-      pais: 'CO', titulo: 'Registro Civil de Matrimonio', slug: 'registro-matrimonio-co',
-      descripcion: 'Registra tu matrimonio celebrado en EE.UU. ante el Consulado de Colombia.',
-      contenidoHtml: '<p>Si te casaste en EE.UU. y eres colombiano, debes registrar tu matrimonio en el consulado.</p>',
-      pasos: ['Apostillar el certificado de matrimonio', 'Obtener traducción oficial al español', 'Agendar cita consular', 'Presentar documentos', 'Esperar registro en Colombia'],
-      documentosNecesarios: ['Certificado de matrimonio apostillado', 'Traducción oficial', 'Cédulas de ambos cónyuges', 'Registro civil de nacimiento'],
-      tiempoPromedio: '30 días', costo: '$35 USD',
-      linksExternos: [],
-    },
-    {
-      pais: 'CO', titulo: 'Cédula de Ciudadanía', slug: 'cedula-co',
-      descripcion: 'Tramita o renueva tu cédula de ciudadanía colombiana en EE.UU.',
-      contenidoHtml: '<p>La cédula de ciudadanía puede tramitarse en los consulados de Colombia en EE.UU.</p>',
-      pasos: ['Agenda cita online', 'Reúne documentos', 'Asiste a la cita', 'Toma de huellas y foto', 'Recibe la cédula en 4-6 semanas'],
-      documentosNecesarios: ['Registro civil de nacimiento', 'Foto reciente', 'Comprobante de pago'],
-      tiempoPromedio: '4-6 semanas', costo: '$20 USD',
-      linksExternos: [],
-    },
-
-    {
-      pais: 'VE', titulo: 'Pasaporte Venezolano', slug: 'pasaporte-ve',
-      descripcion: 'Información para solicitar o renovar el pasaporte venezolano en EE.UU.',
-      contenidoHtml: '<p>Los trámites de pasaporte venezolano son limitados en EE.UU. Verifica disponibilidad en tu consulado.</p>',
-      pasos: ['Consulta disponibilidad en el consulado', 'Agenda cita si está disponible', 'Presenta documentos de identidad', 'Paga los aranceles', 'Espera notificación'],
-      documentosNecesarios: ['Cédula de identidad venezolana', 'Partida de nacimiento', 'Pasaporte anterior (si aplica)', 'Pago de aranceles'],
-      tiempoPromedio: 'Variable (3-6 meses)', costo: 'Variable',
-      linksExternos: [],
-    },
-    {
-      pais: 'VE', titulo: 'Apostilla de Documentos', slug: 'apostilla-ve',
-      descripcion: 'Cómo apostillar documentos venezolanos para su uso en EE.UU.',
-      contenidoHtml: '<p>La apostilla certifica la autenticidad de documentos para su uso internacional.</p>',
-      pasos: ['Contacta el consulado venezolano', 'Presenta el documento original', 'Completa el formulario de solicitud', 'Paga los aranceles', 'Recoge el documento apostillado'],
-      documentosNecesarios: ['Documento original a apostillar', 'Copia del documento', 'Identificación personal', 'Pago correspondiente'],
-      tiempoPromedio: '15-30 días', costo: 'Variable',
-      linksExternos: [],
-    },
-    {
-      pais: 'VE', titulo: 'Registro de Nacimiento en el Exterior', slug: 'nacimiento-ve',
-      descripcion: 'Registra a tu hijo nacido en EE.UU. ante el Consulado de Venezuela.',
-      contenidoHtml: '<p>Los hijos de venezolanos nacidos en EE.UU. tienen derecho a la ciudadanía venezolana y deben registrarse consulalmente.</p>',
-      pasos: ['Obtener certificado de nacimiento americano', 'Apostillar el documento', 'Traducirlo al español', 'Agendar cita consular', 'Presentar documentos de los padres'],
-      documentosNecesarios: ['Certificado de nacimiento apostillado y traducido', 'Cédulas de los padres', 'Pasaportes de los padres', 'Partidas de nacimiento de los padres'],
-      tiempoPromedio: '30-45 días', costo: 'Gratuito',
-      linksExternos: [],
-    },
-
-    {
-      pais: 'SV', titulo: 'Pasaporte Salvadoreño', slug: 'pasaporte-sv',
-      descripcion: 'Tramita o renueva tu pasaporte salvadoreño desde EE.UU.',
-      contenidoHtml: '<p>El pasaporte salvadoreño puede tramitarse en los consulados de El Salvador en EE.UU.</p>',
-      pasos: ['Agenda cita en consularnet.rree.gob.sv', 'Reúne documentos necesarios', 'Asiste a la cita puntualmente', 'Realiza el pago correspondiente', 'Recibe tu pasaporte en 4-6 semanas'],
-      documentosNecesarios: ['DUI vigente o vencido', 'Partida de nacimiento', 'Pasaporte anterior (si aplica)', 'Comprobante de pago ($30)'],
-      tiempoPromedio: '4-6 semanas', costo: '$30 USD',
-      linksExternos: [{ texto: 'Agenda tu cita', url: 'https://consularnet.rree.gob.sv' }],
-    },
-    {
-      pais: 'SV', titulo: 'Carnet de Residente en el Exterior (DUI)', slug: 'dui-sv',
-      descripcion: 'Obtén o renueva tu DUI (Documento Único de Identidad) desde EE.UU.',
-      contenidoHtml: '<p>El DUI es el documento oficial de identidad de El Salvador. Los salvadoreños en EE.UU. pueden tramitarlo consulalmente.</p>',
-      pasos: ['Agenda cita en el consulado', 'Lleva tu partida de nacimiento', 'Presenta huellas dactilares', 'Paga los $7 USD', 'Recibe el DUI en 3-4 semanas'],
-      documentosNecesarios: ['Partida de nacimiento original', 'DUI anterior (si aplica)', 'Comprobante de pago $7'],
-      tiempoPromedio: '3-4 semanas', costo: '$7 USD',
-      linksExternos: [],
-    },
-    {
-      pais: 'SV', titulo: 'Acta de Nacimiento Salvadoreña', slug: 'acta-nacimiento-sv',
-      descripcion: 'Solicita tu acta de nacimiento salvadoreña desde EE.UU.',
-      contenidoHtml: '<p>Puedes solicitar tu acta de nacimiento en el consulado, quienes la tramitarán ante el RNPN en El Salvador.</p>',
-      pasos: ['Agenda cita consular', 'Presenta identificación', 'Llena el formulario de solicitud', 'Paga el costo', 'Espera envío por correo'],
-      documentosNecesarios: ['DUI o pasaporte salvadoreño', 'Formulario de solicitud', 'Datos del acta (nombre completo, fecha y lugar de nacimiento)', 'Pago de derechos'],
-      tiempoPromedio: '30-60 días', costo: '$15 USD',
       linksExternos: [],
     },
 
@@ -224,6 +139,7 @@ async function main() {
       tiempoPromedio: 'Mismo dia', costo: 'Gratis (muchas cuentas no tienen cuota minima)',
       linksExternos: [{ texto: 'FDIC - Como escoger un banco', url: 'https://www.fdic.gov/resources/resolutions/bank-failures/failed-bank-list/' }],
     },
+    ...TRAMITES_VERIFICADOS,
   ]
 
   for (const t of tramites) {
@@ -250,6 +166,7 @@ async function main() {
     { titulo: 'Guatemaltecos en EE.UU.: Guía de recursos consulares', slug: 'gt-recursos-consulares-2024', resumen: 'El Consulado de Guatemala publica nueva guía de servicios para la comunidad guatemalteca en EE.UU.', contenidoHtml: '<p>El Ministerio de Relaciones Exteriores de Guatemala ha publicado una guía actualizada con todos los servicios disponibles para los guatemaltecos residentes en Estados Unidos.</p>', categoria: 'Comunidad', paises: ['GT'], publicado: true, fuente: 'MINEX Guatemala' },
     { titulo: 'Honduras amplía programa de asistencia consular', slug: 'hn-asistencia-consular-2024', resumen: 'La Secretaría de Relaciones Exteriores de Honduras amplia los servicios consulares para hondureños en EE.UU.', contenidoHtml: '<p>Miles de hondureños en Estados Unidos podrán acceder a más servicios consulares gracias a la expansión del programa de asistencia anunciado por la Cancillería.</p>', categoria: 'Comunidad', paises: ['HN'], publicado: true, fuente: 'SRE Honduras' },
     { titulo: 'Comunidad dominicana celebra en Nueva York', slug: 'do-comunidad-ny-2024', resumen: 'La comunidad dominicana en Nueva York celebra su desfile anual con record de asistencia.', contenidoHtml: '<p>El Desfile Dominicano en Nueva York reunió a miles de personas en una celebración de la cultura e identidad dominicana en EE.UU.</p>', categoria: 'Comunidad', paises: ['DO'], publicado: true, fuente: 'NY1' },
+    ...NOTICIAS_VERIFICADAS,
   ]
 
   for (const n of noticias) {
