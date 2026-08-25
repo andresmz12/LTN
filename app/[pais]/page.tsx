@@ -2,19 +2,23 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import AnuncioCard from '@/components/AnuncioCard'
 import { IconBuilding, IconClipboard, IconNewspaper } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import { getAnunciosPara } from '@/lib/ads'
 
 export default async function PaisPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
   if (!PAISES.includes(pais as any)) notFound()
 
-  const [consulados, tramites, noticias] = await Promise.all([
+  const [consulados, tramites, noticias, anuncios] = await Promise.all([
     prisma.consulado.findMany({ where: { pais }, take: 2, orderBy: { ciudad: 'asc' } }),
     prisma.tramite.findMany({ where: { pais }, take: 3, orderBy: { titulo: 'asc' } }),
     prisma.noticia.findMany({ where: { publicado: true, paises: { has: pais } }, take: 3, orderBy: { publishedAt: 'desc' } }),
+    getAnunciosPara(pais),
   ])
+  const anuncio = anuncios[0] ?? null
 
   return (
     <>
@@ -85,6 +89,19 @@ export default async function PaisPage({ params }: { params: { pais: string } })
             </div>
           </section>
         </div>
+
+        {anuncio && (
+          <div className="mt-8 max-w-md">
+            <AnuncioCard
+              id={anuncio.id}
+              titulo={anuncio.titulo}
+              descripcion={anuncio.descripcion}
+              imagenUrl={anuncio.imagenUrl}
+              enlaceDestino={anuncio.enlaceDestino}
+              tipo={anuncio.tipo}
+            />
+          </div>
+        )}
       </main>
       <Footer />
     </>

@@ -2,17 +2,22 @@ import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ConsultadoCard from '@/components/ConsultadoCard'
+import AnuncioCard from '@/components/AnuncioCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import { getAnunciosPara } from '@/lib/ads'
 
 export default async function ConsultadosPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
   if (!PAISES.includes(pais as any)) notFound()
 
-  const consulados = await prisma.consulado.findMany({
-    where: { pais },
-    orderBy: { ciudad: 'asc' },
-  })
+  const [consulados, anuncios] = await Promise.all([
+    prisma.consulado.findMany({
+      where: { pais },
+      orderBy: { ciudad: 'asc' },
+    }),
+    getAnunciosPara(pais),
+  ])
 
   return (
     <>
@@ -24,9 +29,25 @@ export default async function ConsultadosPage({ params }: { params: { pais: stri
         <p className="text-gray-500 mb-8">{consulados.length} consulado(s) disponibles</p>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {consulados.map((c: any) => (
-            <ConsultadoCard key={c.id} {...c} pais={pais} />
-          ))}
+          {consulados.map((c: any, idx: number) => {
+            const showAdAfter = anuncios.length > 0 && idx > 0 && (idx + 1) % 3 === 0
+            const anuncio = showAdAfter ? anuncios[Math.floor(idx / 3) % anuncios.length] : null
+            return (
+              <div key={c.id} className="contents">
+                <ConsultadoCard {...c} pais={pais} />
+                {showAdAfter && anuncio && (
+                  <AnuncioCard
+                    id={anuncio.id}
+                    titulo={anuncio.titulo}
+                    descripcion={anuncio.descripcion}
+                    imagenUrl={anuncio.imagenUrl}
+                    enlaceDestino={anuncio.enlaceDestino}
+                    tipo={anuncio.tipo}
+                  />
+                )}
+              </div>
+            )
+          })}
         </div>
 
         {consulados.length === 0 && (

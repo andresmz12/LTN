@@ -2,17 +2,22 @@ import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import NoticiaCard from '@/components/NoticiaCard'
+import AnuncioCard from '@/components/AnuncioCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import { getAnunciosPara } from '@/lib/ads'
 
 export default async function NoticiasPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()
   if (!PAISES.includes(pais as any)) notFound()
 
-  const noticias = await prisma.noticia.findMany({
-    where: { publicado: true, paises: { has: pais } },
-    orderBy: { publishedAt: 'desc' },
-  })
+  const [noticias, anuncios] = await Promise.all([
+    prisma.noticia.findMany({
+      where: { publicado: true, paises: { has: pais } },
+      orderBy: { publishedAt: 'desc' },
+    }),
+    getAnunciosPara(pais),
+  ])
 
   return (
     <>
@@ -24,9 +29,25 @@ export default async function NoticiasPage({ params }: { params: { pais: string 
         <p className="text-gray-500 mb-8">Las últimas noticias relevantes para tu comunidad.</p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {noticias.map((n: any) => (
-            <NoticiaCard key={n.id} {...n} pais={pais} />
-          ))}
+          {noticias.map((n: any, idx: number) => {
+            const showAdAfter = anuncios.length > 0 && idx > 0 && (idx + 1) % 3 === 0
+            const anuncio = showAdAfter ? anuncios[Math.floor(idx / 3) % anuncios.length] : null
+            return (
+              <div key={n.id} className="contents">
+                <NoticiaCard {...n} pais={pais} />
+                {showAdAfter && anuncio && (
+                  <AnuncioCard
+                    id={anuncio.id}
+                    titulo={anuncio.titulo}
+                    descripcion={anuncio.descripcion}
+                    imagenUrl={anuncio.imagenUrl}
+                    enlaceDestino={anuncio.enlaceDestino}
+                    tipo={anuncio.tipo}
+                  />
+                )}
+              </div>
+            )
+          })}
         </div>
 
         {noticias.length === 0 && (

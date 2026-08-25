@@ -4,6 +4,7 @@ import AnuncioCard from '@/components/AnuncioCard'
 import Footer from '@/components/Footer'
 import { IconLink, IconArrowRight } from '@/components/icons'
 import { prisma } from '@/lib/db'
+import { getAnunciosPara } from '@/lib/ads'
 
 const PRIORIDAD_ORDER: Record<string, number> = { critico: 0, alto: 1, importante: 2, relevante: 3 }
 
@@ -37,34 +38,13 @@ const RECURSOS_OFICIALES = [
   { nombre: 'DOL — Derechos laborales', url: 'https://www.dol.gov/agencies/whd', desc: 'Salario mínimo y derechos' },
 ]
 
-async function getAnuncios() {
-  const now = new Date()
-  const anuncios = await prisma.anuncio.findMany({
-    where: {
-      activo: true,
-      fechaInicio: { lte: now },
-      OR: [{ fechaFin: null }, { fechaFin: { gte: now } }],
-      paisesTarget: { has: 'GENERAL' },
-    },
-  }).catch(() => [])
-
-  if (anuncios.length > 0) {
-    await prisma.anuncio.updateMany({
-      where: { id: { in: anuncios.map((a: any) => a.id) } },
-      data: { impresiones: { increment: 1 } },
-    }).catch(() => {})
-  }
-
-  return anuncios
-}
-
 export default async function Home() {
   const [tramites, anuncios] = await Promise.all([
     prisma.tramite.findMany({
       where: { pais: 'GENERAL' },
       orderBy: { titulo: 'asc' },
     }).catch(() => []),
-    getAnuncios(),
+    getAnunciosPara('GENERAL'),
   ])
 
   type TramiteRow = (typeof tramites)[number]
