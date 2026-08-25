@@ -3,7 +3,7 @@ import Navbar from '@/components/Navbar'
 import AnuncioCard from '@/components/AnuncioCard'
 import Footer from '@/components/Footer'
 import LocationBanner from '@/components/LocationBanner'
-import { IconLink, IconArrowRight } from '@/components/icons'
+import { IconLink, IconArrowRight, IconShield } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
 import { getEstadoCookie } from '@/lib/location'
@@ -107,6 +107,20 @@ export default async function Home() {
       </div>
 
       <main className="max-w-5xl mx-auto px-4 py-10">
+
+        <Link
+          href="/derechos"
+          className="mb-6 flex items-center justify-between gap-4 bg-accent-500 hover:bg-accent-600 transition text-white rounded-2xl p-5"
+        >
+          <div className="flex items-center gap-3">
+            <IconShield className="w-8 h-8 shrink-0" />
+            <div>
+              <p className="font-bold">Conoce tus Derechos</p>
+              <p className="text-accent-50 text-sm">Qué hacer si la policía o ICE te paran — sin importar tu estatus migratorio.</p>
+            </div>
+          </div>
+          <IconArrowRight className="w-5 h-5 shrink-0" />
+        </Link>
 
         <div className="mb-8">
           <LocationBanner />

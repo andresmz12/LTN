@@ -6,7 +6,7 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { PAIS_NOMBRES, PAIS_FLAGS, PAISES } from '@/lib/utils'
 import Logo from '@/components/Logo'
-import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper, IconBriefcase } from '@/components/icons'
+import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper, IconBriefcase, IconShield } from '@/components/icons'
 
 export default function Navbar({ pais }: { pais?: string }) {
   const { data: session } = useSession()
@@ -44,6 +44,18 @@ export default function Navbar({ pais }: { pais?: string }) {
           >
             <span className="hidden sm:inline">Recursos Generales</span>
             <span className="sm:hidden">Recursos</span>
+          </Link>
+
+          <Link
+            href="/derechos"
+            className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+              pathname === '/derechos'
+                ? 'bg-accent-500 text-white'
+                : 'text-accent-700 hover:bg-accent-50'
+            }`}
+          >
+            <IconShield className="w-3.5 h-3.5" />
+            Derechos
           </Link>
 
           <div ref={paisMenuRef} className="relative shrink-0">

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, formatDate } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -65,9 +66,13 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
           </div>
 
           {/* Lead / Summary */}
-          <p className="text-base text-gray-600 leading-relaxed mb-6 font-medium">
+          <p className="text-base text-gray-600 leading-relaxed mb-4 font-medium">
             {noticia.resumen}
           </p>
+
+          <div className="mb-6">
+            <ShareButton text={`${noticia.titulo} — vía Compa:`} path={`/${pais}/noticias/${noticia.slug}`} />
+          </div>
 
           {/* Body */}
           <div

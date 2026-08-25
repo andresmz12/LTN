@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ShareButton from '@/components/ShareButton'
 import { IconGlobe, IconLink, IconArrowLeft } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { formatDate } from '@/lib/utils'
@@ -34,7 +35,11 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
           </div>
 
           <h1 className="text-2xl font-bold text-gray-900 mb-3">{tramite.titulo}</h1>
-          <p className="text-gray-500 mb-6">{tramite.descripcion}</p>
+          <p className="text-gray-500 mb-4">{tramite.descripcion}</p>
+
+          <div className="mb-6">
+            <ShareButton text={`${tramite.titulo} — guía en Compa:`} path={`/general/tramites/${tramite.slug}`} />
+          </div>
 
           <div className="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-xl text-sm">
             {tramite.tiempoPromedio && (

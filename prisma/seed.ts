@@ -1,5 +1,7 @@
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import fs from 'fs'
+import path from 'path'
 import { splitCiudadEstado } from './data/helpers'
 import { consuladosCO, tramitesCO, noticiasCO } from './data/co'
 import { consuladosVE, tramitesVE, noticiasVE } from './data/ve'
@@ -114,6 +116,32 @@ async function main() {
     await prisma.tramite.create({ data: t as any })
   }
   console.log(`✅ ${tramites.length} trámites creados`)
+
+  // Recursos generales adicionales (derechos, plan de emergencia, directorio de ayuda, etc.)
+  const recursosGenerales: any[] = JSON.parse(
+    fs.readFileSync(path.join(__dirname, 'data', 'compa_recursos.json'), 'utf-8')
+  )
+  for (const t of recursosGenerales) {
+    await prisma.tramite.upsert({
+      where: { slug: t.slug },
+      create: {
+        pais: t.pais,
+        titulo: t.titulo,
+        slug: t.slug,
+        descripcion: t.resumen,
+        contenidoHtml: `<p>${t.resumen}</p>`,
+        pasos: t.pasos ?? [],
+        documentosNecesarios: t.requisitos ?? [],
+        tiempoPromedio: t.tiempoEstimado ?? null,
+        costo: t.costo ?? null,
+        linksExternos: (t.fuentes ?? []).map((f: any) => ({ texto: f.nombre, url: f.url })),
+        categoria: t.categoria ?? null,
+        prioridad: t.prioridad ?? null,
+      },
+      update: {},
+    })
+  }
+  console.log(`✅ ${recursosGenerales.length} recursos generales adicionales creados`)
 
   // Noticias
   const noticias = [

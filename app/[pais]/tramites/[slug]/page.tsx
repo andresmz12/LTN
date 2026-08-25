@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -50,9 +51,13 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
         </div>
 
         {/* Description */}
-        <p className="text-gray-600 leading-relaxed mb-8 text-base">
+        <p className="text-gray-600 leading-relaxed mb-4 text-base">
           {tramite.descripcion}
         </p>
+
+        <div className="mb-8">
+          <ShareButton text={`${tramite.titulo} — guía en Compa:`} path={`/${pais}/tramites/${tramite.slug}`} />
+        </div>
 
         {/* Documents */}
         {tramite.documentosNecesarios.length > 0 && (

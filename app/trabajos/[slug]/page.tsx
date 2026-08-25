@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft, IconMapPin, IconBriefcase, IconBanknote, IconMail, IconPhone, IconLink } from '@/components/icons'
 import { ESTADOS_US } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -70,8 +71,9 @@ export default async function TrabajoDetailPage({ params }: { params: { slug: st
             )}
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 flex flex-wrap items-center gap-3">
             <span className="text-xs bg-brand-50 text-brand-700 px-2.5 py-1 rounded-full">{trabajo.categoria}</span>
+            <ShareButton text={`Vacante: ${trabajo.titulo} en ${trabajo.empresa} —`} path={`/trabajos/${trabajo.slug}`} />
           </div>
 
           <div className="mb-8">
