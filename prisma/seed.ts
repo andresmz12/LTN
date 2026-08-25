@@ -6,19 +6,34 @@ import { consuladosVE, tramitesVE, noticiasVE } from './data/ve'
 import { consuladosSV, tramitesSV, noticiasSV } from './data/sv'
 import { consuladosGT, tramitesGT, noticiasGT } from './data/gt'
 import { consuladosHN, tramitesHN, noticiasHN } from './data/hn'
+import { consuladosNI, tramitesNI, noticiasNI } from './data/ni'
+import { consuladosCU, tramitesCU, noticiasCU } from './data/cu'
+import { consuladosDO, tramitesDO, noticiasDO } from './data/do'
+import { consuladosEC, tramitesEC, noticiasEC } from './data/ec'
+import { consuladosPE, tramitesPE, noticiasPE } from './data/pe'
+import { consuladosMX, tramitesMX, noticiasMX } from './data/mx'
 
 const prisma = new PrismaClient()
 
 // Datos verificados con fuentes oficiales (cancillerías / consulados). Reemplazan
-// por completo lo que había para estos 5 países en consulados y trámites.
-const CONSULADOS_VERIFICADOS = [consuladosCO, consuladosVE, consuladosSV, consuladosGT, consuladosHN]
+// por completo lo que había para estos 11 países en consulados y trámites.
+const CONSULADOS_VERIFICADOS = [
+  consuladosMX, consuladosCO, consuladosVE, consuladosSV, consuladosGT, consuladosHN,
+  consuladosNI, consuladosCU, consuladosDO, consuladosEC, consuladosPE,
+]
   .flat()
   .map((c: any) => {
     const { ciudad, estadoUS } = splitCiudadEstado(c.ciudad)
     return { ...c, ciudad, estadoUS }
   })
-const TRAMITES_VERIFICADOS = [tramitesCO, tramitesVE, tramitesSV, tramitesGT, tramitesHN].flat()
-const NOTICIAS_VERIFICADAS = [noticiasCO, noticiasVE, noticiasSV, noticiasGT, noticiasHN]
+const TRAMITES_VERIFICADOS = [
+  tramitesMX, tramitesCO, tramitesVE, tramitesSV, tramitesGT, tramitesHN,
+  tramitesNI, tramitesCU, tramitesDO, tramitesEC, tramitesPE,
+].flat()
+const NOTICIAS_VERIFICADAS = [
+  noticiasMX, noticiasCO, noticiasVE, noticiasSV, noticiasGT, noticiasHN,
+  noticiasNI, noticiasCU, noticiasDO, noticiasEC, noticiasPE,
+]
   .flat()
   .map((n: any) => ({ ...n, publicado: true }))
 
@@ -34,29 +49,9 @@ async function main() {
   })
 
   // Consulados
-  const consulados = [
-    { pais: 'MX', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado General de México en Los Ángeles', direccion: '2401 W 6th St, Los Angeles, CA 90057', telefono: '(213) 351-6800', email: 'cglosangeles@sre.gob.mx', horarioLunes: '8:00am – 3:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Matrícula Consular', 'Actas de nacimiento', 'Poderes notariales'] },
-    { pais: 'MX', ciudad: 'Houston', estadoUS: 'TX', nombre: 'Consulado General de México en Houston', direccion: '4506 Caroline St, Houston, TX 77004', telefono: '(713) 271-6800', email: 'cghouston@sre.gob.mx', horarioLunes: '8:00am – 2:30pm', horarioSabado: 'Cita especial', servicios: ['Pasaporte', 'Visa', 'Actas'] },
-    { pais: 'MX', ciudad: 'Chicago', estadoUS: 'IL', nombre: 'Consulado General de México en Chicago', direccion: '204 S Ashland Ave, Chicago, IL 60607', telefono: '(312) 738-2383', email: 'cgchicago@sre.gob.mx', horarioLunes: '8:00am – 3:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Matrícula Consular'] },
-    { pais: 'MX', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado General de México en Nueva York', direccion: '27 E 39th St, New York, NY 10016', telefono: '(212) 217-6400', email: 'cgnuevayork@sre.gob.mx', horarioLunes: '9:00am – 2:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Matrícula Consular', 'Notarial'] },
-
-    // CO, VE, SV, GT, HN: ver CONSULADOS_VERIFICADOS más abajo (datos oficiales verificados).
-
-    { pais: 'NI', ciudad: 'Miami', estadoUS: 'FL', nombre: 'Consulado de Nicaragua en Miami', direccion: '8532 SW 8th St, Miami, FL 33144', telefono: '(305) 265-1415', email: 'cgmiami@cancilleria.gob.ni', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Actas'] },
-    { pais: 'NI', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado de Nicaragua en Los Ángeles', direccion: '3550 Wilshire Blvd #1430, Los Angeles, CA 90010', telefono: '(213) 252-1170', email: 'cglosangeles@cancilleria.gob.ni', horarioLunes: '8:30am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos'] },
-
-    { pais: 'CU', ciudad: 'Washington DC', estadoUS: 'DC', nombre: 'Seccion de Intereses de Cuba en Washington', direccion: '2630 16th St NW, Washington, DC 20009', telefono: '(202) 797-8518', email: 'recepcion@cubadiplomatica.cu', horarioLunes: '9:00am – 1:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Documentos consulares', 'Poderes notariales'] },
-
-    { pais: 'DO', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado General de Rep. Dominicana en Nueva York', direccion: '1501 Broadway #410, New York, NY 10036', telefono: '(212) 768-2480', email: 'cgnewyork@mirex.gob.do', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Actas', 'Apostillas'] },
-    { pais: 'DO', ciudad: 'Miami', estadoUS: 'FL', nombre: 'Consulado de Rep. Dominicana en Miami', direccion: '1038 Brickell Ave, Miami, FL 33131', telefono: '(305) 358-3221', email: 'cgmiami@mirex.gob.do', horarioLunes: '8:30am – 4:30pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Documentos'] },
-
-    { pais: 'EC', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado del Ecuador en Nueva York', direccion: '800 2nd Ave #600, New York, NY 10017', telefono: '(212) 808-0170', email: 'cgnewyork@cancilleria.gob.ec', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Actas', 'Apostillas'] },
-    { pais: 'EC', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado del Ecuador en Los Ángeles', direccion: '3450 Wilshire Blvd #550, Los Angeles, CA 90010', telefono: '(213) 628-3014', email: 'cglosangeles@cancilleria.gob.ec', horarioLunes: '9:00am – 4:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'Cedula', 'Documentos'] },
-
-    { pais: 'PE', ciudad: 'Nueva York', estadoUS: 'NY', nombre: 'Consulado del Peru en Nueva York', direccion: '241 E 49th St, New York, NY 10017', telefono: '(212) 481-7410', email: 'cgnewyork@consulado.pe', horarioLunes: '9:00am – 1:00pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DNI', 'Actas', 'Apostillas'] },
-    { pais: 'PE', ciudad: 'Los Angeles', estadoUS: 'CA', nombre: 'Consulado del Peru en Los Ángeles', direccion: '3450 Wilshire Blvd #1010, Los Angeles, CA 90010', telefono: '(213) 252-5765', email: 'cglosangeles@consulado.pe', horarioLunes: '8:30am – 4:30pm', horarioSabado: 'Cerrado', servicios: ['Pasaporte', 'DNI', 'Documentos'] },
-    ...CONSULADOS_VERIFICADOS,
-  ]
+  // Todos los consulados (MX, CO, VE, SV, GT, HN, NI, CU, DO, EC, PE) vienen de
+  // CONSULADOS_VERIFICADOS: datos oficiales verificados por cancillería/país.
+  const consulados = [...CONSULADOS_VERIFICADOS]
 
   for (const c of consulados) {
     await prisma.consulado.create({ data: c as any })
@@ -65,33 +60,6 @@ async function main() {
 
   // Trámites
   const tramites = [
-    {
-      pais: 'MX', titulo: 'Renovación de Pasaporte Mexicano', slug: 'pasaporte-mx',
-      descripcion: 'Guía completa para renovar tu pasaporte mexicano en EE.UU.',
-      contenidoHtml: '<p>El pasaporte mexicano se puede renovar en cualquier consulado de México en EE.UU. sin necesidad de regresar a México.</p>',
-      pasos: ['Agenda tu cita en el consulado más cercano', 'Reúne los documentos necesarios', 'Asiste a tu cita con todos los documentos', 'Paga las tarifas correspondientes', 'Espera entre 3-4 semanas para recibir tu pasaporte'],
-      documentosNecesarios: ['Pasaporte anterior (original y copia)', 'Acta de nacimiento (original y copia)', 'Identificación con foto', 'Comprobante de pago de derechos'],
-      tiempoPromedio: '3-4 semanas', costo: '$110-$140 USD',
-      linksExternos: [{ texto: 'Portal de citas consulares', url: 'https://mexitel.sre.gob.mx' }],
-    },
-    {
-      pais: 'MX', titulo: 'Matrícula Consular', slug: 'matricula-consular-mx',
-      descripcion: 'Obtén tu Matrícula Consular, identificación oficial para mexicanos en EE.UU.',
-      contenidoHtml: '<p>La Matrícula Consular es una identificación emitida por el gobierno de México a sus ciudadanos que residen en el extranjero.</p>',
-      pasos: ['Agenda cita en el consulado', 'Presenta identificación mexicana', 'Presenta comprobante de domicilio en EE.UU.', 'Proporciona fotografías tamaño pasaporte', 'Paga la tarifa ($27 USD)'],
-      documentosNecesarios: ['Acta de nacimiento o pasaporte mexicano', 'Comprobante de domicilio en EE.UU.', '2 fotografías recientes', 'Pago de $27 USD'],
-      tiempoPromedio: 'Mismo día', costo: '$27 USD',
-      linksExternos: [],
-    },
-    {
-      pais: 'MX', titulo: 'Carta de No Antecedentes Penales', slug: 'no-antecedentes-mx',
-      descripcion: 'Solicita tu carta de no antecedentes penales para trámites migratorios.',
-      contenidoHtml: '<p>Este documento es frecuentemente requerido en trámites de visa y residencia en EE.UU.</p>',
-      pasos: ['Agenda cita consular', 'Presenta identificación oficial', 'Llena el formulario de solicitud', 'Paga derechos correspondientes', 'Recibe el documento en 15 días hábiles'],
-      documentosNecesarios: ['Pasaporte o INE vigente', 'Huellas dactilares', 'Pago de derechos'],
-      tiempoPromedio: '15 días hábiles', costo: '$45 USD',
-      linksExternos: [],
-    },
 
     // Tramites Generales (para todos los latinos)
     {
