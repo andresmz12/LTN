@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { IconClock, IconBanknote } from '@/components/icons'
+import { IconClock, IconBanknote, IconArrowRight } from '@/components/icons'
 
 interface Props {
   pais: string
@@ -12,19 +12,19 @@ interface Props {
 
 export default function TramiteCard({ pais, titulo, slug, descripcion, tiempoPromedio, costo }: Props) {
   return (
-    <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-5 hover:shadow-md hover:border-brand-100 transition">
-      <h3 className="font-bold text-gray-900 text-lg mb-2">{titulo}</h3>
+    <Link
+      href={`/${pais}/tramites/${slug}`}
+      className="group block bg-white rounded-lg border border-gray-200 p-5 hover:border-brand-300 transition-colors"
+    >
+      <h3 className="font-display font-semibold text-gray-900 text-lg mb-2">{titulo}</h3>
       <p className="text-sm text-gray-600 mb-3 line-clamp-2">{descripcion}</p>
-      <div className="flex gap-4 text-xs text-gray-500 mb-4">
-        {tiempoPromedio && <span className="flex items-center gap-1"><IconClock className="w-3.5 h-3.5" /> {tiempoPromedio}</span>}
-        {costo && <span className="flex items-center gap-1"><IconBanknote className="w-3.5 h-3.5" /> {costo}</span>}
+      <div className="flex items-center justify-between gap-4">
+        <div className="flex gap-4 text-xs text-gray-500">
+          {tiempoPromedio && <span className="flex items-center gap-1"><IconClock className="w-3.5 h-3.5" /> {tiempoPromedio}</span>}
+          {costo && <span className="flex items-center gap-1"><IconBanknote className="w-3.5 h-3.5" /> {costo}</span>}
+        </div>
+        <IconArrowRight className="w-4 h-4 text-brand-400 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition shrink-0" />
       </div>
-      <Link
-        href={`/${pais}/tramites/${slug}`}
-        className="text-sm text-brand-700 font-semibold hover:underline"
-      >
-        Ver guía completa →
-      </Link>
-    </div>
+    </Link>
   )
 }

@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Sora } from 'next/font/google'
+import { Inter, Fraunces } from 'next/font/google'
 import './globals.css'
 import SessionProvider from '@/components/SessionProvider'
 import RegisterSW from '@/components/RegisterSW'
 
 const inter = Inter({ subsets: ['latin'] })
-const sora = Sora({ subsets: ['latin'], variable: '--font-display' })
+const fraunces = Fraunces({ subsets: ['latin'], variable: '--font-display', weight: ['500', '600', '700'] })
 
 export const metadata: Metadata = {
   title: 'Compa - Tu guía latina en EE.UU.',
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 }
 
 export const viewport: Viewport = {
-  themeColor: '#2a3180',
+  themeColor: '#603322',
   width: 'device-width',
   initialScale: 1,
 }
@@ -31,7 +31,7 @@ export const viewport: Viewport = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="es">
-      <body className={`${inter.className} ${sora.variable} bg-gray-50 min-h-screen`}>
+      <body className={`${inter.className} ${fraunces.variable} bg-gray-50 min-h-screen`}>
         <SessionProvider>{children}</SessionProvider>
         <RegisterSW />
       </body>

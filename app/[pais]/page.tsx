@@ -29,12 +29,12 @@ export default async function PaisPage({ params }: { params: { pais: string } })
     <>
       <Navbar pais={pais} />
 
-      <div className="bg-gradient-to-br from-brand-900 to-brand-700">
+      <div className="bg-brand-900">
         <div className="max-w-5xl mx-auto px-4 py-10">
-          <h1 className="text-3xl font-display font-bold text-white flex items-center gap-3">
+          <h1 className="text-3xl font-display font-semibold text-white flex items-center gap-3">
             <span>{PAIS_FLAGS[pais]}</span> {PAIS_NOMBRES[pais]}
           </h1>
-          <p className="text-brand-100 mt-1">Recursos y servicios para la comunidad de {PAIS_NOMBRES[pais]} en EE.UU.</p>
+          <p className="text-brand-200 mt-1">Recursos y servicios para la comunidad de {PAIS_NOMBRES[pais]} en EE.UU.</p>
         </div>
       </div>
 

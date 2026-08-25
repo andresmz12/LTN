@@ -87,20 +87,13 @@ export default async function Home() {
       <Navbar />
 
       {/* Hero */}
-      <div className="bg-gradient-to-br from-brand-900 via-brand-800 to-brand-700 relative overflow-hidden">
-        <div
-          className="absolute inset-0 opacity-[0.07]"
-          style={{
-            backgroundImage:
-              'radial-gradient(circle at 2px 2px, white 1.4px, transparent 0)',
-            backgroundSize: '28px 28px',
-          }}
-        />
-        <div className="max-w-5xl mx-auto px-4 py-14 relative">
-          <h1 className="text-3xl sm:text-4xl font-display font-bold text-white mb-3 max-w-2xl leading-tight">
+      <div className="bg-brand-900">
+        <div className="max-w-5xl mx-auto px-4 py-14 sm:py-16">
+          <span className="block w-10 h-1 bg-accent-400 rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-[2.75rem] font-display font-semibold text-white mb-4 max-w-2xl leading-[1.15]">
             Información para latinos en EE.UU.
           </h1>
-          <p className="text-brand-100 max-w-2xl">
+          <p className="text-brand-200 max-w-xl text-[15px] sm:text-base">
             Todo lo que necesitas saber para vivir, trabajar y prosperar en Estados Unidos — sin importar tu país de origen o estatus migratorio.
           </p>
         </div>
@@ -110,16 +103,13 @@ export default async function Home() {
 
         <Link
           href="/derechos"
-          className="mb-6 flex items-center justify-between gap-4 bg-accent-500 hover:bg-accent-600 transition text-white rounded-2xl p-5"
+          className="mb-6 flex items-center gap-4 bg-white border-l-4 border-accent-500 rounded-r-lg rounded-l-sm p-5 hover:bg-accent-50/40 transition"
         >
-          <div className="flex items-center gap-3">
-            <IconShield className="w-8 h-8 shrink-0" />
-            <div>
-              <p className="font-bold">Conoce tus Derechos</p>
-              <p className="text-accent-50 text-sm">Qué hacer si la policía o ICE te paran — sin importar tu estatus migratorio.</p>
-            </div>
+          <IconShield className="w-7 h-7 shrink-0 text-accent-600" />
+          <div>
+            <p className="font-display font-semibold text-gray-900">Conoce tus Derechos</p>
+            <p className="text-gray-500 text-sm">Qué hacer si la policía o ICE te paran — sin importar tu estatus migratorio.</p>
           </div>
-          <IconArrowRight className="w-5 h-5 shrink-0" />
         </Link>
 
         <div className="mb-8">
@@ -146,20 +136,18 @@ export default async function Home() {
                     <div key={tramite.id} className="contents">
                       <Link
                         href={`/general/tramites/${tramite.slug}`}
-                        className="block bg-white rounded-2xl shadow-sm border border-gray-100 p-6 hover:shadow-md transition-shadow"
+                        className="group block bg-white rounded-lg border border-gray-200 p-6 hover:border-brand-300 transition-colors"
                       >
                         <div className="flex items-start justify-between gap-3 mb-2">
-                          <h3 className="font-bold text-gray-900 text-base leading-snug">{tramite.titulo}</h3>
+                          <h3 className="font-display font-semibold text-gray-900 text-base leading-snug">{tramite.titulo}</h3>
                           {badge && (
                             <span className={`shrink-0 text-xs font-semibold px-2 py-0.5 rounded-full whitespace-nowrap ${badge.className}`}>
                               {badge.label}
                             </span>
                           )}
                         </div>
-                        <p className="text-sm text-gray-500 mb-4 line-clamp-3">{tramite.descripcion}</p>
-                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
-                          Ver guía completa <IconArrowRight className="w-3.5 h-3.5" />
-                        </span>
+                        <p className="text-sm text-gray-500 mb-2 line-clamp-3">{tramite.descripcion}</p>
+                        <IconArrowRight className="w-4 h-4 text-brand-400 opacity-0 group-hover:opacity-100 translate-x-0 group-hover:translate-x-1 transition" />
                       </Link>
                       {showAdAfter && anuncio && (
                         <AnuncioCard
@@ -180,12 +168,12 @@ export default async function Home() {
         )}
 
         {/* Recursos oficiales */}
-        <div className="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl p-8 mb-8">
-          <h2 className="text-xl font-bold text-gray-800 mb-4">Recursos y enlaces oficiales</h2>
+        <div className="bg-brand-50 border border-brand-100 rounded-lg p-8 mb-8">
+          <h2 className="text-xl font-display font-semibold text-gray-800 mb-4">Recursos y enlaces oficiales</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {RECURSOS_OFICIALES.map(r => (
               <a key={r.nombre} href={r.url} target="_blank" rel="noopener noreferrer"
-                className="flex items-start gap-3 bg-white rounded-xl p-4 hover:shadow-sm transition-shadow">
+                className="flex items-start gap-3 bg-white rounded-lg border border-gray-100 p-4 hover:border-brand-200 transition-colors">
                 <IconLink className="w-5 h-5 text-brand-500 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-gray-800 text-sm">{r.nombre}</div>
@@ -199,7 +187,7 @@ export default async function Home() {
         {/* CTA patrocinadores */}
         <div className="text-center py-6 border-t border-gray-100">
           <p className="text-sm text-gray-500 mb-2">¿Necesitas ayuda profesional?</p>
-          <Link href="/patrocinadores" className="inline-block bg-accent-500 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-accent-600 transition">
+          <Link href="/patrocinadores" className="inline-block bg-accent-500 text-white px-6 py-2.5 rounded-lg text-sm font-semibold hover:bg-accent-600 transition">
             Ver abogados y servicios recomendados
           </Link>
         </div>

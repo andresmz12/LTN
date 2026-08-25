@@ -30,12 +30,12 @@ export default async function TrabajosPage({
     <>
       <Navbar />
 
-      <div className="bg-gradient-to-br from-brand-900 to-brand-700">
+      <div className="bg-brand-900">
         <div className="max-w-5xl mx-auto px-4 py-10">
-          <h1 className="text-3xl font-display font-bold text-white flex items-center gap-3">
-            <IconBriefcase className="w-8 h-8" /> Trabajos
+          <h1 className="text-3xl font-display font-semibold text-white flex items-center gap-3">
+            <IconBriefcase className="w-8 h-8 text-accent-400" /> Trabajos
           </h1>
-          <p className="text-brand-100 mt-1">Ofertas de empleo para la comunidad latina en EE.UU.</p>
+          <p className="text-brand-200 mt-1">Ofertas de empleo para la comunidad latina en EE.UU.</p>
         </div>
       </div>
 
