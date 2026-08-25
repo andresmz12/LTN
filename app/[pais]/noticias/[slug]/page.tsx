@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, formatDate } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 
@@ -80,7 +82,7 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
                 href={noticia.enlaceOriginal}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-blue-600 hover:underline"
+                className="text-sm text-brand-600 hover:underline"
               >
                 Ver noticia original →
               </a>
@@ -92,12 +94,13 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
         <div className="mt-8">
           <Link
             href={`/${pais}/noticias`}
-            className="text-sm text-gray-500 hover:text-gray-800"
+            className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-800 w-fit"
           >
-            ← Ver todas las noticias
+            <IconArrowLeft className="w-4 h-4" /> Ver todas las noticias
           </Link>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

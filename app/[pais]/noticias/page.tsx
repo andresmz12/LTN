@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import NoticiaCard from '@/components/NoticiaCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -32,6 +33,7 @@ export default async function NoticiasPage({ params }: { params: { pais: string 
           <p className="text-gray-500 text-center py-16">No hay noticias publicadas.</p>
         )}
       </main>
+      <Footer />
     </>
   )
 }

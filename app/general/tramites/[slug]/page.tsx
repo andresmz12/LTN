@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { IconGlobe, IconLink, IconArrowLeft } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { formatDate } from '@/lib/utils'
 
@@ -19,15 +21,15 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
       <Navbar />
       <main className="max-w-3xl mx-auto px-4 py-10">
         <div className="mb-6">
-          <Link href="/" className="text-sm text-blue-600 hover:underline">
-            ← Recursos Generales
+          <Link href="/" className="flex items-center gap-1 text-sm text-brand-600 hover:underline w-fit">
+            <IconArrowLeft className="w-4 h-4" /> Recursos Generales
           </Link>
         </div>
 
         <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
           <div className="mb-6">
-            <span className="text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full font-medium">
-              🌎 Recursos Generales
+            <span className="inline-flex items-center gap-1.5 text-xs bg-brand-50 text-brand-700 px-2 py-1 rounded-full font-medium">
+              <IconGlobe className="w-3.5 h-3.5" /> Recursos Generales
             </span>
           </div>
 
@@ -55,7 +57,7 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
               <ol className="space-y-3">
                 {pasos.map((paso: string, i: number) => (
                   <li key={i} className="flex gap-3">
-                    <span className="shrink-0 w-7 h-7 rounded-full bg-blue-700 text-white text-sm font-bold flex items-center justify-center">
+                    <span className="shrink-0 w-7 h-7 rounded-full bg-brand-700 text-white text-sm font-bold flex items-center justify-center">
                       {i + 1}
                     </span>
                     <span className="text-gray-700 pt-0.5">{paso}</span>
@@ -94,9 +96,9 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
                     href={link.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 text-blue-700 hover:underline text-sm"
+                    className="flex items-center gap-2 text-brand-700 hover:underline text-sm"
                   >
-                    🔗 {link.texto}
+                    <IconLink className="w-4 h-4" /> {link.texto}
                   </a>
                 ))}
               </div>
@@ -107,16 +109,14 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
         <div className="mt-6 text-center">
           <Link
             href="/patrocinadores"
-            className="text-sm text-blue-600 hover:underline"
+            className="text-sm text-brand-600 hover:underline"
           >
             ¿Necesitas ayuda profesional? Ver abogados y servicios recomendados →
           </Link>
         </div>
       </main>
 
-      <footer className="text-center text-sm text-gray-400 py-8 border-t border-gray-100 mt-8">
-        © 2025 Compa. Todos los derechos reservados.
-      </footer>
+      <Footer />
     </>
   )
 }

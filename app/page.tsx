@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import AnuncioCard from '@/components/AnuncioCard'
+import Footer from '@/components/Footer'
+import { IconLink, IconArrowRight } from '@/components/icons'
 import { prisma } from '@/lib/db'
 
 const PRIORIDAD_ORDER: Record<string, number> = { critico: 0, alto: 1, importante: 2, relevante: 3 }
@@ -21,9 +23,9 @@ const CATEGORIA_ORDER = [
 
 const PRIORIDAD_BADGE: Record<string, { label: string; className: string }> = {
   critico:    { label: 'Crítico',    className: 'bg-red-100 text-red-700' },
-  alto:       { label: 'Alta prioridad', className: 'bg-orange-100 text-orange-700' },
-  importante: { label: 'Importante', className: 'bg-yellow-100 text-yellow-700' },
-  relevante:  { label: 'Relevante',  className: 'bg-blue-50 text-blue-600' },
+  alto:       { label: 'Alta prioridad', className: 'bg-accent-100 text-accent-700' },
+  importante: { label: 'Importante', className: 'bg-amber-100 text-amber-700' },
+  relevante:  { label: 'Relevante',  className: 'bg-brand-50 text-brand-600' },
 }
 
 const RECURSOS_OFICIALES = [
@@ -100,17 +102,28 @@ export default async function Home() {
   return (
     <>
       <Navbar />
-      <main className="max-w-5xl mx-auto px-4 py-10">
 
-        {/* Header */}
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900 mb-2">
+      {/* Hero */}
+      <div className="bg-gradient-to-br from-brand-900 via-brand-800 to-brand-700 relative overflow-hidden">
+        <div
+          className="absolute inset-0 opacity-[0.07]"
+          style={{
+            backgroundImage:
+              'radial-gradient(circle at 2px 2px, white 1.4px, transparent 0)',
+            backgroundSize: '28px 28px',
+          }}
+        />
+        <div className="max-w-5xl mx-auto px-4 py-14 relative">
+          <h1 className="text-3xl sm:text-4xl font-display font-bold text-white mb-3 max-w-2xl leading-tight">
             Información para latinos en EE.UU.
           </h1>
-          <p className="text-gray-500 max-w-2xl">
+          <p className="text-brand-100 max-w-2xl">
             Todo lo que necesitas saber para vivir, trabajar y prosperar en Estados Unidos — sin importar tu país de origen o estatus migratorio.
           </p>
         </div>
+      </div>
+
+      <main className="max-w-5xl mx-auto px-4 py-10">
 
         {tramites.length === 0 ? (
           <p className="text-gray-400 text-sm italic py-8">No hay recursos disponibles aún.</p>
@@ -143,8 +156,8 @@ export default async function Home() {
                           )}
                         </div>
                         <p className="text-sm text-gray-500 mb-4 line-clamp-3">{tramite.descripcion}</p>
-                        <span className="text-sm font-semibold text-blue-700">
-                          Ver guía completa →
+                        <span className="inline-flex items-center gap-1 text-sm font-semibold text-brand-700">
+                          Ver guía completa <IconArrowRight className="w-3.5 h-3.5" />
                         </span>
                       </Link>
                       {showAdAfter && anuncio && (
@@ -166,13 +179,13 @@ export default async function Home() {
         )}
 
         {/* Recursos oficiales */}
-        <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-2xl p-8 mb-8">
+        <div className="bg-gradient-to-br from-brand-50 to-brand-100 rounded-2xl p-8 mb-8">
           <h2 className="text-xl font-bold text-gray-800 mb-4">Recursos y enlaces oficiales</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {RECURSOS_OFICIALES.map(r => (
               <a key={r.nombre} href={r.url} target="_blank" rel="noopener noreferrer"
                 className="flex items-start gap-3 bg-white rounded-xl p-4 hover:shadow-sm transition-shadow">
-                <span className="text-blue-500 text-lg shrink-0">🔗</span>
+                <IconLink className="w-5 h-5 text-brand-500 shrink-0 mt-0.5" />
                 <div>
                   <div className="font-semibold text-gray-800 text-sm">{r.nombre}</div>
                   <div className="text-xs text-gray-500">{r.desc}</div>
@@ -185,17 +198,14 @@ export default async function Home() {
         {/* CTA patrocinadores */}
         <div className="text-center py-6 border-t border-gray-100">
           <p className="text-sm text-gray-500 mb-2">¿Necesitas ayuda profesional?</p>
-          <Link href="/patrocinadores" className="inline-block bg-blue-700 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-blue-800 transition">
+          <Link href="/patrocinadores" className="inline-block bg-accent-500 text-white px-6 py-2.5 rounded-xl text-sm font-semibold hover:bg-accent-600 transition">
             Ver abogados y servicios recomendados
           </Link>
         </div>
 
       </main>
 
-      <footer className="text-center text-xs text-gray-400 py-8 mt-8 border-t border-gray-100">
-        © 2025 Compa ·{' '}
-        <Link href="/patrocinadores" className="hover:text-gray-600 underline">Patrocinadores</Link>
-      </footer>
+      <Footer />
     </>
   )
 }

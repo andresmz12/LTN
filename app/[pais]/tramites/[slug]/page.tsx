@@ -1,6 +1,8 @@
 import { notFound } from 'next/navigation'
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
+import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 
@@ -35,7 +37,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
           {/* Quick info pills */}
           <div className="flex flex-wrap gap-3">
             {tramite.tiempoPromedio && (
-              <div className="flex items-center gap-2 bg-blue-50 text-blue-700 text-sm px-3 py-1.5 rounded-xl">
+              <div className="flex items-center gap-2 bg-brand-50 text-brand-700 text-sm px-3 py-1.5 rounded-xl">
                 <span className="font-medium">Tiempo:</span> {tramite.tiempoPromedio}
               </div>
             )}
@@ -61,7 +63,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
             <ul className="space-y-2">
               {tramite.documentosNecesarios.map((doc: any, i: number) => (
                 <li key={i} className="flex items-start gap-2.5 text-sm text-gray-700">
-                  <span className="text-blue-500 mt-0.5 shrink-0">✓</span>
+                  <span className="text-brand-500 mt-0.5 shrink-0">✓</span>
                   {doc}
                 </li>
               ))}
@@ -78,7 +80,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
             <ol className="space-y-4">
               {pasos.map((paso: any, i: number) => (
                 <li key={i} className="flex gap-3">
-                  <span className="shrink-0 w-6 h-6 rounded-full bg-blue-700 text-white text-xs font-bold flex items-center justify-center mt-0.5">
+                  <span className="shrink-0 w-6 h-6 rounded-full bg-brand-700 text-white text-xs font-bold flex items-center justify-center mt-0.5">
                     {i + 1}
                   </span>
                   <span className="text-sm text-gray-700 leading-relaxed">{paso}</span>
@@ -108,8 +110,8 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
             <div className="space-y-2">
               {links.map((l, i) => (
                 <a key={i} href={l.url} target="_blank" rel="noopener noreferrer"
-                  className="flex items-center gap-2 text-sm text-blue-700 hover:underline">
-                  <span className="text-blue-400">→</span> {l.texto}
+                  className="flex items-center gap-2 text-sm text-brand-700 hover:underline">
+                  <span className="text-brand-400">→</span> {l.texto}
                 </a>
               ))}
             </div>
@@ -117,11 +119,12 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
         )}
 
         <div className="mt-10">
-          <Link href={`/${pais}/tramites`} className="text-sm text-gray-400 hover:text-gray-700">
-            ← Ver todos los trámites
+          <Link href={`/${pais}/tramites`} className="flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700 w-fit">
+            <IconArrowLeft className="w-4 h-4" /> Ver todos los trámites
           </Link>
         </div>
       </main>
+      <Footer />
     </>
   )
 }

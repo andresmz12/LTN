@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import TramiteCard from '@/components/TramiteCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -32,6 +33,7 @@ export default async function TramitesPage({ params }: { params: { pais: string 
           <p className="text-gray-500 text-center py-16">No hay trámites registrados.</p>
         )}
       </main>
+      <Footer />
     </>
   )
 }

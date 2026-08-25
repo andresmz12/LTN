@@ -3,6 +3,7 @@ import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/db'
 import Navbar from '@/components/Navbar'
+import { IconBuilding, IconClipboard, IconNewspaper } from '@/components/icons'
 import { PAIS_NOMBRES, formatDate } from '@/lib/utils'
 import Link from 'next/link'
 
@@ -54,7 +55,7 @@ export default async function DashboardPage() {
               <div className="space-y-2">
                 {savedConsulados.map((c: any) => (
                   <Link key={c.id} href={`/${c.pais}/consulados/${c.id}`}
-                    className="block text-sm text-blue-600 hover:underline">
+                    className="block text-sm text-brand-600 hover:underline">
                     {c.nombre} – {c.ciudad}
                   </Link>
                 ))}
@@ -64,20 +65,20 @@ export default async function DashboardPage() {
         </div>
 
         {user.paisOrigen && (
-          <div className="mt-6 bg-blue-50 rounded-2xl p-6">
+          <div className="mt-6 bg-brand-50 rounded-2xl p-6">
             <h2 className="font-bold text-gray-800 mb-3">Acceso rápido</h2>
             <div className="flex flex-wrap gap-3">
               <Link href={`/${user.paisOrigen}/consulados`}
-                className="bg-white border border-blue-200 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition">
-                🏛 Consulados
+                className="flex items-center gap-1.5 bg-white border border-brand-200 text-brand-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-100 transition">
+                <IconBuilding className="w-4 h-4" /> Consulados
               </Link>
               <Link href={`/${user.paisOrigen}/tramites`}
-                className="bg-white border border-blue-200 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition">
-                📋 Trámites
+                className="flex items-center gap-1.5 bg-white border border-brand-200 text-brand-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-100 transition">
+                <IconClipboard className="w-4 h-4" /> Trámites
               </Link>
               <Link href={`/${user.paisOrigen}/noticias`}
-                className="bg-white border border-blue-200 text-blue-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-blue-100 transition">
-                📰 Noticias
+                className="flex items-center gap-1.5 bg-white border border-brand-200 text-brand-700 px-4 py-2 rounded-lg text-sm font-medium hover:bg-brand-100 transition">
+                <IconNewspaper className="w-4 h-4" /> Noticias
               </Link>
             </div>
           </div>

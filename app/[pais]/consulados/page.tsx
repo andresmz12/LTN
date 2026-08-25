@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation'
 import Navbar from '@/components/Navbar'
+import Footer from '@/components/Footer'
 import ConsultadoCard from '@/components/ConsultadoCard'
 import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
 import { prisma } from '@/lib/db'
@@ -32,6 +33,7 @@ export default async function ConsultadosPage({ params }: { params: { pais: stri
           <p className="text-gray-500 text-center py-16">No hay consulados registrados.</p>
         )}
       </main>
+      <Footer />
     </>
   )
 }

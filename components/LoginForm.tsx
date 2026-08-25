@@ -43,7 +43,7 @@ export default function LoginForm() {
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
           placeholder="tu@email.com"
         />
       </div>
@@ -55,7 +55,7 @@ export default function LoginForm() {
           value={password}
           onChange={e => setPassword(e.target.value)}
           required
-          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500"
           placeholder="••••••••"
         />
       </div>
@@ -63,14 +63,14 @@ export default function LoginForm() {
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-blue-700 text-white py-2 rounded-lg font-semibold hover:bg-blue-800 disabled:opacity-50 transition"
+        className="w-full bg-brand-700 text-white py-2 rounded-lg font-semibold hover:bg-brand-800 disabled:opacity-50 transition"
       >
         {loading ? 'Entrando...' : 'Entrar'}
       </button>
 
       <p className="text-center text-sm text-gray-500">
         ¿No tienes cuenta?{' '}
-        <Link href="/auth/register" className="text-blue-700 font-semibold hover:underline">
+        <Link href="/auth/register" className="text-brand-700 font-semibold hover:underline">
           Regístrate
         </Link>
       </p>

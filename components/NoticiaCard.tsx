@@ -40,7 +40,7 @@ export default function NoticiaCard({ pais, titulo, slug, resumen, categoria, pu
           </span>
 
           {/* Title */}
-          <h3 className="font-bold text-gray-900 leading-snug mb-2 line-clamp-2 group-hover:text-blue-700 transition-colors">
+          <h3 className="font-bold text-gray-900 leading-snug mb-2 line-clamp-2 group-hover:text-brand-700 transition-colors">
             {titulo}
           </h3>
 
