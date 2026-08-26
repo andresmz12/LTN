@@ -115,15 +115,15 @@ export default async function PatrocinadoresPage() {
         )}
 
         {/* CTA para nuevos sponsors */}
-        <div className="mt-12 bg-brand-900 text-white rounded-lg p-8 text-center">
+        <div className="mt-12 bg-gray-900 text-white rounded-lg p-8 text-center">
           <h2 className="text-xl font-display font-semibold mb-2">¿Quieres llegar a miles de latinos en EE.UU.?</h2>
-          <p className="text-brand-200 text-sm mb-6 max-w-xl mx-auto">
+          <p className="text-gray-300 text-sm mb-6 max-w-xl mx-auto">
             Anuncia tu negocio en Compa y conecta con la comunidad latina que más lo necesita.
             Abogados, remesas, salud, finanzas y más.
           </p>
           <a
             href="mailto:contacto@compa.app?subject=Quiero ser patrocinador"
-            className="inline-block bg-accent-400 text-brand-950 font-bold px-8 py-3 rounded-lg hover:bg-accent-300 transition"
+            className="inline-block bg-brand-500 text-white font-bold px-8 py-3 rounded-lg hover:bg-brand-600 transition"
           >
             Contáctanos para anunciarte
           </a>

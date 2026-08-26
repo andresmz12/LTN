@@ -21,13 +21,13 @@ const navItems = [
 export default function AdminNav() {
   const pathname = usePathname()
   return (
-    <aside className="w-60 min-h-screen flex flex-col py-6 px-3 gap-0.5 shrink-0 bg-brand-950">
+    <aside className="w-60 min-h-screen flex flex-col py-6 px-3 gap-0.5 shrink-0 bg-gray-900">
       <Link href="/" className="flex items-baseline gap-2 px-3 mb-6">
         <span className="text-xl font-display font-semibold text-white">Compa</span>
-        <span className="text-[11px] text-brand-300 tracking-wide">Admin</span>
+        <span className="text-[11px] text-gray-400 tracking-wide">Admin</span>
       </Link>
 
-      <div className="text-[11px] text-brand-400 uppercase tracking-widest px-3 mb-1">Contenido</div>
+      <div className="text-[11px] text-gray-500 uppercase tracking-widest px-3 mb-1">Contenido</div>
 
       {navItems.map(({ href, label, icon: Icon, gold, exact }) => {
         const active = exact ? pathname === href : pathname.startsWith(href)
@@ -38,11 +38,11 @@ export default function AdminNav() {
             className={`flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
               active
                 ? gold
-                  ? 'bg-accent-500 text-white'
-                  : 'bg-white/10 text-white'
+                  ? 'bg-accent-600 text-white'
+                  : 'bg-brand-500 text-white'
                 : gold
-                ? 'text-accent-300 hover:text-white hover:bg-white/5'
-                : 'text-brand-200 hover:text-white hover:bg-white/5'
+                ? 'text-accent-400 hover:text-white hover:bg-white/5'
+                : 'text-gray-300 hover:text-white hover:bg-white/5'
             }`}
           >
             <Icon className="w-4 h-4 shrink-0" />
@@ -55,13 +55,13 @@ export default function AdminNav() {
       })}
 
       <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1.5">
-        <Link href="/" className="block text-xs text-brand-300 hover:text-white transition py-1">
+        <Link href="/" className="block text-xs text-gray-400 hover:text-white transition py-1">
           Ver Recursos Generales
         </Link>
-        <Link href="/patrocinadores" className="block text-xs text-brand-300 hover:text-white transition py-1">
+        <Link href="/patrocinadores" className="block text-xs text-gray-400 hover:text-white transition py-1">
           Ver Patrocinadores
         </Link>
-        <Link href="/" className="block text-xs text-brand-400 hover:text-white transition py-1">
+        <Link href="/" className="block text-xs text-gray-500 hover:text-white transition py-1">
           ← Volver al sitio
         </Link>
       </div>

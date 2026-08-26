@@ -19,7 +19,7 @@ const inputClass = 'w-full border border-gray-200 rounded-lg px-4 py-2.5 text-sm
 const labelClass = 'block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide'
 
 const TIPO_COLORS: Record<string, { bg: string; text: string }> = {
-  banner: { bg: '#faf4f0', text: '#603322' },
+  banner: { bg: '#faf4f0', text: '#f15a14' },
   card: { bg: '#f0fdf4', text: '#15803d' },
   popup: { bg: '#fbf7ec', text: '#7a5117' },
 }

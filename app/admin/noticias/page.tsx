@@ -73,7 +73,7 @@ export default function AdminNoticias() {
         <button
           onClick={openNew}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-          style={{ background: '#96661c' }}
+          style={{ background: '#d1430c' }}
         >
           + Nueva Noticia
         </button>
@@ -208,7 +208,7 @@ export default function AdminNoticias() {
                   <button
                     type="submit"
                     className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                    style={{ background: '#96661c' }}
+                    style={{ background: '#d1430c' }}
                   >
                     {editSlug ? 'Actualizar' : 'Crear'}
                   </button>

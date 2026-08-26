@@ -27,7 +27,7 @@ export default function GeneradorContenido() {
             className="px-5 py-2.5 rounded-xl text-sm font-semibold border transition-all"
             style={
               tab === t.id
-                ? { background: '#96661c', color: 'white', borderColor: '#96661c' }
+                ? { background: '#d1430c', color: 'white', borderColor: '#d1430c' }
                 : { background: 'white', color: '#374151', borderColor: '#e5e7eb' }
             }
           >
@@ -124,7 +124,7 @@ function GeneradorConsulados() {
           onClick={generate}
           disabled={loading || !ciudad.trim()}
           className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold disabled:opacity-50 transition-all"
-          style={{ background: '#c48f2e', color: '#1a1a1a' }}
+          style={{ background: '#fbbf24', color: '#1a1a1a' }}
         >
           🤖 Generar con IA
         </button>
@@ -139,7 +139,7 @@ function GeneradorConsulados() {
       {loading && <LoadingState />}
 
       {editData && !loading && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#c48f2e' }}>
+        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#fbbf24' }}>
           <h3 className="font-bold text-lg text-gray-800">Vista previa — edita antes de publicar</h3>
           {(['nombre', 'ciudad', 'estado', 'direccion', 'telefono', 'email', 'horario', 'sitioWeb'] as string[]).map((field) => (
             <div key={field}>
@@ -148,7 +148,7 @@ function GeneradorConsulados() {
                 value={(editData[field] as string) || ''}
                 onChange={(e) => setEditData({ ...editData, [field]: e.target.value })}
                 className={inputClass}
-                style={{ '--tw-ring-color': '#c48f2e' } as any}
+                style={{ '--tw-ring-color': '#fbbf24' } as any}
               />
             </div>
           ))}
@@ -244,7 +244,7 @@ function GeneradorTramites() {
           onClick={generate}
           disabled={loading || !tipo.trim()}
           className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold disabled:opacity-50 transition-all"
-          style={{ background: '#c48f2e', color: '#1a1a1a' }}
+          style={{ background: '#fbbf24', color: '#1a1a1a' }}
         >
           🤖 Generar con IA
         </button>
@@ -259,7 +259,7 @@ function GeneradorTramites() {
       {loading && <LoadingState />}
 
       {editData && !loading && (
-        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#c48f2e' }}>
+        <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#fbbf24' }}>
           <h3 className="font-bold text-lg text-gray-800">Vista previa — edita antes de publicar</h3>
           {(['titulo', 'slug', 'descripcion', 'costoAprox', 'tiempoEstimado', 'sitioOficial'] as string[]).map((field) => (
             <div key={field}>
@@ -382,7 +382,7 @@ function GeneradorNoticias() {
           onClick={generate}
           disabled={loading || !busqueda.trim()}
           className="flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-bold disabled:opacity-50 transition-all"
-          style={{ background: '#c48f2e', color: '#1a1a1a' }}
+          style={{ background: '#fbbf24', color: '#1a1a1a' }}
         >
           🤖 Generar con IA
         </button>
@@ -398,7 +398,7 @@ function GeneradorNoticias() {
 
       <div className="space-y-4">
         {noticias.map((n, idx) => (
-          <div key={idx} className="bg-white rounded-lg border border-gray-200 p-6 space-y-3 border-2" style={{ borderColor: '#c48f2e' }}>
+          <div key={idx} className="bg-white rounded-lg border border-gray-200 p-6 space-y-3 border-2" style={{ borderColor: '#fbbf24' }}>
             <div>
               <label className={labelClass}>Título</label>
               <input

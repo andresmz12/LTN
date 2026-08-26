@@ -87,13 +87,13 @@ export default async function Home() {
       <Navbar />
 
       {/* Hero */}
-      <div className="bg-brand-900">
+      <div className="bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-14 sm:py-16">
-          <span className="block w-10 h-1 bg-accent-400 rounded-full mb-5" />
-          <h1 className="text-3xl sm:text-[2.75rem] font-display font-semibold text-white mb-4 max-w-2xl leading-[1.15]">
-            Información para latinos en EE.UU.
+          <span className="block w-10 h-1 bg-brand-500 rounded-full mb-5" />
+          <h1 className="text-3xl sm:text-[2.75rem] font-display font-semibold text-gray-900 mb-4 max-w-2xl leading-[1.15]">
+            Información para <span className="text-brand-600">latinos</span> en EE.UU.
           </h1>
-          <p className="text-brand-200 max-w-xl text-[15px] sm:text-base">
+          <p className="text-gray-500 max-w-xl text-[15px] sm:text-base">
             Todo lo que necesitas saber para vivir, trabajar y prosperar en Estados Unidos — sin importar tu país de origen o estatus migratorio.
           </p>
         </div>

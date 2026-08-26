@@ -41,12 +41,12 @@ export default function DerechosPage() {
     <>
       <Navbar />
 
-      <div className="bg-brand-900">
+      <div className="bg-white border-b border-gray-100">
         <div className="max-w-3xl mx-auto px-4 py-10">
-          <h1 className="text-3xl font-display font-semibold text-white flex items-center gap-3">
-            <IconShield className="w-8 h-8 text-accent-400" /> Conoce tus Derechos
+          <h1 className="text-3xl font-display font-semibold text-gray-900 flex items-center gap-3">
+            <IconShield className="w-8 h-8 text-brand-500" /> Conoce tus Derechos
           </h1>
-          <p className="text-brand-200 mt-1">
+          <p className="text-gray-500 mt-1">
             Estos derechos te protegen sin importar tu estatus migratorio. Guárdalos, compártelos con tu familia.
           </p>
         </div>
