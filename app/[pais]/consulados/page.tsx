@@ -19,7 +19,7 @@ export default async function ConsultadosPage({ params }: { params: { pais: stri
       where: { pais },
       orderBy: { ciudad: 'asc' },
     }),
-    getAnunciosPara(pais, estado),
+    getAnunciosPara(pais, estado, 'PAIS_CONSULADOS'),
   ])
 
   // Si conocemos el estado del visitante, el consulado de su estado va primero.

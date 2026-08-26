@@ -61,6 +61,7 @@ export const anuncioSchema = z.object({
   clienteId: z.string().min(1),
   paisesTarget: z.array(z.string()),
   estadosTarget: z.array(z.string()).optional(),
+  ubicaciones: z.array(z.string()).optional(),
   activo: z.boolean().optional(),
   fechaFin: z.string().optional(),
   presupuesto: z.number().optional(),

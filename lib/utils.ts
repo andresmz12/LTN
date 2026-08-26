@@ -1,6 +1,20 @@
 export const PAISES = ['MX', 'CO', 'VE', 'SV', 'GT', 'HN', 'NI', 'CU', 'DO', 'EC', 'PE'] as const
 export type Pais = typeof PAISES[number]
 
+// Dónde puede aparecer un anuncio dentro del sitio. Vacío = se muestra en
+// cualquier página de sus países/estados target (comportamiento anterior).
+export const UBICACIONES = [
+  { value: 'INICIO', label: 'Inicio (Recursos Generales)' },
+  { value: 'PAIS_RESUMEN', label: 'Página de país — resumen' },
+  { value: 'PAIS_CONSULADOS', label: 'Página de país — Consulados' },
+  { value: 'PAIS_TRAMITES', label: 'Página de país — Trámites' },
+  { value: 'PAIS_NOTICIAS', label: 'Página de país — Noticias' },
+] as const
+export type Ubicacion = typeof UBICACIONES[number]['value']
+export const UBICACION_LABELS: Record<string, string> = Object.fromEntries(
+  UBICACIONES.map(u => [u.value, u.label])
+)
+
 export const PAIS_NOMBRES: Record<string, string> = {
   MX: 'México',
   CO: 'Colombia',

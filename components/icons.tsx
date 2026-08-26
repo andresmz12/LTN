@@ -224,3 +224,44 @@ export function IconSparkles(props: IconProps) {
     </svg>
   )
 }
+
+export function IconGrid(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <rect x="3" y="3" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13.5" y="3" width="7.5" height="7.5" rx="1.5" />
+      <rect x="3" y="13.5" width="7.5" height="7.5" rx="1.5" />
+      <rect x="13.5" y="13.5" width="7.5" height="7.5" rx="1.5" />
+    </svg>
+  )
+}
+
+export function IconUsers(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="9" cy="8" r="3.2" />
+      <path d="M2.8 20c.6-3.4 3.2-5.5 6.2-5.5s5.6 2.1 6.2 5.5" />
+      <path d="M16 8.2a3.2 3.2 0 1 1 3.6 3.17" />
+      <path d="M15 14.7c2.6.3 4.6 2.2 5.2 5.3" />
+    </svg>
+  )
+}
+
+export function IconMegaphone(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M3 10v4a1 1 0 0 0 1 1h2l1 5h2l-1-5h1l9 4V6l-9 4H4a1 1 0 0 0-1 1Z" />
+      <path d="M18 9.5a4 4 0 0 1 0 5" />
+    </svg>
+  )
+}
+
+export function IconTarget(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <circle cx="12" cy="12" r="8.5" />
+      <circle cx="12" cy="12" r="4.5" />
+      <circle cx="12" cy="12" r="0.6" fill="currentColor" />
+    </svg>
+  )
+}

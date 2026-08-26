@@ -17,7 +17,7 @@ export default async function TramitesPage({ params }: { params: { pais: string 
       where: { pais },
       orderBy: { titulo: 'asc' },
     }),
-    getAnunciosPara(pais, getEstadoCookie()),
+    getAnunciosPara(pais, getEstadoCookie(), 'PAIS_TRAMITES'),
   ])
 
   return (

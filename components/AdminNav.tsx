@@ -1,65 +1,68 @@
 'use client'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import {
+  IconGrid, IconSparkles, IconBuilding, IconClipboard, IconNewspaper,
+  IconHandshake, IconMegaphone, IconBriefcase, IconUsers,
+} from '@/components/icons'
 
 const navItems = [
-  { href: '/admin', label: 'Dashboard', icon: '📊', exact: true },
-  { href: '/admin/generar-contenido', label: 'Generar con IA', icon: '✨', gold: true },
-  { href: '/admin/consulados', label: 'Consulados', icon: '🏛' },
-  { href: '/admin/tramites', label: 'Trámites', icon: '📋' },
-  { href: '/admin/noticias', label: 'Noticias', icon: '📰' },
-  { href: '/admin/clientes', label: 'Patrocinadores', icon: '🤝' },
-  { href: '/admin/anuncios', label: 'Anuncios', icon: '📢' },
-  { href: '/admin/trabajos', label: 'Trabajos', icon: '💼' },
-  { href: '/admin/usuarios', label: 'Usuarios', icon: '👥' },
+  { href: '/admin', label: 'Dashboard', icon: IconGrid, exact: true },
+  { href: '/admin/generar-contenido', label: 'Generar con IA', icon: IconSparkles, gold: true },
+  { href: '/admin/consulados', label: 'Consulados', icon: IconBuilding },
+  { href: '/admin/tramites', label: 'Trámites', icon: IconClipboard },
+  { href: '/admin/noticias', label: 'Noticias', icon: IconNewspaper },
+  { href: '/admin/clientes', label: 'Patrocinadores', icon: IconHandshake },
+  { href: '/admin/anuncios', label: 'Anuncios', icon: IconMegaphone },
+  { href: '/admin/trabajos', label: 'Trabajos', icon: IconBriefcase },
+  { href: '/admin/usuarios', label: 'Usuarios', icon: IconUsers },
 ]
 
 export default function AdminNav() {
   const pathname = usePathname()
   return (
-    <aside style={{ background: '#1E2761' }} className="w-60 min-h-screen flex flex-col py-6 px-3 gap-1 shrink-0">
-      <Link href="/" className="flex items-center gap-2 px-3 mb-6">
-        <span className="text-2xl font-bold text-white">Compa</span>
-        <span className="text-xs text-blue-300 mt-1">Admin</span>
+    <aside className="w-60 min-h-screen flex flex-col py-6 px-3 gap-0.5 shrink-0 bg-brand-950">
+      <Link href="/" className="flex items-baseline gap-2 px-3 mb-6">
+        <span className="text-xl font-display font-semibold text-white">Compa</span>
+        <span className="text-[11px] text-brand-300 tracking-wide">Admin</span>
       </Link>
 
-      <div className="text-xs text-blue-400 uppercase tracking-widest px-3 mb-1">Contenido</div>
+      <div className="text-[11px] text-brand-400 uppercase tracking-widest px-3 mb-1">Contenido</div>
 
-      {navItems.map(({ href, label, icon, gold, exact }) => {
+      {navItems.map(({ href, label, icon: Icon, gold, exact }) => {
         const active = exact ? pathname === href : pathname.startsWith(href)
         return (
           <Link
             key={href}
             href={href}
-            className={`flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all ${
-              gold
-                ? active
-                  ? 'text-white'
-                  : 'text-amber-300 hover:text-white hover:bg-white/10'
-                : active
-                ? 'bg-white/20 text-white'
-                : 'text-blue-200 hover:bg-white/10 hover:text-white'
+            className={`flex items-center gap-2.5 px-3 py-2 rounded-md text-sm font-medium transition-colors ${
+              active
+                ? gold
+                  ? 'bg-accent-500 text-white'
+                  : 'bg-white/10 text-white'
+                : gold
+                ? 'text-accent-300 hover:text-white hover:bg-white/5'
+                : 'text-brand-200 hover:text-white hover:bg-white/5'
             }`}
-            style={gold && active ? { background: '#E8A33D' } : {}}
           >
-            <span className="text-base">{icon}</span>
+            <Icon className="w-4 h-4 shrink-0" />
             <span>{label}</span>
             {gold && (
-              <span className="ml-auto text-xs bg-white/20 px-1.5 py-0.5 rounded-full">IA</span>
+              <span className="ml-auto text-[10px] bg-white/15 px-1.5 py-0.5 rounded">IA</span>
             )}
           </Link>
         )
       })}
 
-      <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1">
-        <Link href="/" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
-          🌎 Ver Recursos Generales
+      <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1.5">
+        <Link href="/" className="block text-xs text-brand-300 hover:text-white transition py-1">
+          Ver Recursos Generales
         </Link>
-        <Link href="/patrocinadores" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
-          🤝 Ver Patrocinadores
+        <Link href="/patrocinadores" className="block text-xs text-brand-300 hover:text-white transition py-1">
+          Ver Patrocinadores
         </Link>
-        <Link href="/" className="flex items-center gap-2 text-xs text-blue-300 hover:text-white transition py-1">
-          ← Ver sitio
+        <Link href="/" className="block text-xs text-brand-400 hover:text-white transition py-1">
+          ← Volver al sitio
         </Link>
       </div>
     </aside>

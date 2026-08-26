@@ -17,7 +17,7 @@ export default async function NoticiasPage({ params }: { params: { pais: string 
       where: { publicado: true, paises: { has: pais } },
       orderBy: { publishedAt: 'desc' },
     }),
-    getAnunciosPara(pais, getEstadoCookie()),
+    getAnunciosPara(pais, getEstadoCookie(), 'PAIS_NOTICIAS'),
   ])
 
   return (

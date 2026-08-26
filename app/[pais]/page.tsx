@@ -20,7 +20,7 @@ export default async function PaisPage({ params }: { params: { pais: string } })
     prisma.consulado.findMany({ where: { pais }, take: 2, orderBy: { ciudad: 'asc' } }),
     prisma.tramite.findMany({ where: { pais }, take: 3, orderBy: { titulo: 'asc' } }),
     prisma.noticia.findMany({ where: { publicado: true, paises: { has: pais } }, take: 3, orderBy: { publishedAt: 'desc' } }),
-    getAnunciosPara(pais, estado),
+    getAnunciosPara(pais, estado, 'PAIS_RESUMEN'),
     estado ? prisma.consulado.findFirst({ where: { pais, estadoUS: estado } }) : Promise.resolve(null),
   ])
   const anuncio = anuncios[0] ?? null

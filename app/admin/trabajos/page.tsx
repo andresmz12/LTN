@@ -124,7 +124,7 @@ export default function AdminTrabajos() {
         <button
           onClick={openNew}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-          style={{ background: '#F96167' }}
+          style={{ background: '#96661c' }}
         >
           + Nuevo Trabajo
         </button>
@@ -136,7 +136,7 @@ export default function AdminTrabajos() {
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {trabajos.map((t: any) => (
-          <div key={t.id} className="bg-white rounded-2xl shadow-sm p-5">
+          <div key={t.id} className="bg-white rounded-lg border border-gray-200 p-5">
             <div className="flex items-start justify-between mb-3">
               <div className="flex-1 min-w-0 mr-2">
                 <h3 className="font-bold text-gray-800 text-sm truncate">{t.titulo}</h3>
@@ -282,7 +282,7 @@ export default function AdminTrabajos() {
                   </button>
                   <button type="submit"
                     className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                    style={{ background: '#F96167' }}>
+                    style={{ background: '#96661c' }}>
                     {editId ? 'Actualizar' : 'Crear'}
                   </button>
                 </div>

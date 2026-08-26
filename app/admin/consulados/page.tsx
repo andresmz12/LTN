@@ -75,7 +75,7 @@ export default function AdminConsulados() {
         <button
           onClick={openNew}
           className="flex items-center gap-2 px-5 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-          style={{ background: '#F96167' }}
+          style={{ background: '#96661c' }}
         >
           + Nuevo Consulado
         </button>
@@ -98,7 +98,7 @@ export default function AdminConsulados() {
       </div>
 
       {/* Table */}
-      <div className="bg-white rounded-2xl shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-gray-200 overflow-hidden">
         <table className="w-full text-sm">
           <thead>
             <tr style={{ background: '#F2F3F8' }} className="text-left text-gray-500">
@@ -202,7 +202,7 @@ export default function AdminConsulados() {
                   <button
                     type="submit"
                     className="flex-1 py-2.5 rounded-xl text-sm font-bold text-white transition-all hover:opacity-90"
-                    style={{ background: '#F96167' }}
+                    style={{ background: '#96661c' }}
                   >
                     {editId ? 'Actualizar' : 'Crear'}
                   </button>

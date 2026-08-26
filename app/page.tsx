@@ -47,7 +47,7 @@ export default async function Home() {
       where: { pais: 'GENERAL' },
       orderBy: { titulo: 'asc' },
     }).catch(() => []),
-    getAnunciosPara('GENERAL', estado),
+    getAnunciosPara('GENERAL', estado, 'INICIO'),
   ])
 
   type TramiteRow = (typeof tramites)[number]

@@ -120,6 +120,7 @@ model Anuncio {
   clienteId      String
   paisesTarget   String[]
   estadosTarget  String[]
+  ubicaciones    String[] @default([])
   activo         Boolean  @default(true)
   fechaInicio    DateTime @default(now())
   fechaFin       DateTime?
