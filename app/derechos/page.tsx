@@ -3,6 +3,12 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ShareButton from '@/components/ShareButton'
 import { IconShield, IconArrowRight } from '@/components/icons'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Conoce tus Derechos — Qué hacer si la policía o ICE te paran',
+  description: 'Tus derechos ante la policía o ICE, sin importar tu estatus migratorio: en la calle, en tu carro, si tocan tu puerta o si eres detenido.',
+}
 
 const SECCIONES = [
   {

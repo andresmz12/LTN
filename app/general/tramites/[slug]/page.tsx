@@ -6,6 +6,16 @@ import ShareButton from '@/components/ShareButton'
 import { IconGlobe, IconLink, IconArrowLeft } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { formatDate } from '@/lib/utils'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const tramite = await prisma.tramite.findUnique({ where: { slug: params.slug } }).catch(() => null)
+  if (!tramite || tramite.pais !== 'GENERAL') return {}
+  return {
+    title: `${tramite.titulo} — Recursos Generales`,
+    description: tramite.descripcion,
+  }
+}
 
 export default async function TramiteGeneralPage({ params }: { params: { slug: string } }) {
   const tramite = await prisma.tramite.findUnique({

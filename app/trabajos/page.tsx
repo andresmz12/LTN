@@ -5,6 +5,12 @@ import TrabajosFilters from '@/components/TrabajosFilters'
 import { IconBriefcase } from '@/components/icons'
 import { prisma } from '@/lib/db'
 import { getEstadoCookie } from '@/lib/location'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Trabajos para la comunidad latina en EE.UU.',
+  description: 'Ofertas de empleo por estado y categoría para la comunidad latina en Estados Unidos: construcción, limpieza, restaurantes, transporte y más.',
+}
 
 export default async function TrabajosPage({
   searchParams,

@@ -1,8 +1,14 @@
 import Link from 'next/link'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
-import { IconArrowLeft, IconScale, IconScroll, IconBanknote, IconHeartPulse, IconBookOpen, IconBank, IconHandshake, IconPhone, IconMail, IconGlobe } from '@/components/icons'
+import { IconArrowLeft, IconScale, IconScroll, IconBanknote, IconHeartPulse, IconBookOpen, IconBank, IconHandshake, IconPhone, IconMail, IconGlobe, IconTarget, IconUsers, IconClipboard } from '@/components/icons'
 import { prisma } from '@/lib/db'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Anúnciate en Compa — Llega a la comunidad latina en EE.UU.',
+  description: 'Anuncia tu negocio en Compa: consulados, trámites, noticias y trabajos para la comunidad latina en Estados Unidos, segmentado por país y estado.',
+}
 
 const TIPO_LABELS: Record<string, string> = {
   abogado: 'Abogado / Firma Legal',
@@ -25,15 +31,28 @@ const TIPO_ICONS: Record<string, (props: { className?: string }) => JSX.Element>
 }
 
 export default async function PatrocinadoresPage() {
-  const clientes = await prisma.cliente.findMany({
-    where: { activo: true },
-    include: {
-      anuncios: { where: { activo: true }, take: 1 },
-    },
-    orderBy: { createdAt: 'asc' },
-  }).catch(() => [])
+  const [clientes, consulados, tramites, noticias, trabajosActivos] = await Promise.all([
+    prisma.cliente.findMany({
+      where: { activo: true },
+      include: {
+        anuncios: { where: { activo: true }, take: 1 },
+      },
+      orderBy: { createdAt: 'asc' },
+    }).catch(() => []),
+    prisma.consulado.count().catch(() => 0),
+    prisma.tramite.count().catch(() => 0),
+    prisma.noticia.count({ where: { publicado: true } }).catch(() => 0),
+    prisma.empleo.count({ where: { activo: true } }).catch(() => 0),
+  ])
 
   const tipos: string[] = Array.from(new Set(clientes.map((c: any) => c.tipo as string)))
+
+  const stats = [
+    { label: 'Consulados', value: consulados, icon: IconTarget },
+    { label: 'Trámites verificados', value: tramites, icon: IconClipboard },
+    { label: 'Noticias publicadas', value: noticias, icon: IconGlobe },
+    { label: 'Trabajos activos', value: trabajosActivos, icon: IconUsers },
+  ]
 
   return (
     <>
@@ -48,6 +67,26 @@ export default async function PatrocinadoresPage() {
           <h1 className="text-3xl font-display font-bold text-gray-900 mb-2">Patrocinadores</h1>
           <p className="text-gray-500 max-w-2xl">
             Empresas y profesionales de confianza que apoyan a la comunidad latina en EE.UU.
+          </p>
+        </div>
+
+        {/* Números reales de la plataforma — vitrina para posibles anunciantes */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+          {stats.map((s) => (
+            <div key={s.label} className="bg-white rounded-lg border border-gray-200 p-5">
+              <s.icon className="w-5 h-5 text-brand-500 mb-2" />
+              <div className="text-2xl font-display font-semibold text-gray-900">{s.value.toLocaleString()}</div>
+              <div className="text-xs text-gray-500">{s.label}</div>
+            </div>
+          ))}
+        </div>
+        <div className="bg-brand-50 border border-brand-100 rounded-lg p-6 mb-10">
+          <h2 className="font-display font-semibold text-gray-900 mb-2">Segmenta tu anuncio por país y estado</h2>
+          <p className="text-sm text-gray-600 max-w-2xl">
+            Compa cubre 11 países de origen y todos los estados de EE.UU. Tu anuncio se puede mostrar solo a
+            la comunidad de un país específico, solo en ciertos estados, o incluso solo en páginas exactas del
+            sitio (la portada, un país en particular, Consulados, Trámites o Noticias) — así tu presupuesto
+            llega a quien realmente te interesa.
           </p>
         </div>
 
@@ -72,7 +111,7 @@ export default async function PatrocinadoresPage() {
                     {grupo.map((c: any) => {
                       const CardIcon = TIPO_ICONS[c.tipo] || IconHandshake
                       return (
-                      <div key={c.id} className="bg-white rounded-2xl shadow-sm border border-gray-100 p-6 flex flex-col hover:shadow-md hover:border-brand-100 transition">
+                      <div key={c.id} className="bg-white rounded-lg border border-gray-200 p-6 flex flex-col hover:border-brand-300 transition-colors">
                         {c.logoUrl ? (
                           <img src={c.logoUrl} alt={c.nombreEmpresa} className="h-12 object-contain mb-4 self-start" />
                         ) : (

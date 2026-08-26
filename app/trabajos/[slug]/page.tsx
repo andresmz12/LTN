@@ -6,6 +6,16 @@ import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft, IconMapPin, IconBriefcase, IconBanknote, IconMail, IconPhone, IconLink } from '@/components/icons'
 import { ESTADOS_US } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
+  const trabajo = await prisma.empleo.findUnique({ where: { slug: params.slug } }).catch(() => null)
+  if (!trabajo) return {}
+  return {
+    title: `${trabajo.titulo} en ${trabajo.empresa} — ${trabajo.estadoUS}`,
+    description: trabajo.descripcion,
+  }
+}
 
 function AplicarAction({ comoAplicar }: { comoAplicar: string }) {
   const value = comoAplicar.trim()

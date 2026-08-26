@@ -121,7 +121,7 @@ export default function Navbar({ pais }: { pais?: string }) {
           {session ? (
             <>
               {(session.user as any)?.role === 'admin' && (
-                <Link href="/admin" className="bg-accent-400 text-white px-2 py-1 rounded text-xs font-semibold">
+                <Link href="/admin" className="bg-accent-600 text-white px-2 py-1 rounded text-xs font-semibold">
                   Admin
                 </Link>
               )}

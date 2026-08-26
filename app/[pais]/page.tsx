@@ -9,6 +9,17 @@ import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, ESTADOS_US } from '@/lib/utils'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
 import { getEstadoCookie } from '@/lib/location'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { pais: string } }): Promise<Metadata> {
+  const pais = params.pais.toUpperCase()
+  if (!PAISES.includes(pais as any)) return {}
+  const nombre = PAIS_NOMBRES[pais]
+  return {
+    title: `${nombre} en EE.UU. — Consulados, trámites y noticias`,
+    description: `Consulados, trámites y noticias verificadas para la comunidad de ${nombre} en Estados Unidos. Encuentra el consulado más cercano a tu estado.`,
+  }
+}
 
 export default async function PaisPage({ params }: { params: { pais: string } }) {
   const pais = params.pais.toUpperCase()

@@ -6,6 +6,16 @@ import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, formatDate } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { pais: string; slug: string } }): Promise<Metadata> {
+  const noticia = await prisma.noticia.findUnique({ where: { slug: params.slug } }).catch(() => null)
+  if (!noticia || !noticia.publicado) return {}
+  return {
+    title: noticia.titulo,
+    description: noticia.resumen,
+  }
+}
 
 const CATEGORIA_COLORS: Record<string, string> = {
   'Inmigración': '#1d4ed8',

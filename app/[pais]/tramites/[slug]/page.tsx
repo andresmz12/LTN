@@ -6,6 +6,17 @@ import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
 import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
 import { prisma } from '@/lib/db'
+import type { Metadata } from 'next'
+
+export async function generateMetadata({ params }: { params: { pais: string; slug: string } }): Promise<Metadata> {
+  const tramite = await prisma.tramite.findUnique({ where: { slug: params.slug } }).catch(() => null)
+  if (!tramite) return {}
+  const pais = params.pais.toUpperCase()
+  return {
+    title: `${tramite.titulo} — ${PAIS_NOMBRES[pais] || pais} en EE.UU.`,
+    description: tramite.descripcion,
+  }
+}
 
 export default async function TramiteDetailPage({ params }: { params: { pais: string; slug: string } }) {
   const pais = params.pais.toUpperCase()
