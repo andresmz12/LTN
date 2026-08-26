@@ -6,13 +6,21 @@ import { useRouter, usePathname } from 'next/navigation'
 import { useEffect, useRef, useState } from 'react'
 import { PAIS_NOMBRES, PAIS_FLAGS, PAISES } from '@/lib/utils'
 import Logo from '@/components/Logo'
-import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper, IconBriefcase, IconShield } from '@/components/icons'
+import { IconChevronDown, IconArrowLeft, IconBuilding, IconClipboard, IconNewspaper, IconShield, IconMenu, IconX } from '@/components/icons'
+
+const NAV_LINKS = [
+  { href: '/', label: 'Recursos Generales', match: (p: string | null) => p === '/' || !!p?.startsWith('/general') },
+  { href: '/derechos', label: 'Derechos', match: (p: string | null) => p === '/derechos' },
+  { href: '/trabajos', label: 'Trabajos', match: (p: string | null) => !!p?.startsWith('/trabajos') },
+  { href: '/patrocinadores', label: 'Patrocinadores', match: (p: string | null) => p === '/patrocinadores' },
+]
 
 export default function Navbar({ pais }: { pais?: string }) {
   const { data: session } = useSession()
   const pathname = usePathname()
   const router = useRouter()
   const [paisMenuOpen, setPaisMenuOpen] = useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const paisMenuRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
@@ -23,32 +31,30 @@ export default function Navbar({ pais }: { pais?: string }) {
     return () => document.removeEventListener('mousedown', handleClickOutside)
   }, [])
 
+  useEffect(() => { setMobileMenuOpen(false) }, [pathname])
+
   return (
     <nav className="bg-white border-b border-gray-200 sticky top-0 z-40">
       {/* Top bar */}
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between gap-2 sm:gap-4">
         <Logo />
 
-        {/* Main nav — scrolls horizontally below sm instead of pushing "Entrar" off-screen.
-            Safe to clip overflow here only below sm: the país dropdown uses `fixed` positioning
-            on mobile (escapes ancestor clipping) and switches to `sm:absolute` at sm+, where we
-            restore overflow-visible so the dropdown panel isn't cut off. */}
-        <div className="flex items-center gap-0.5 sm:gap-1 text-xs sm:text-sm overflow-x-auto sm:overflow-visible min-w-0 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        {/* Desktop nav */}
+        <div className="hidden sm:flex items-center gap-1 text-sm">
           <Link
             href="/"
-            className={`px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+            className={`px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
               pathname === '/' || pathname?.startsWith('/general')
                 ? 'bg-brand-700 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <span className="hidden sm:inline">Recursos Generales</span>
-            <span className="sm:hidden">Recursos</span>
+            Recursos Generales
           </Link>
 
           <Link
             href="/derechos"
-            className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
               pathname === '/derechos'
                 ? 'bg-accent-500 text-white'
                 : 'text-accent-700 hover:bg-accent-50'
@@ -58,25 +64,24 @@ export default function Navbar({ pais }: { pais?: string }) {
             Derechos
           </Link>
 
-          <div ref={paisMenuRef} className="relative shrink-0">
+          <div ref={paisMenuRef} className="relative">
             <button
               type="button"
               onClick={() => setPaisMenuOpen((v) => !v)}
-              className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
+              className={`flex items-center gap-1 px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
                 pais
                   ? 'bg-brand-700 text-white'
                   : 'text-gray-600 hover:bg-gray-100'
               }`}
             >
-              <span className="hidden sm:inline">Info por país</span>
-              <span className="sm:hidden">Países</span>
+              Info por país
               <IconChevronDown
                 className={`w-3.5 h-3.5 transition-transform ${paisMenuOpen ? 'rotate-180' : ''}`}
               />
             </button>
 
             {paisMenuOpen && (
-              <div className="fixed inset-x-4 top-16 z-50 sm:absolute sm:inset-x-auto sm:top-auto sm:left-0 sm:mt-2 sm:w-72 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 grid grid-cols-2 gap-1 max-h-80 overflow-y-auto">
+              <div className="absolute left-0 mt-2 w-72 bg-white border border-gray-100 rounded-2xl shadow-xl p-3 grid grid-cols-2 gap-1 max-h-80 overflow-y-auto z-50">
                 {PAISES.map((p) => (
                   <button
                     key={p}
@@ -94,19 +99,18 @@ export default function Navbar({ pais }: { pais?: string }) {
 
           <Link
             href="/trabajos"
-            className={`flex items-center gap-1 px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+            className={`flex items-center gap-1 px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
               pathname?.startsWith('/trabajos')
                 ? 'bg-brand-700 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
             }`}
           >
-            <IconBriefcase className="w-3.5 h-3.5 sm:hidden" />
             Trabajos
           </Link>
 
           <Link
             href="/patrocinadores"
-            className={`hidden sm:block px-2 sm:px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap shrink-0 ${
+            className={`px-3 py-1.5 rounded-lg font-medium transition whitespace-nowrap ${
               pathname === '/patrocinadores'
                 ? 'bg-brand-700 text-white'
                 : 'text-gray-600 hover:bg-gray-100'
@@ -116,26 +120,92 @@ export default function Navbar({ pais }: { pais?: string }) {
           </Link>
         </div>
 
-        {/* Auth */}
-        <div className="flex items-center gap-2 text-xs sm:text-sm shrink-0">
-          {session ? (
-            <>
-              {(session.user as any)?.role === 'admin' && (
-                <Link href="/admin" className="bg-accent-600 text-white px-2 py-1 rounded text-xs font-semibold">
-                  Admin
-                </Link>
-              )}
-              <button onClick={() => signOut({ callbackUrl: '/' })} className="text-gray-500 hover:text-gray-800">
-                Salir
-              </button>
-            </>
-          ) : (
-            <Link href="/auth/login" className="text-gray-600 hover:text-brand-700 font-medium">
-              Entrar
-            </Link>
-          )}
+        {/* Auth (desktop) + hamburger (mobile) */}
+        <div className="flex items-center gap-3 text-xs sm:text-sm shrink-0">
+          <div className="hidden sm:flex items-center gap-2">
+            {session ? (
+              <>
+                {(session.user as any)?.role === 'admin' && (
+                  <Link href="/admin" className="bg-accent-600 text-white px-2 py-1 rounded text-xs font-semibold">
+                    Admin
+                  </Link>
+                )}
+                <button onClick={() => signOut({ callbackUrl: '/' })} className="text-gray-500 hover:text-gray-800">
+                  Salir
+                </button>
+              </>
+            ) : (
+              <Link href="/auth/login" className="text-gray-600 hover:text-brand-700 font-medium">
+                Entrar
+              </Link>
+            )}
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setMobileMenuOpen((v) => !v)}
+            className="sm:hidden text-gray-600 p-1 -mr-1"
+            aria-label="Abrir menú"
+          >
+            {mobileMenuOpen ? <IconX className="w-6 h-6" /> : <IconMenu className="w-6 h-6" />}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {mobileMenuOpen && (
+        <div className="sm:hidden border-t border-gray-100 px-4 py-3 space-y-1 max-h-[75vh] overflow-y-auto">
+          {NAV_LINKS.map((l) => (
+            <Link
+              key={l.href}
+              href={l.href}
+              className={`block px-3 py-2.5 rounded-lg font-medium text-sm ${
+                l.match(pathname)
+                  ? 'bg-brand-700 text-white'
+                  : 'text-gray-700 hover:bg-gray-50'
+              }`}
+            >
+              {l.label}
+            </Link>
+          ))}
+
+          <div className="pt-2 mt-2 border-t border-gray-100">
+            <p className="px-3 pb-1 text-xs font-semibold text-gray-400 uppercase tracking-wide">Info por país</p>
+            <div className="grid grid-cols-2 gap-1">
+              {PAISES.map((p) => (
+                <button
+                  key={p}
+                  type="button"
+                  onClick={() => router.push(`/${p}`)}
+                  className="flex items-center gap-2 px-3 py-2 rounded-lg text-left hover:bg-gray-50"
+                >
+                  <span className="text-lg shrink-0">{PAIS_FLAGS[p]}</span>
+                  <span className="text-sm font-medium text-gray-800 truncate">{PAIS_NOMBRES[p]}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="pt-3 mt-2 border-t border-gray-100">
+            {session ? (
+              <div className="flex items-center justify-between px-3">
+                {(session.user as any)?.role === 'admin' && (
+                  <Link href="/admin" className="bg-accent-600 text-white px-3 py-1.5 rounded text-xs font-semibold">
+                    Admin
+                  </Link>
+                )}
+                <button onClick={() => signOut({ callbackUrl: '/' })} className="text-gray-500 text-sm">
+                  Salir
+                </button>
+              </div>
+            ) : (
+              <Link href="/auth/login" className="block px-3 py-2 text-brand-700 font-semibold text-sm">
+                Entrar
+              </Link>
+            )}
+          </div>
+        </div>
+      )}
 
       {/* Country sub-nav — only when inside a country */}
       {pais && (
