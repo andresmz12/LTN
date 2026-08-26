@@ -97,7 +97,11 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
           )}
 
           <div
-            className="prose prose-sm max-w-none text-gray-700 mb-8"
+            className="text-sm text-gray-700 leading-relaxed space-y-3 mb-8
+              [&>h2]:text-base [&>h2]:font-bold [&>h2]:text-gray-800 [&>h2]:mt-4 [&>h2]:mb-2
+              [&>ul]:list-disc [&>ul]:pl-5 [&>ul]:space-y-1
+              [&>ol]:list-decimal [&>ol]:pl-5 [&>ol]:space-y-1
+              [&>p]:leading-relaxed"
             dangerouslySetInnerHTML={{ __html: tramite.contenidoHtml }}
           />
 

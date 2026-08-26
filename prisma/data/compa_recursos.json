@@ -1190,5 +1190,124 @@
         "url": "https://www.ftc.gov/es"
       }
     ]
+  },
+  {
+    "slug": "identificacion-estatal-sin-ssn",
+    "categoria": "Identidad y Documentos",
+    "prioridad": "alto",
+    "pais": "GENERAL",
+    "titulo": "Cómo obtener una identificación (State ID) o licencia sin número de Seguro Social",
+    "resumen": "19 estados y Washington D.C. permiten obtener una licencia de conducir o identificación estatal sin número de Seguro Social, usando en su lugar documentos como ITIN, pasaporte extranjero o matrícula consular. Tener una identificación válida facilita abrir cuentas bancarias, alquilar vivienda y evitar problemas con la policía.",
+    "requisitos": [
+      "Comprobante de identidad: pasaporte de tu país, matrícula consular o cédula",
+      "Comprobante de residencia en el estado (recibo de servicios, contrato de renta)",
+      "En la mayoría de los casos, no se pide comprobante de estatus migratorio ni SSN"
+    ],
+    "pasos": [
+      "Verifica si tu estado es uno de los que emite licencia/ID sin SSN: California, Colorado, Connecticut, Delaware, Hawái, Illinois, Maryland, Massachusetts, Minnesota, Nevada, Nueva Jersey, Nuevo México, Nueva York, Oregón, Rhode Island, Utah, Vermont, Virginia, Washington y D.C.",
+      "Reúne dos documentos: uno de identidad (pasaporte, matrícula consular) y uno de domicilio.",
+      "Agenda cita en el DMV de tu estado — muchos DMV tienen alta demanda, agenda con anticipación.",
+      "Presenta los documentos y realiza el examen de manejo si aplica (para licencia de conducir).",
+      "Recibe tu licencia o ID — usualmente llega marcada como 'Federal Limits Apply' o similar."
+    ],
+    "costo": "Varía por estado, generalmente entre $20 y $50 USD.",
+    "tiempoEstimado": "El trámite en el DMV toma de 30 minutos a 2 horas; la tarjeta llega por correo en 2-4 semanas.",
+    "diferencias_por_estado": "Cada estado tiene su propia lista de documentos aceptados y su propio proceso — consulta el sitio oficial del DMV de tu estado antes de ir. Si tu estado no está en la lista, no podrás obtener licencia/ID sin SSN por ahora.",
+    "advertencias": [
+      "Estas licencias NO cumplen con REAL ID: no sirven para abordar vuelos domésticos ni entrar a edificios federales — para eso necesitas otro documento de identidad como el pasaporte.",
+      "La mayoría de estos estados limita por ley cuándo el DMV puede compartir tus datos con ICE, pero la política exacta varía — infórmate sobre la de tu estado.",
+      "Ten cuidado con sitios o 'gestores' que cobran de más por 'ayudarte' a sacar la cita — el trámite directo en el DMV oficial no debería costar más que la tarifa estatal."
+    ],
+    "fechaVerificacion": "2026-08-01",
+    "nivelVolatilidad": "medio",
+    "fuentes": [
+      {
+        "nombre": "NILC — Acceso a licencias de conducir por estado",
+        "url": "https://media.nilc.org/wp-content/uploads/2021/09/USC-nonUSC-access-to-DLs-Available-to-Undoc-Residents.pdf"
+      },
+      {
+        "nombre": "Immigrants Rising — Qué necesitas saber sobre REAL ID",
+        "url": "https://immigrantsrising.org/resource/the-real-id-what-to-know/"
+      }
+    ]
+  },
+  {
+    "slug": "estafas-de-trabajo-como-identificarlas",
+    "categoria": "Protección al Consumidor",
+    "prioridad": "alto",
+    "pais": "GENERAL",
+    "titulo": "Cómo identificar y evitar estafas de trabajo (falsos reclutadores)",
+    "resumen": "Las estafas de trabajo fingen ser ofertas de empleos remotos o bien pagados de empresas reales, y buscan robarte dinero o tu información personal. La FTC advierte que estas estafas han crecido con mensajes de texto y WhatsApp que parecen ofertas legítimas.",
+    "requisitos": [
+      "Ninguno — esta guía es para proteger tu información, no un trámite"
+    ],
+    "pasos": [
+      "Desconfía de mensajes inesperados por texto, WhatsApp o Telegram ofreciendo trabajo — los empleadores reales casi nunca contactan así.",
+      "Nunca pagues por 'materiales de entrenamiento', equipo o un 'certificado' para conseguir el trabajo — un empleo real nunca te cobra por contratarte.",
+      "Sospecha si te piden depositar un cheque y luego devolver parte del dinero — es una de las estafas más comunes.",
+      "Verifica la empresa buscando su sitio oficial y llamando directamente, no a través del número que te dieron.",
+      "Si ya caíste, reporta el fraude en ReportFraud.ftc.gov o llamando al 1-877-382-4357 (disponible en tu idioma)."
+    ],
+    "costo": "Gratis reportar. Un trabajo real nunca te pide dinero para contratarte.",
+    "tiempoEstimado": "N/A — la prevención es inmediata; un reporte a la FTC toma unos 15 minutos.",
+    "diferencias_por_estado": "El fraude laboral se reporta a nivel federal (FTC), sin importar el estado donde ocurra.",
+    "advertencias": [
+      "Una táctica nueva en 2026: te piden responder 'SÍ' o 'INTERESADO' a un mensaje en vez de dar clic en un enlace, para hacerte sentir que ya hay una conversación real.",
+      "Nunca compartas tu número de Seguro Social, ITIN o datos bancarios en una entrevista por chat antes de confirmar que la empresa es real.",
+      "Si es 'demasiado bueno para ser verdad' (pago muy alto por poco trabajo, sin entrevista), probablemente es una estafa."
+    ],
+    "fechaVerificacion": "2026-08-01",
+    "nivelVolatilidad": "medio",
+    "fuentes": [
+      {
+        "nombre": "FTC — Job Scams (Consumer Advice)",
+        "url": "https://consumer.ftc.gov/all-scams/job-scams"
+      },
+      {
+        "nombre": "FTC — That job offer text is probably a scam",
+        "url": "https://consumer.ftc.gov/consumer-alerts/2026/04/job-offer-text-probably-scam"
+      }
+    ]
+  },
+  {
+    "slug": "visa-u-visa-t-victimas-crimen",
+    "categoria": "Migración y Seguridad",
+    "prioridad": "importante",
+    "pais": "GENERAL",
+    "titulo": "Visa U y Visa T: protección para víctimas de crimen o trata de personas, sin importar tu estatus",
+    "resumen": "Si fuiste víctima de un crimen grave (Visa U) o de trata de personas (Visa T) en Estados Unidos, puedes calificar para protección migratoria y permiso de trabajo — sin importar tu estatus actual. Fueron creadas específicamente para proteger a víctimas indocumentadas que cooperan con la policía.",
+    "requisitos": [
+      "Visa U: haber sido víctima de un crimen calificado (violencia doméstica, asalto, trata, entre otros) ocurrido en EE.UU.",
+      "Visa U: haber sufrido abuso físico o mental sustancial",
+      "Visa U: tener información sobre el crimen y estar dispuesto a colaborar con la policía o fiscalía (certificación policial Formulario I-918 Suplemento B)",
+      "Visa T: haber sido víctima de una forma severa de trata de personas — generalmente no exige colaborar con la investigación"
+    ],
+    "pasos": [
+      "Busca primero a un abogado de inmigración o una organización de ayuda legal — este trámite es complejo y los errores pueden costarte la solicitud.",
+      "Para la Visa U: solicita la certificación policial (Formulario I-918 Suplemento B) ante la agencia que investigó el crimen.",
+      "Reúne evidencia del abuso sufrido (reportes médicos, psicológicos, testimonios).",
+      "Presenta el Formulario I-918 (Visa U) o el paquete correspondiente a la Visa T ante USCIS, junto con el I-765 para permiso de trabajo.",
+      "Espera la 'determinación de buena fe' (Bona Fide Determination) que te da permiso de trabajo temporal mientras tu caso avanza en la fila."
+    ],
+    "costo": "La solicitud en sí no tiene costo (fee waiver disponible); los honorarios de abogado varían.",
+    "tiempoEstimado": "El límite es de 10,000 Visas U por año, con una fila de más de 200,000 casos pendientes. La 'determinación de buena fe' (que da permiso de trabajo) suele llegar en menos de 19 meses; la visa final puede tardar varios años más en la mayoría de los casos.",
+    "diferencias_por_estado": "El trámite es federal (USCIS), pero la certificación policial depende de la cooperación de la policía o fiscalía local de tu condado — algunas jurisdicciones son más receptivas que otras.",
+    "advertencias": [
+      "Cuidado con 'notarios' o consultores no autorizados que cobran por tramitar esto — solo un abogado de inmigración acreditado o una organización reconocida debería ayudarte con la Visa U/T.",
+      "Aunque el trámite final puede tardar años, la 'determinación de buena fe' te puede dar protección contra deportación y permiso de trabajo mucho antes — no asumas que no vale la pena aplicar por la espera.",
+      "La Visa T generalmente no requiere que colabores con la investigación policial, a diferencia de la Visa U — si tienes miedo de ir a la policía, pregúntale a un abogado si calificas para la T en cambio."
+    ],
+    "fechaVerificacion": "2026-08-01",
+    "nivelVolatilidad": "alto",
+    "fuentes": [
+      {
+        "nombre": "USCIS — Víctimas de Actos Criminales: Estatus U de No Inmigrante",
+        "url": "https://www.uscis.gov/humanitarian/victims-of-criminal-activity-u-nonimmigrant-status"
+      },
+      {
+        "nombre": "USCIS — Víctimas de la Trata de Personas, Estatus T",
+        "url": "https://www.uscis.gov/humanitarian/victims-of-human-trafficking-and-other-crimes/victims-of-human-trafficking-t-nonimmigrant-status/questions-and-answers-victims-of-human-trafficking-t-nonimmigrant-status"
+      }
+    ]
   }
 ]
