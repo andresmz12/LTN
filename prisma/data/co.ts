@@ -527,6 +527,431 @@ export const tramitesCO = [
     categoria: "Dinero e Impuestos",
     prioridad: "importante",
   },
+
+  // ============================================================
+  // VIVIENDA
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Cómo Rentar un Apartamento sin Historial de Crédito en EE.UU.",
+    slug: "alquilar-sin-historial-credito-eeuu-co",
+    descripcion: "Estrategias para colombianos recién llegados que no tienen historial crediticio estadounidense y necesitan alquilar vivienda.",
+    contenidoHtml: "<p>Muchos colombianos recién llegados a EE.UU. no tienen historial de crédito (credit score) porque este se construye únicamente dentro del sistema financiero estadounidense; el historial crediticio de Colombia no se traslada. Los arrendadores suelen pedir un puntaje mínimo (frecuentemente 620-650) al revisar la solicitud de arriendo, lo que puede ser un obstáculo real para quienes acaban de llegar.</p><p>Existen alternativas usadas comúnmente en el mercado de alquiler estadounidense: (1) ofrecer un depósito de seguridad más alto de lo habitual a cambio de omitir el chequeo de crédito; (2) conseguir un cofirmante o garante (co-signer) con buen historial, a menudo un familiar o amigo con estatus migratorio regular y empleo estable en EE.UU.; (3) presentar cartas de referencia de arrendadores anteriores en Colombia o EE.UU., o cartas laborales que demuestren ingresos estables; (4) buscar propietarios independientes (no grandes administradoras) que evalúan caso por caso en lugar de aplicar un puntaje mínimo automático; y (5) usar servicios que reportan el pago de arriendo a las agencias de crédito para empezar a construir historial una vez ya rentando.</p><p>No existe un requisito federal de estatus migratorio para alquilar vivienda: un arrendador privado generalmente puede rentar a cualquier persona independientemente de su estatus migratorio (la verificación de estatus migratorio no es un requisito estándar de arrendamiento, a diferencia de la vivienda pública subsidiada, que sí tiene reglas de elegibilidad distintas). Sin embargo, las prácticas varían por arrendador y estado, así que conviene informarse localmente. Información de orientación general verificada en fuentes de HUD y organizaciones de defensa del inquilino al 26 ago 2026; las prácticas específicas de cada mercado de vivienda pueden variar.</p>",
+    pasos: [
+      "Reúne cartas de referencia laboral y comprobantes de ingresos (nómina, cartas de empleador)",
+      "Busca un cofirmante (co-signer) con buen historial crediticio si es posible",
+      "Considera ofrecer un depósito de seguridad mayor al estándar como garantía adicional",
+      "Busca propietarios independientes o pequeños, que suelen tener más flexibilidad que grandes administradoras",
+      "Pregunta si aceptan servicios de verificación alternativa de ingresos en vez de solo el credit score",
+    ],
+    documentosNecesarios: [
+      "Identificación oficial (pasaporte o ID)",
+      "Comprobantes de ingresos o carta laboral",
+      "Referencias de arrendadores anteriores (si las hay)",
+      "Depósito de seguridad",
+    ],
+    tiempoPromedio: "Variable según el mercado de vivienda local",
+    costo: "Variable (depósito de seguridad suele ser de 1 a 2 meses de renta)",
+    linksExternos: [
+      { texto: "HUD - Renting", url: "https://www.hud.gov/topics/rental_assistance" },
+      { texto: "Consumer Financial Protection Bureau - Renting a home", url: "https://www.consumerfinance.gov/consumer-tools/renting-a-home/" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Derechos del Inquilino en EE.UU.: Lo que Todo Colombiano Debe Saber",
+    slug: "derechos-inquilino-eeuu-co",
+    descripcion: "Protecciones básicas del inquilino en EE.UU. (federales y ejemplos estatales) — varían significativamente según el estado y la ciudad.",
+    contenidoHtml: "<p>Las leyes de arrendamiento en EE.UU. son mayoritariamente estatales y municipales, no federales, por lo que los derechos concretos de un inquilino colombiano varían de forma importante según dónde viva. Dicho esto, hay protecciones generales reconocidas ampliamente: el derecho a una vivienda habitable (con calefacción, agua y estructura seguras, la llamada 'warranty of habitability' en la mayoría de estados), el derecho a recibir un aviso previo antes de que el arrendador entre a la unidad (salvo emergencia), y el derecho a no sufrir discriminación por raza, origen nacional, idioma o composición familiar bajo la Ley de Vivienda Justa federal (Fair Housing Act), que aplica sin importar el estatus migratorio del inquilino.</p><p>Como ejemplo de variación estatal: en Florida (con alta población colombiana) el propietario debe devolver el depósito o notificar por escrito los motivos de retención dentro de un plazo determinado por el estatuto estatal (Florida Statutes Chapter 83), y los desalojos deben tramitarse ante un juzgado (no se permite el 'self-help eviction', es decir, cambiar la cerradura o cortar servicios sin orden judicial). En Nueva York y Nueva Jersey (también con alta población colombiana) existen protecciones adicionales, incluyendo, en ciudades como Nueva York, control de rentas en ciertos edificios y procesos de desalojo con mayores garantías procesales para el inquilino. Estas son ilustraciones generales y no sustituyen asesoría legal local: la ley exacta cambia por estado y ciudad, por lo que se recomienda verificar con la oficina de asistencia legal (legal aid) del condado de residencia.</p><p>El estatus migratorio del inquilino generalmente no es relevante para hacer valer estos derechos: un inquilino indocumentado puede acudir a corte de vivienda y exigir protecciones igual que cualquier otro inquilino, aunque el temor a represalias migratorias es una preocupación real que las organizaciones de asistencia legal para inquilinos suelen conocer y saber manejar.</p>",
+    pasos: [
+      "Identifica la ley de arrendamiento de tu estado y ciudad específica (varía mucho)",
+      "Guarda por escrito toda comunicación con el arrendador (correos, mensajes de texto)",
+      "Si hay un problema de habitabilidad, notifica por escrito y guarda copia",
+      "Busca asistencia legal gratuita (legal aid) de tu condado si el arrendador no responde o amenaza con desalojo informal",
+    ],
+    documentosNecesarios: [
+      "Contrato de arrendamiento",
+      "Comunicaciones con el arrendador",
+      "Fotos o evidencia de problemas de habitabilidad (si aplica)",
+    ],
+    tiempoPromedio: "No aplica (información de referencia)",
+    costo: "Gratuito (la asistencia legal para inquilinos de bajos ingresos suele ser gratuita)",
+    linksExternos: [
+      { texto: "HUD - Tenant Rights, Laws and Protections by State", url: "https://www.hud.gov/topics/rental_assistance/tenantrights" },
+      { texto: "HUD - Fair Housing: Rights and Obligations", url: "https://www.hud.gov/stat/fheo/rights-obligations" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Qué Hacer si Recibes una Notificación de Desalojo (Eviction)",
+    slug: "desalojo-que-hacer-eeuu-co",
+    descripcion: "Pasos inmediatos ante una notificación de desalojo en EE.UU., y por qué nunca se debe ignorar una citación judicial.",
+    contenidoHtml: "<p>En prácticamente todo EE.UU., un arrendador no puede desalojar a un inquilino por su cuenta (cambiando la cerradura, sacando sus pertenencias o cortando servicios públicos): debe presentar una demanda de desalojo ante un juzgado y obtener una orden judicial, un proceso que suele tomar semanas. Si un colombiano recibe una notificación de desalojo (a veces llamada 'notice to quit' o 'notice to vacate'), lo primero es leerla con cuidado: indica el motivo alegado (falta de pago, incumplimiento del contrato, fin del contrato, etc.) y el plazo para responder o desocupar.</p><p>Es un error común —y muy costoso— ignorar la citación judicial (summons) por miedo, ya sea al costo del proceso o por preocupación migratoria: si el inquilino no se presenta a la audiencia, el juzgado casi siempre falla automáticamente a favor del arrendador (default judgment), perdiendo la oportunidad de presentar defensas válidas (por ejemplo, que el arrendador no mantuvo la vivienda habitable, que el aviso no cumplió el plazo legal, o que hubo represalia por una queja previa). El estatus migratorio del inquilino no es, en general, un asunto que el juzgado de vivienda (housing court) esté evaluando ni reportando a otras autoridades — es un proceso civil de vivienda, distinto de un proceso migratorio — pero conviene confirmar esto con un abogado de asistencia legal local, ya que las prácticas judiciales varían.</p><p>La mayoría de condados en EE.UU. tienen programas de asistencia legal gratuita para inquilinos en riesgo de desalojo (algunos financiados por HUD u organizaciones locales), y varias ciudades han implementado 'derecho a abogado' (right to counsel) en casos de desalojo. Buscar ayuda apenas se recibe la notificación —no esperar a la fecha de la audiencia— aumenta significativamente las probabilidades de encontrar una solución (plan de pago, tiempo adicional, o desestimación del caso).</p>",
+    pasos: [
+      "Lee la notificación completa: motivo alegado y plazo para responder",
+      "No ignores ninguna citación judicial (summons) — siempre preséntate o responde por escrito",
+      "Contacta de inmediato a la oficina de asistencia legal (legal aid) de tu condado o ciudad",
+      "Reúne evidencia de pagos de renta y comunicaciones con el arrendador",
+      "Asiste a la audiencia programada o solicita representación legal antes de esa fecha",
+    ],
+    documentosNecesarios: [
+      "Notificación de desalojo recibida",
+      "Contrato de arrendamiento",
+      "Comprobantes de pago de renta",
+    ],
+    tiempoPromedio: "El proceso judicial de desalojo puede tomar de varias semanas a meses según el estado",
+    costo: "La asistencia legal para inquilinos de bajos ingresos suele ser gratuita a través de legal aid",
+    linksExternos: [
+      { texto: "HUD - Eviction Prevention / Tenant Protections", url: "https://www.hud.gov/topics/avoiding_foreclosure/tenants" },
+      { texto: "LawHelp.org (directorio de asistencia legal gratuita por estado)", url: "https://www.lawhelp.org/" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "critico",
+  },
+
+  // ============================================================
+  // SALUD
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Clínicas Comunitarias (FQHC): Atención Médica sin Seguro y por Escala Móvil",
+    slug: "clinicas-comunitarias-fqhc-co",
+    descripcion: "Cómo encontrar centros de salud comunitarios federalmente calificados (FQHC) que atienden sin importar el estatus migratorio ni la capacidad de pago.",
+    contenidoHtml: "<p>Los Centros de Salud Federalmente Calificados (Federally Qualified Health Centers, FQHC) son clínicas financiadas en parte por el gobierno federal (a través de HRSA, la Health Resources and Services Administration) que atienden a cualquier persona sin importar su capacidad de pago o su estatus migratorio. Cobran según una escala móvil basada en los ingresos del paciente (sliding fee scale), por lo que quienes no tienen seguro médico —una situación común entre colombianos recién llegados, sobre todo con TPS, asilo pendiente o sin estatus regular— pueden recibir atención primaria, dental, de salud mental y otros servicios a un costo muy reducido o mínimo.</p><p>El buscador oficial 'Find a Health Center' (findahealthcenter.hrsa.gov), administrado por HRSA, permite localizar el FQHC más cercano por dirección o código postal. Estos centros no reportan el estatus migratorio a otras agencias con fines de control migratorio, ya que su función es exclusivamente de atención médica; suelen contar con personal bilingüe español-inglés e intérpretes en muchas áreas con alta población latina.</p>",
+    pasos: [
+      "Ingresa a findahealthcenter.hrsa.gov y busca por tu código postal",
+      "Llama al centro más cercano para preguntar por la escala móvil de tarifas y si necesitas cita previa",
+      "Lleva un comprobante de ingresos si lo tienes (aunque muchos centros atienden sin exigirlo estrictamente)",
+      "Pregunta si el centro ofrece servicios de salud mental, dental y odontología pediátrica en el mismo lugar",
+    ],
+    documentosNecesarios: [
+      "Identificación (no siempre indispensable; varía por centro)",
+      "Comprobante de ingresos, si se tiene, para calcular la tarifa según escala móvil",
+    ],
+    tiempoPromedio: "Varía según el centro y la demanda local",
+    costo: "Escala móvil según ingresos; puede ser muy bajo o gratuito para quienes no tienen ingresos",
+    linksExternos: [
+      { texto: "Find a Health Center - HRSA", url: "https://findahealthcenter.hrsa.gov/" },
+      { texto: "HRSA - ¿Soy elegible? (en español)", url: "https://www.hrsa.gov/es/node/221" },
+    ],
+    categoria: "Salud",
+    prioridad: "critico",
+  },
+  {
+    pais: "CO",
+    titulo: "Medicaid de Emergencia: Qué Cubre y Cómo Varía por Estado",
+    slug: "medicaid-emergencia-co",
+    descripcion: "Explicación de Medicaid de emergencia para inmigrantes sin estatus regular, y por qué el alcance de la cobertura depende del estado donde se viva.",
+    contenidoHtml: "<p>Medicaid de emergencia es una cobertura federal limitada que existe desde 1986 y que puede pagar la atención de una condición médica de emergencia (una que pone en riesgo la vida o una función corporal) sin importar el estatus migratorio del paciente, siempre que cumpla los demás requisitos de ingresos de Medicaid en su estado. No cubre atención preventiva ni de rutina —solo la emergencia puntual—, y generalmente incluye la atención de parto como una emergencia cubierta en la mayoría de estados.</p><p>Más allá de esta cobertura federal mínima, algunos estados han creado programas propios, financiados con fondos estatales (no federales), que amplían la cobertura de salud a poblaciones sin estatus migratorio regular más allá de la emergencia —por ejemplo, cobertura prenatal completa, cobertura pediátrica, o programas para adultos de bajos ingresos independientemente del estatus—. California y Nueva York son ejemplos de estados que han ampliado este tipo de cobertura en distintos grados; otros estados no ofrecen nada más allá del mínimo federal de emergencia. Esto significa que la respuesta a 'qué cubre Medicaid para inmigrantes sin papeles' depende fuertemente del estado de residencia, y la información cambia con cada ciclo legislativo estatal, por lo que se recomienda verificar directamente con la oficina de Medicaid del estado o con un navegador de salud (health navigator) local.</p><p>Información general verificada en KFF (Kaiser Family Foundation) y Medicaid.gov al 26 ago 2026; sujeta a cambios según legislación estatal y federal.</p>",
+    pasos: [
+      "Si tienes una emergencia médica, acude a la sala de emergencias — por ley (EMTALA) deben atenderte sin importar tu capacidad de pago o estatus migratorio",
+      "Después de la atención, pregunta en el hospital por la solicitud de Medicaid de Emergencia si no tienes seguro",
+      "Consulta con la oficina de Medicaid de tu estado o un navegador de salud comunitario sobre programas estatales adicionales para inmigrantes",
+    ],
+    documentosNecesarios: [
+      "Identificación",
+      "Comprobante de ingresos y de residencia en el estado",
+    ],
+    tiempoPromedio: "Varía según el estado",
+    costo: "Gratuito para quienes califican por ingresos",
+    linksExternos: [
+      { texto: "KFF - 5 Key Facts About Immigrants and Medicaid", url: "https://www.kff.org/racial-equity-and-health-policy/5-key-facts-about-immigrants-and-medicaid/" },
+      { texto: "Medicaid.gov", url: "https://www.medicaid.gov/" },
+    ],
+    categoria: "Salud",
+    prioridad: "critico",
+  },
+  {
+    pais: "CO",
+    titulo: "Salud Mental para Inmigrantes Colombianos: Dónde Buscar Ayuda",
+    slug: "salud-mental-comunidad-colombiana-co",
+    descripcion: "Recursos de salud mental accesibles para colombianos en EE.UU., incluyendo líneas de ayuda en español y organizaciones que atienden a la comunidad latina inmigrante.",
+    contenidoHtml: "<p>El proceso migratorio —separación familiar, procesos de asilo o estatus pendiente, discriminación, precariedad laboral— tiene un impacto documentado en la salud mental de la población inmigrante latina, incluida la colombiana. Buscar ayuda no requiere tener seguro médico ni estatus migratorio regular: existen varias vías de acceso gratuitas o de bajo costo.</p><p>La línea de ayuda de NAMI (National Alliance on Mental Illness) tiene información específica en español dirigida a inmigrantes, refugiados y personas indocumentadas sobre cómo acceder a apoyo y tratamiento de salud mental en EE.UU. Los Centros de Salud Federalmente Calificados (FQHC, ver trámite relacionado) frecuentemente ofrecen servicios de consejería y salud mental como parte de la atención primaria, con tarifas según escala móvil. Además, algunas instituciones académicas y de salud pública tienen programas dedicados específicamente a la salud mental de la comunidad latina inmigrante, como el programa de salud mental para la comunidad latina de Centro SOL (Johns Hopkins).</p><p>No se identificó una organización que se enfoque exclusivamente en la comunidad colombiana para servicios de salud mental con presencia verificable a nivel nacional; la mayoría de recursos disponibles atienden a la comunidad latina/hispana en general, lo cual también beneficia a los colombianos. Si tienes conocimiento de una organización específica para colombianos en tu ciudad, consulta directamente con el consulado de tu jurisdicción, que en ocasiones mantiene directorios de recursos comunitarios locales.</p>",
+    pasos: [
+      "Si es una crisis, marca 988 (Línea de Prevención del Suicidio y Crisis, disponible en español) o el 911",
+      "Para orientación general, contacta la línea de ayuda de NAMI (disponible en español)",
+      "Pregunta en tu clínica comunitaria (FQHC) si ofrecen consejería o servicios de salud mental",
+      "Busca programas universitarios o de salud pública locales orientados a la comunidad latina",
+    ],
+    documentosNecesarios: [
+      "Ninguno indispensable para llamar a una línea de ayuda",
+    ],
+    tiempoPromedio: "Inmediato para líneas de crisis; variable para citas de consejería",
+    costo: "Líneas de ayuda: gratuitas | Consejería en FQHC: escala móvil según ingresos",
+    linksExternos: [
+      { texto: "NAMI HelpLine - Apoyo para inmigrantes, refugiados o indocumentados (en español)", url: "https://helplinefaqs.nami.org/article/503-como-puedo-obtener-apoyo-y-tratamiento-de-salud-mental-como-inmigrante-refugiado-o-indocumentado-en-los-estados-unidos" },
+      { texto: "Centro SOL - Johns Hopkins (salud mental comunidad latina)", url: "https://jhcentrosol.org/community/health/mental-health/" },
+    ],
+    categoria: "Salud",
+    prioridad: "importante",
+  },
+
+  // ============================================================
+  // EDUCACIÓN
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Inscripción Escolar de Menores Colombianos sin Importar el Estatus Migratorio",
+    slug: "inscripcion-escolar-menores-sin-documentos-co",
+    descripcion: "Por qué las escuelas públicas de EE.UU. deben inscribir a todo menor sin importar su estatus migratorio ni el de sus padres (Plyler v. Doe).",
+    contenidoHtml: "<p>La Corte Suprema de EE.UU. estableció en el caso Plyler v. Doe (1982) que negar acceso a la educación pública K-12 a un menor por su estatus migratorio (o el de sus padres) viola la Cláusula de Igual Protección de la Constitución. Como resultado, ninguna escuela pública en EE.UU. puede legalmente exigir prueba de estatus migratorio, número de Seguro Social, o estatus migratorio de los padres como condición para inscribir a un menor, sin importar el estado donde se resida.</p><p>Las escuelas sí pueden pedir comprobantes razonables para verificar la edad, la residencia dentro del distrito escolar (ej. un contrato de arrendamiento o factura de servicios a nombre de un adulto responsable) y el historial de vacunación, pero no pueden condicionar la inscripción a documentos migratorios ni preguntar sobre el estatus de la familia con ese fin. Organizaciones como el National Immigration Law Center (NILC) documentan casos en los que escuelas han pedido indebidamente esta información, y recomiendan a las familias saber que tienen derecho a rechazar esas solicitudes y buscar ayuda de una organización de defensa educativa o legal si un distrito escolar se niega a inscribir a un menor.</p><p>Este derecho aplica en los 50 estados por tratarse de un fallo constitucional federal, aunque los procedimientos administrativos de inscripción (qué comprobante de domicilio piden, qué formularios usan) varían por distrito escolar.</p>",
+    pasos: [
+      "Acude al distrito escolar correspondiente a tu dirección de residencia",
+      "Lleva comprobante de domicilio (contrato de arrendamiento, factura de servicios) y registro de vacunación del menor",
+      "Si piden estatus migratorio o Seguro Social como condición de inscripción, sabe que no es un requisito legal — puedes negarte y buscar ayuda legal",
+      "Solicita apoyo de un traductor si lo necesitas; muchos distritos con población latina ofrecen personal bilingüe",
+    ],
+    documentosNecesarios: [
+      "Comprobante de domicilio dentro del distrito escolar",
+      "Registro de vacunación del menor",
+      "Partida de nacimiento del menor (recomendable, no siempre obligatoria)",
+    ],
+    tiempoPromedio: "Variable según el distrito escolar",
+    costo: "Gratuito (educación pública K-12)",
+    linksExternos: [
+      { texto: "NILC - Explicación del caso Plyler v. Doe", url: "https://www.nilc.org/resources/plyler-v-doe-case-explainer/" },
+      { texto: "American Immigration Council - Public Education for Immigrant Students (PDF)", url: "https://www.americanimmigrationcouncil.org/wp-content/uploads/2025/01/public_education_for_immigrant_students_understanding_plyer_v_doe.pdf" },
+    ],
+    categoria: "Educación",
+    prioridad: "critico",
+  },
+  {
+    pais: "CO",
+    titulo: "Acceso a la Universidad para Estudiantes Indocumentados (In-State Tuition)",
+    slug: "universidad-indocumentados-in-state-tuition-co",
+    descripcion: "Qué es la matrícula estatal reducida (in-state tuition) para estudiantes indocumentados y por qué depende completamente del estado donde se resida.",
+    contenidoHtml: "<p>Varios estados de EE.UU. permiten que estudiantes indocumentados —incluidos jóvenes colombianos que llegaron de niños o que residen sin estatus regular— paguen la matrícula universitaria al mismo precio reducido que los residentes del estado (in-state tuition) en lugar de la tarifa, mucho más alta, para estudiantes de fuera del estado o internacionales, siempre que cumplan ciertos requisitos (usualmente haber asistido y/o graduado de una escuela secundaria en ese estado durante un número mínimo de años). Esta política es completamente estatal: no existe un derecho federal a la matrícula reducida para estudiantes sin estatus migratorio regular, por lo que el mismo estudiante puede calificar en un estado y no calificar en otro si se muda.</p><p>El número exacto de estados con estas políticas cambia con el tiempo por decisiones legislativas o judiciales — a mediados de 2026 se reportaron nuevas disputas legales sobre estas políticas en varios estados, por lo que la situación es especialmente volátil este año. Antes de asumir elegibilidad, se recomienda verificar directamente en la página de admisiones/ayuda financiera de la universidad de interés, o consultar el listado actualizado por estado del National Immigration Law Center (NILC) o del Higher Ed Immigration Portal, ambas fuentes especializadas que mantienen la información al día.</p><p>Es importante distinguir esto de la elegibilidad para ayuda financiera federal (FAFSA), que generalmente no está disponible para estudiantes sin estatus migratorio regular; algunos estados sí ofrecen ayuda financiera propia (state financial aid) para estudiantes indocumentados, adicional a la matrícula reducida.</p>",
+    pasos: [
+      "Verifica en el Higher Ed Immigration Portal o NILC si tu estado ofrece in-state tuition para estudiantes indocumentados",
+      "Confirma directamente con la oficina de admisiones de la universidad, ya que los requisitos exactos (años de escuela secundaria en el estado, formularios) varían",
+      "Pregunta por ayuda financiera estatal específica para estudiantes indocumentados, si tu estado la ofrece",
+      "Considera también becas privadas específicas para estudiantes indocumentados, que no dependen de la política estatal",
+    ],
+    documentosNecesarios: [
+      "Historial de asistencia o diploma de escuela secundaria en el estado",
+      "Comprobante de residencia en el estado",
+    ],
+    tiempoPromedio: "No aplica (información de referencia; verificar por institución)",
+    costo: "Variable según universidad y estado",
+    linksExternos: [
+      { texto: "NILC - Basic Facts About In-State Tuition", url: "https://www.nilc.org/resources/basic-facts-instate/" },
+      { texto: "Higher Ed Immigration Portal - Políticas estatales", url: "https://www.higheredimmigrationportal.org/states/" },
+    ],
+    categoria: "Educación",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Reconocimiento del Título Universitario Colombiano en EE.UU. (WES / NACES)",
+    slug: "reconocimiento-titulo-colombiano-wes-co",
+    descripcion: "Cómo hacer evaluar un título o diploma colombiano para que sea reconocido por universidades y empleadores en EE.UU., a través de servicios acreditados como WES.",
+    contenidoHtml: "<p>A diferencia de la convalidación ante el Ministerio de Educación de Colombia (que sirve para que un título obtenido en el exterior tenga validez dentro de Colombia), el proceso inverso —hacer que un título colombiano sea reconocido en EE.UU.— no lo realiza ninguna entidad gubernamental colombiana ni estadounidense, sino empresas privadas de evaluación de credenciales acreditadas. La más conocida es World Education Services (WES), miembro de NACES (National Association of Credential Evaluation Services), la asociación que agrupa a los servicios de evaluación de credenciales reconocidos en EE.UU.</p><p>Este proceso, llamado 'credential evaluation', traduce el título y las notas colombianas a su equivalente en el sistema educativo estadounidense (por ejemplo, indicando a cuántos años de educación superior estadounidense equivale un título profesional colombiano, y su equivalencia en GPA). Es frecuentemente exigido por: universidades de EE.UU. al solicitar admisión a un posgrado, empleadores para verificar que un título extranjero cumple el requisito educativo de un puesto, juntas de licencias profesionales (para ciertas profesiones reguladas), y en algunos casos por USCIS dentro de procesos migratorios que requieren demostrar equivalencia educativa (por ejemplo, ciertas categorías de visa de trabajo).</p><p>El trámite se hace completamente en línea: se solicita a la universidad colombiana el envío de transcripts oficiales (a veces directamente a WES), se paga la tarifa del servicio elegido, y se recibe un reporte de evaluación. No es un requisito legal para vivir o trabajar en EE.UU. en general, sino un trámite que se necesita cuando una institución o empleador específico lo solicita.</p>",
+    pasos: [
+      "Identifica si la institución, empleador o entidad que te lo solicita acepta específicamente evaluaciones de WES u otro miembro de NACES",
+      "Solicita a tu universidad en Colombia el envío de transcripts y diploma oficiales (algunos servicios aceptan copias certificadas enviadas por el estudiante)",
+      "Crea una cuenta en el servicio de evaluación elegido (ej. wes.org) y selecciona el tipo de evaluación (document-by-document o course-by-course)",
+      "Paga la tarifa y da seguimiento al estado de la evaluación en línea",
+      "Recibe el reporte y envíalo a la institución o empleador que lo solicitó",
+    ],
+    documentosNecesarios: [
+      "Diploma universitario colombiano",
+      "Transcript o certificado de notas oficial",
+      "Pasaporte o identificación",
+    ],
+    tiempoPromedio: "Verificar en sitio oficial (varía según el servicio de evaluación elegido)",
+    costo: "Verificar en sitio oficial (tarifa fijada por el servicio de evaluación, no por el gobierno)",
+    linksExternos: [
+      { texto: "World Education Services (WES)", url: "https://www.wes.org/" },
+      { texto: "NACES - National Association of Credential Evaluation Services", url: "https://www.naces.org/" },
+    ],
+    categoria: "Educación",
+    prioridad: "relevante",
+  },
+
+  // ============================================================
+  // TRABAJO
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Primer Empleo sin Papeles: ITIN, Impuestos y Centros de Jornaleros",
+    slug: "primer-empleo-sin-papeles-itin-co",
+    descripcion: "Qué es el ITIN, para qué sirve realmente (y para qué NO sirve), y dónde buscar oportunidades de trabajo diario sin documentos migratorios.",
+    contenidoHtml: "<p>El Número de Identificación Personal del Contribuyente (ITIN, por sus siglas en inglés) es expedido por el IRS (Servicio de Impuestos Internos) para que personas que no califican para un número de Seguro Social —incluidos inmigrantes sin estatus migratorio regular— puedan declarar y pagar impuestos federales. Es un error muy común pensar que el ITIN autoriza a trabajar legalmente en EE.UU.: no lo hace. El ITIN sirve exclusivamente para fines tributarios (declarar impuestos, abrir ciertas cuentas bancarias, en algunos casos calificar para crédito) y no otorga autorización de empleo ni estatus migratorio.</p><p>Dicho esto, declarar impuestos con ITIN aun sin autorización de empleo puede ser valioso: genera un historial de cumplimiento tributario que algunos procesos migratorios futuros (como ciertas formas de ajuste de estatus) han tomado en cuenta como evidencia de 'buena conducta' y presencia continua en el país, aunque esto depende del tipo de trámite y debe evaluarse con un abogado de inmigración.</p><p>Para quienes buscan trabajo diario o por jornal sin documentos, existen centros de trabajadores (worker centers) y centros de jornaleros en muchas ciudades de EE.UU. que conectan a trabajadores con empleadores de construcción, mudanzas, jardinería y labores similares, y que además ofrecen orientación sobre derechos laborales básicos y prevención de robo de salario. El National Day Laborer Organizing Network (NDLON) es una red nacional de este tipo de centros con presencia en varios estados.</p>",
+    pasos: [
+      "Solicita tu ITIN llenando el Formulario W-7 del IRS (puedes hacerlo junto con tu primera declaración de impuestos)",
+      "Recuerda: el ITIN no autoriza a trabajar legalmente; sirve para fines fiscales",
+      "Si buscas trabajo diario, contacta un centro de jornaleros o worker center en tu ciudad (ej. a través de la red NDLON)",
+      "Pregunta en el centro sobre tus derechos laborales básicos antes de aceptar un trabajo",
+    ],
+    documentosNecesarios: [
+      "Pasaporte colombiano (como identificación para el W-7)",
+      "Formulario W-7 del IRS",
+    ],
+    tiempoPromedio: "Verificar en sitio oficial (el IRS suele tardar varias semanas en procesar el W-7)",
+    costo: "Gratuito solicitar el ITIN directamente ante el IRS",
+    linksExternos: [
+      { texto: "IRS - How to apply for an ITIN", url: "https://www.irs.gov/tin/itin/how-to-apply-for-an-itin" },
+      { texto: "National Day Laborer Organizing Network (NDLON)", url: "https://ndlon.org/" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Derechos Laborales sin Importar el Estatus Migratorio",
+    slug: "derechos-laborales-sin-importar-estatus-co",
+    descripcion: "Protecciones laborales federales (salario mínimo, seguridad ocupacional, libertad sindical) que aplican a todo trabajador en EE.UU., tenga o no papeles.",
+    contenidoHtml: "<p>La mayoría de leyes laborales federales de EE.UU. protegen a los trabajadores sin importar su estatus migratorio. El Departamento de Trabajo (DOL), a través de su División de Salarios y Horas (Wage and Hour Division), hace cumplir el derecho al salario mínimo y al pago de horas extra bajo la Fair Labor Standards Act (FLSA) para todo trabajador, independientemente de su estatus; el robo de salario (wage theft) —no pagar el salario acordado, no pagar horas extra, o pagar por debajo del mínimo— puede denunciarse ante el DOL sin necesidad de revelar ni que el DOL indague el estatus migratorio del trabajador. OSHA (Administración de Seguridad y Salud Ocupacional) protege el derecho a un lugar de trabajo seguro y prohíbe represalias contra quien reporta condiciones peligrosas, también sin importar el estatus. El NLRB (Junta Nacional de Relaciones Laborales) reconoce el derecho a organizarse y actuar colectivamente (formar o unirse a un sindicato, o simplemente actuar en grupo por mejores condiciones) para todo trabajador, aunque conviene saber que un fallo de la Corte Suprema (Hoffman Plastic Compounds v. NLRB, 2002) limitó el tipo de compensación (back pay) que un trabajador indocumentado despedido ilegalmente puede recibir, por lo que las protecciones no son idénticas en todos los aspectos a las de un trabajador con estatus regular.</p><p>En la práctica, el miedo a represalias migratorias es la principal razón por la que muchos trabajadores no denuncian abusos. Las agencias federales mencionadas (DOL, OSHA, NLRB) no tienen como función hacer cumplir la ley migratoria y, como política, no comparten de forma rutinaria la información de quienes presentan quejas con agencias de control migratorio, aunque no existe una garantía absoluta y las políticas pueden cambiar; se recomienda consultar con una organización de trabajadores o un abogado laboral antes de presentar una queja si hay preocupación específica al respecto.</p>",
+    pasos: [
+      "Guarda evidencia de tus horas trabajadas y pagos recibidos (recibos, mensajes, capturas de calendario)",
+      "Si sospechas robo de salario, contacta la División de Salarios y Horas del DOL o una organización de trabajadores local",
+      "Si hay condiciones de trabajo peligrosas, puedes reportarlas a OSHA sin dar tu nombre (denuncia puede ser anónima)",
+      "Si buscas organizarte con compañeros de trabajo, el NLRB protege esa actividad colectiva",
+    ],
+    documentosNecesarios: [
+      "Evidencia de horas trabajadas y pagos (no se requiere estatus migratorio para presentar una queja)",
+    ],
+    tiempoPromedio: "Varía según la agencia y el tipo de queja",
+    costo: "Gratuito presentar quejas ante DOL, OSHA o NLRB",
+    linksExternos: [
+      { texto: "DOL - Wage and Hour Division", url: "https://www.dol.gov/agencies/whd" },
+      { texto: "OSHA - Worker Rights", url: "https://www.osha.gov/workers" },
+      { texto: "NLRB - Employee Rights", url: "https://www.nlrb.gov/about-nlrb/rights-we-protect/your-rights/employee-rights" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "critico",
+  },
+  {
+    pais: "CO",
+    titulo: "Organizaciones que Atienden a la Comunidad Colombiana en EE.UU.",
+    slug: "organizaciones-comunidad-colombiana-co",
+    descripcion: "Organizaciones sin ánimo de lucro verificadas que históricamente han atendido a la comunidad colombiana e inmigrante en EE.UU. con servicios sociales y de empleo.",
+    contenidoHtml: "<p>Una de las organizaciones sin ánimo de lucro verificables con enfoque en la comunidad colombiana es la Colombian American Service Association (CASA), con sede en Miami, Florida, registrada como organización 501(c)(3) (verificable en Charity Navigator y GuideStar/Candid). Este tipo de organizaciones comunitarias suelen ofrecer servicios como orientación social, apoyo para trámites, programas de empleo y conexión con recursos de salud y vivienda para inmigrantes, aunque el alcance exacto de sus programas cambia con el tiempo y con la financiación disponible, por lo que se recomienda contactarlas directamente para conocer su oferta vigente.</p><p>No se identificaron otras organizaciones con enfoque exclusivo y verificable en la comunidad colombiana con presencia nacional consolidada al 26 ago 2026; la mayoría de recursos de apoyo a inmigrantes en EE.UU. (empleo, asistencia legal, servicios sociales) atienden a la comunidad latina/hispana en general sin distinción de país de origen, lo cual también es un recurso válido para colombianos. Se recomienda además consultar el consulado de Colombia de tu jurisdicción, que en ocasiones mantiene directorios de organizaciones aliadas locales, y buscar cámaras de comercio colombo-americanas en tu ciudad, que en algunos casos ofrecen redes de contactos laborales para la diáspora colombiana.</p>",
+    pasos: [
+      "Contacta CASA (Colombian American Service Association) en Miami si resides en el sur de Florida",
+      "Consulta con el consulado de Colombia de tu jurisdicción por directorios de organizaciones aliadas locales",
+      "Busca si existe una cámara de comercio colombo-americana en tu ciudad para redes de contacto laboral",
+      "Complementa con organizaciones de apoyo a la comunidad latina/hispana en general en tu área",
+    ],
+    documentosNecesarios: [
+      "Ninguno indispensable para el primer contacto",
+    ],
+    tiempoPromedio: "No aplica",
+    costo: "Generalmente gratuito (organizaciones sin ánimo de lucro)",
+    linksExternos: [
+      { texto: "Colombian American Service Association (CASA) - Charity Navigator", url: "https://www.charitynavigator.org/ein/650521589" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "relevante",
+  },
+
+  // ============================================================
+  // TRANSPORTE
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Licencia de Conducir en EE.UU. sin Importar el Estatus Migratorio",
+    slug: "licencia-conducir-sin-estatus-migratorio-eeuu-co",
+    descripcion: "Qué estados de EE.UU. permiten obtener licencia de conducir sin importar el estatus migratorio, y por qué esta lista cambia con frecuencia.",
+    contenidoHtml: "<p>Un grupo de estados de EE.UU. (junto con el Distrito de Columbia) permite que residentes obtengan una licencia de conducir (o un carné de conducir equivalente) sin exigir prueba de estatus migratorio regular, generalmente con la condición de aprobar los exámenes de conducción habituales y demostrar residencia en el estado. El National Immigration Law Center (NILC) mantiene una tabla actualizada y oficial con la lista vigente de estados, ya que esta lista ha cambiado con el tiempo conforme distintas legislaturas estatales aprueban o modifican estas leyes.</p><p>Entre los estados que han ofrecido este tipo de licencia de forma sostenida en los últimos años se incluyen ejemplos ampliamente reportados como California, Colorado, Illinois, Nueva York, Nueva Jersey y Washington, entre otros — pero esta es solo una referencia orientativa y NO una lista completa ni garantizada para 2026: el clima político migratorio de 2025-2026 ha generado nuevos debates legislativos sobre estas políticas en varios estados, por lo que es indispensable verificar la lista actualizada directamente en la fuente de NILC o en el DMV del estado específico antes de asumir elegibilidad.</p><p>Es importante notar que este tipo de licencia frecuentemente lleva una marca visual distintiva en el documento físico (por ejemplo, indicando que no es válida como identificación para propósitos federales bajo la ley REAL ID, como abordar un vuelo doméstico sin pasaporte), y que su existencia no otorga ningún otro beneficio migratorio: es exclusivamente para efectos de manejo.</p>",
+    pasos: [
+      "Consulta la tabla actualizada de NILC para confirmar si tu estado ofrece este tipo de licencia",
+      "Verifica los requisitos específicos (comprobante de residencia, exámenes) en el sitio del DMV de tu estado",
+      "Ten en cuenta que este tipo de licencia puede no servir como identificación válida para vuelos domésticos bajo REAL ID — verifica esto con el DMV",
+    ],
+    documentosNecesarios: [
+      "Comprobante de residencia en el estado (varía por estado)",
+      "Identificación (pasaporte u otro documento aceptado por el DMV)",
+    ],
+    tiempoPromedio: "Verificar en sitio oficial del DMV estatal",
+    costo: "Verificar tarifa en el DMV estatal correspondiente",
+    linksExternos: [
+      { texto: "NILC - State Laws Providing Driver's License Access Regardless of Immigration Status", url: "https://www.nilc.org/resources/state-laws-providing-dl-access/" },
+    ],
+    categoria: "Transporte",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Seguro de Auto con Licencia de Conducir No Estándar",
+    slug: "seguro-auto-licencia-no-estandar-co",
+    descripcion: "Consideraciones para asegurar un vehículo cuando se tiene una licencia de conducir estatal no estándar (emitida sin importar el estatus migratorio).",
+    contenidoHtml: "<p>Tener una licencia de conducir estatal no estándar (la que algunos estados emiten sin importar el estatus migratorio) generalmente sí permite comprar seguro de auto: las aseguradoras evalúan principalmente el historial de manejo, el tipo de licencia válida en el estado y otros factores de riesgo, no directamente el estatus migratorio del asegurado. Sin embargo, la disponibilidad de aseguradoras dispuestas a emitir pólizas con este tipo de licencia, así como las tarifas ofrecidas, varía considerablemente por estado y por aseguradora — no se pudo verificar con una fuente confiable al 26 ago 2026 una lista nacional específica de aseguradoras que trabajen con licencias no estándar, ya que esta información cambia con frecuencia y depende de las políticas internas de cada compañía.</p><p>Recomendaciones generales: comparar cotizaciones entre varias aseguradoras (algunas aseguradoras regionales o especializadas en el mercado hispano suelen ser más flexibles que las grandes nacionales), preguntar directamente si aceptan la licencia no estándar de tu estado antes de cotizar, y verificar con el DMV estatal el seguro mínimo obligatorio (liability insurance) requerido en tu estado, ya que conducir sin el seguro mínimo exigido es una infracción independientemente del tipo de licencia que se tenga.</p>",
+    pasos: [
+      "Verifica el seguro mínimo obligatorio (liability) exigido por tu estado en el sitio del DMV",
+      "Compara cotizaciones de varias aseguradoras, preguntando explícitamente si aceptan tu tipo de licencia",
+      "Considera aseguradoras regionales o con atención en español, que en algunos mercados son más flexibles",
+      "Mantén el comprobante de seguro siempre en el vehículo, como exige la ley en la mayoría de estados",
+    ],
+    documentosNecesarios: [
+      "Licencia de conducir vigente (estándar o no estándar según el estado)",
+      "Información del vehículo (VIN, placa)",
+    ],
+    tiempoPromedio: "Variable según la aseguradora",
+    costo: "Variable según estado, aseguradora e historial de manejo",
+    linksExternos: [
+      { texto: "NILC - Driver's Licenses", url: "https://www.nilc.org/work/drivers-licenses/" },
+    ],
+    categoria: "Transporte",
+    prioridad: "relevante",
+  },
+
+  // ============================================================
+  // SEGURIDAD Y EMERGENCIAS
+  // ============================================================
+  {
+    pais: "CO",
+    titulo: "Estafas Contra la Comunidad Colombiana: Remesas y Trámites Falsos de Visa/Pasaporte",
+    slug: "estafas-remesas-tramites-falsos-co",
+    descripcion: "Casos documentados de fraude que suplantan al consulado o la Cancillería colombiana, y alertas sobre estafas de remesas — cómo identificarlas y dónde reportarlas.",
+    contenidoHtml: "<p>La Cancillería de Colombia ha emitido alertas públicas sobre redes de fraude que cobran por trámites falsos de pasaportes y visas, suplantando a funcionarios consulares o de la embajada estadounidense, según reportó El Tiempo en 2026. Estos esquemas suelen operar a través de redes sociales o llamadas, ofreciendo 'agilizar' citas de visa, pasaportes o trámites migratorios a cambio de pagos, usando perfiles falsos que aparentan ser oficiales. Investigaciones periodísticas (El Tiempo, Infobae, Semana, Pulzo) han documentado casos de redes criminales, incluyendo algunas que usaron inteligencia artificial para suplantar funcionarios y estafar a víctimas en varios países, así como casos de personas detenidas por cobrar sumas de dinero prometiendo visas con documentos falsos.</p><p>Señales de alerta: piden pago para 'agilizar' una cita o trámite consular (el consulado colombiano no cobra por agilizar turnos), contactan por WhatsApp o redes sociales ofreciendo gestionar visas o pasaportes sin pasar por el sistema oficial de citas, o presionan con urgencia ('solo hoy', 'cupo limitado'). El consulado y la embajada de EE.UU. no solicitan pagos fuera de sus canales oficiales de tarifas publicadas.</p><p>Además de las estafas de trámites, la comunidad colombiana —al ser una población que envía remesas frecuentemente a familiares en Colombia— es blanco de fraudes de remesas: suplantación de familiares en apuros ('el nieto/hijo tuvo un accidente, necesito dinero ya'), enlaces falsos de plataformas de envío de dinero, y solicitudes de pago por adelantado para supuestos trámites de herencia o premios. La Comisión Federal de Comercio de EE.UU. (FTC) mantiene información y un canal de denuncia para este tipo de fraudes.</p>",
+    pasos: [
+      "Verifica cualquier trámite consular únicamente a través del sitio oficial de la Cancillería (cancilleria.gov.co) o el consulado directamente por sus canales oficiales",
+      "Desconfía de cualquier persona que ofrezca 'agilizar' una cita o trámite a cambio de pago",
+      "Si recibes una llamada de un familiar pidiendo dinero urgente, verifica directamente con esa persona por otro medio antes de enviar nada",
+      "Reporta fraudes ante la FTC (reportfraud.ftc.gov) y, si el fraude simula ser el consulado, notifica también al consulado de tu jurisdicción",
+    ],
+    documentosNecesarios: [
+      "Evidencia de la comunicación fraudulenta (capturas de pantalla, números de teléfono, cuentas usadas)",
+    ],
+    tiempoPromedio: "No aplica",
+    costo: "Gratuito reportar",
+    linksExternos: [
+      { texto: "El Tiempo - Alerta por fraude con pasaportes y visas", url: "https://www.eltiempo.com/amp/justicia/servicios/alerta-por-fraude-con-pasaportes-y-visas-estan-cobrando-por-tramites-falsos-y-la-cancilleria-lanzo-una-advertencia-urgente-3562404" },
+      { texto: "FTC - Reportar un fraude", url: "https://reportfraud.ftc.gov/" },
+    ],
+    categoria: "Seguridad y Emergencias",
+    prioridad: "importante",
+  },
+  {
+    pais: "CO",
+    titulo: "Líneas de Ayuda en Español para Emergencias Sociales",
+    slug: "lineas-ayuda-emergencia-espanol-co",
+    descripcion: "Números de ayuda gratuitos y confidenciales en español para trata de personas, violencia doméstica y referencia a servicios sociales locales.",
+    contenidoHtml: "<p>Existen líneas nacionales de ayuda en EE.UU., gratuitas, confidenciales y con atención en español, disponibles sin importar el estatus migratorio de quien llama: el 211 es un número de referencia a servicios sociales locales (comida, vivienda de emergencia, servicios de salud, asistencia con facturas) operado por redes comunitarias en la mayoría de condados de EE.UU., con atención en español en la mayoría de áreas. La Línea Nacional de Trata de Personas (National Human Trafficking Hotline) atiende las 24 horas al 1-888-373-7888, con opción de mensaje de texto ('befree') y atención en español, para víctimas o testigos de situaciones de trata laboral o sexual. La Línea Nacional de Violencia Doméstica (National Domestic Violence Hotline) atiende al 1-800-799-7233, también las 24 horas y con atención en español, para quienes viven violencia de pareja o familiar.</p><p>Ninguna de estas líneas exige revelar el estatus migratorio para recibir ayuda, y su función es de asistencia y conexión con recursos (refugios, asesoría legal, servicios de emergencia), no de control migratorio. En caso de una emergencia médica o de seguridad inmediata, la línea de emergencia general sigue siendo el 911.</p>",
+    pasos: [
+      "En una emergencia inmediata de seguridad o salud, marca el 911",
+      "Para referencia a servicios sociales locales (comida, vivienda, ayuda con facturas), marca el 211",
+      "Si tú o alguien que conoces vive una situación de trata de personas, marca 1-888-373-7888 (Línea Nacional de Trata de Personas)",
+      "Si tú o alguien que conoces vive violencia doméstica, marca 1-800-799-7233 (Línea Nacional de Violencia Doméstica)",
+    ],
+    documentosNecesarios: [
+      "Ninguno — estas líneas no requieren identificación ni estatus migratorio",
+    ],
+    tiempoPromedio: "Inmediato, disponible 24/7",
+    costo: "Gratuito",
+    linksExternos: [
+      { texto: "National Human Trafficking Hotline", url: "https://humantraffickinghotline.org/en" },
+      { texto: "The National Domestic Violence Hotline", url: "https://www.thehotline.org/" },
+      { texto: "211.org", url: "https://www.211.org/" },
+    ],
+    categoria: "Seguridad y Emergencias",
+    prioridad: "critico",
+  },
 ];
 
 // ============================================================

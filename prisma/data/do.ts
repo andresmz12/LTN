@@ -397,6 +397,430 @@ export const tramitesDO = [
     categoria: "Migración y Estatus",
     prioridad: "importante",
   },
+  // ============================================================
+  // VIVIENDA
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Cómo alquilar un apartamento sin historial de crédito en EE.UU.",
+    slug: "alquiler-sin-credito-do",
+    descripcion: "Estrategias para dominicanos recién llegados a EE.UU. que quieren rentar una vivienda sin historial de crédito estadounidense.",
+    contenidoHtml: "<p>Muchos dominicanos que llegan a EE.UU. no tienen historial de crédito porque nunca han tenido una tarjeta de crédito, préstamo o cuenta bancaria en el país, lo que puede complicar el proceso de alquiler, ya que la mayoría de los arrendadores piden un 'credit check' como parte de la aplicación. No tener historial de crédito no es lo mismo que tener mal crédito, pero muchos propietarios los tratan de forma similar si no se explica la situación con anticipación.</p><p>Entre las alternativas más usadas están: ofrecer pagar varios meses de renta por adelantado, conseguir un 'guarantor' o cofirmante (una persona con buen crédito, a veces un familiar con estatus legal establecido, que se compromete a pagar si el inquilino no puede), presentar comprobantes alternativos de capacidad de pago (cartas de empleo, estados de cuenta, comprobantes de ingresos), o buscar propietarios pequeños/independientes en vez de grandes administradoras de edificios, que suelen tener criterios más flexibles que las agencias corporativas.</p><p>Es legal que un arrendador pida verificación de ingresos o un depósito de seguridad, pero las leyes de vivienda justa (Fair Housing Act, a cargo de HUD) prohíben negar la renta por raza, origen nacional o el hecho de recibir ingresos de programas de asistencia en los estados donde eso está protegido; sin embargo, la ley federal no exige que un arrendador alquile a alguien sin comprobar su capacidad de pago. Un número creciente de plataformas y organizaciones de vivienda ofrecen servicios de 'construcción de historial de renta' (rent reporting) que ayudan a construir crédito pagando la renta a tiempo, útil para futuros alquileres o para calificar para una hipoteca más adelante.</p>",
+    pasos: [
+      "Reúne comprobantes de ingresos o empleo (cartas de trabajo, estados de cuenta bancarios, comprobantes de pago)",
+      "Considera conseguir un cofirmante (guarantor) con historial de crédito en EE.UU.",
+      "Ofrece pagar varios meses de depósito o renta por adelantado si el propietario lo permite",
+      "Busca propietarios independientes o pequeños en vez de grandes administradoras",
+      "Consulta agencias locales de vivienda o legal aid si sospechas discriminación en el proceso",
+    ],
+    documentosNecesarios: [
+      "Identificación (pasaporte, cédula consular o ID estatal)",
+      "Comprobantes de ingresos o carta de empleo",
+      "Referencias de alquiler anterior (si las tienes)",
+    ],
+    tiempoPromedio: "Varía según el propietario y el mercado local",
+    costo: "Varía; algunos propietarios cobran tarifa de aplicación (application fee) no reembolsable",
+    linksExternos: [
+      { texto: "Fair Housing Act - HUD", url: "https://www.hud.gov/program_offices/fair_housing_equal_opp/fair_housing_act_overview" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "importante",
+  },
+  {
+    pais: "DO",
+    titulo: "Derechos del inquilino en EE.UU. (varían por estado)",
+    slug: "derechos-inquilino-do",
+    descripcion: "Guía sobre los derechos básicos del inquilino en EE.UU., con enfoque en los estados con mayor concentración de dominicanos (Nueva York, Nueva Jersey, Florida, Massachusetts).",
+    contenidoHtml: "<p>En EE.UU. no existe una sola 'ley de alquiler' nacional: los derechos del inquilino dependen principalmente de la ley estatal y, en algunas ciudades, de ordenanzas locales adicionales. Lo que aplica en el Bronx (Nueva York) puede no aplicar igual en Paterson (Nueva Jersey), Orlando (Florida) o Boston (Massachusetts), por lo que siempre conviene verificar la ley específica de tu estado y ciudad antes de actuar.</p><p>Dicho esto, hay protecciones que suelen repetirse: el derecho a una vivienda habitable (con calefacción, agua, sin plagas ni peligros estructurales graves), el derecho a que el propietario no te desaloje por represalia si reportas una violación al código de vivienda, y el derecho a recibir aviso formal antes de un desalojo (el tiempo de aviso varía según el estado y el motivo). La Ley de Vivienda Justa (Fair Housing Act) federal, administrada por HUD, prohíbe la discriminación en vivienda por raza, color, origen nacional, religión, sexo, discapacidad o estado familiar en todo el país.</p><p>Nueva York tiene protecciones particularmente fuertes para inquilinos en la ciudad de Nueva York, incluyendo el programa de 'Right to Counsel' (derecho a un abogado gratuito en casos de desalojo para inquilinos elegibles según sus ingresos), vigente en toda la ciudad desde 2022. Nueva Jersey y Florida tienen sus propios procesos judiciales de desalojo con reglas distintas sobre plazos de aviso y causas permitidas. IMPORTANTE: las reglas federales de vivienda han cambiado activamente en 2026 (incluyendo cambios en requisitos de verificación de ciudadanía en vivienda pública/Sección 8 y el retiro de ciertas guías de HUD sobre vivienda justa), por lo que esta es un área que cambia con frecuencia y debe verificarse con una fuente actualizada antes de tomar decisiones legales.</p>",
+    pasos: [
+      "Identifica si tu vivienda es de alquiler privado, Sección 8/vivienda pública, o de una organización sin fines de lucro (las reglas difieren)",
+      "Busca la agencia de vivienda o legal aid de tu estado específico (NY, NJ, FL, MA, etc.)",
+      "Si recibes una notificación de desalojo, no la ignores: busca ayuda legal de inmediato",
+      "En la ciudad de Nueva York, consulta si calificas para un abogado gratuito bajo el programa Right to Counsel",
+      "Documenta por escrito cualquier problema de mantenimiento o comunicación con el propietario",
+    ],
+    documentosNecesarios: [
+      "Contrato de alquiler (lease)",
+      "Comprobantes de pago de renta",
+      "Cualquier notificación escrita del propietario",
+    ],
+    tiempoPromedio: "Varía según el estado y el tipo de caso",
+    costo: "Gratis para orientación general; representación legal puede ser gratuita según ingresos (legal aid)",
+    linksExternos: [
+      { texto: "Fair Housing Act - HUD", url: "https://www.hud.gov/program_offices/fair_housing_equal_opp/fair_housing_act_overview" },
+      { texto: "Right to Counsel NYC - Oficina de la Alcaldía", url: "https://www.nyc.gov/site/mayorspeu/resources/right-to-counsel.page" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "critico",
+  },
+  {
+    pais: "DO",
+    titulo: "Qué hacer si recibes una notificación de desalojo",
+    slug: "desalojo-do",
+    descripcion: "Pasos inmediatos a seguir si un propietario notifica un desalojo, incluyendo cómo buscar ayuda legal gratuita.",
+    contenidoHtml: "<p>Recibir una notificación de desalojo (eviction notice) no significa que debas irte de inmediato: en la mayoría de los estados, un propietario no puede sacar a un inquilino por su cuenta (cambiando cerraduras, cortando servicios o retirando pertenencias); debe seguir un proceso judicial formal, y solo un alguacil o funcionario autorizado por una corte puede ejecutar un desalojo tras una orden judicial. Un desalojo hecho sin ese proceso ('self-help eviction') es ilegal en la gran mayoría de los estados, aunque los detalles exactos del proceso judicial varían por estado y localidad.</p><p>Lo primero es leer con cuidado la notificación: qué tipo de aviso es, qué plazo da y qué motivo cita (falta de pago, violación del contrato, fin del término del alquiler, etc.), ya que la respuesta correcta depende del motivo. Ignorar la notificación o no presentarse a la audiencia judicial (si se llega a ese punto) casi siempre resulta en una decisión automática en contra del inquilino, incluso si existían defensas válidas.</p><p>La ciudad de Nueva York ofrece representación legal gratuita a inquilinos elegibles en casos de desalojo bajo el programa Right to Counsel; otros estados y condados tienen sus propios programas de legal aid o clínicas de vivienda, financiados en algunos casos por fondos estatales o locales de emergencia para prevención de desalojos. Buscar ayuda legal apenas se recibe el aviso —antes de la fecha de audiencia— generalmente da más opciones que esperar hasta el último momento.</p>",
+    pasos: [
+      "Lee la notificación completa: tipo de aviso, plazo y motivo citado",
+      "No abandones la vivienda ni dejes de pagar renta por tu cuenta sin asesoría",
+      "Busca de inmediato una organización de legal aid o vivienda en tu estado (muchas ofrecen consulta gratuita)",
+      "Si estás en la ciudad de Nueva York, pregunta si calificas para representación gratuita bajo Right to Counsel",
+      "Guarda copias de toda comunicación, recibos de pago y la notificación original",
+      "Asiste a toda audiencia judicial que se programe, aunque no tengas abogado",
+    ],
+    documentosNecesarios: [
+      "Notificación de desalojo original",
+      "Contrato de alquiler",
+      "Comprobantes de pago de renta",
+    ],
+    tiempoPromedio: "El proceso judicial de desalojo puede tomar semanas a varios meses según el estado",
+    costo: "Gratis buscar orientación; representación legal puede ser gratuita según ingresos y localidad",
+    linksExternos: [
+      { texto: "Right to Counsel NYC - Oficina de la Alcaldía", url: "https://www.nyc.gov/site/mayorspeu/resources/right-to-counsel.page" },
+      { texto: "Fair Housing Act - HUD", url: "https://www.hud.gov/program_offices/fair_housing_equal_opp/fair_housing_act_overview" },
+    ],
+    categoria: "Vivienda",
+    prioridad: "critico",
+  },
+  // ============================================================
+  // SALUD
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Clínicas comunitarias para personas sin seguro médico",
+    slug: "clinicas-comunitarias-do",
+    descripcion: "Cómo encontrar centros de salud comunitarios federales (Community Health Centers) que atienden sin importar el estatus migratorio o la capacidad de pago.",
+    contenidoHtml: "<p>Los Centros de Salud Comunitarios (Community Health Centers), financiados a través del programa federal de HRSA (Health Resources and Services Administration, parte del Departamento de Salud de EE.UU.), atienden a cualquier persona independientemente de su estatus migratorio, capacidad de pago o si tiene o no seguro médico. Estos centros cobran según una escala móvil de tarifas (sliding fee scale) basada en los ingresos del hogar, por lo que el costo puede ser significativamente menor que el de una clínica privada o sala de emergencias.</p><p>Estos centros ofrecen atención primaria, vacunas, control prenatal, atención pediátrica y, en muchos casos, servicios dentales y de salud mental básicos, todo en un mismo lugar. Es un recurso especialmente útil para dominicanos recién llegados que aún no tienen seguro médico o que no califican para programas como Medicaid completo por su estatus migratorio, ya que no se pide prueba de estatus migratorio para recibir atención en estos centros.</p><p>El directorio oficial de HRSA permite buscar centros de salud comunitarios por código postal en cualquier parte de EE.UU., incluyendo zonas de alta concentración dominicana como el Bronx y Washington Heights en Nueva York, Paterson en Nueva Jersey, y partes de Florida y Massachusetts.</p>",
+    pasos: [
+      "Busca el centro de salud comunitario más cercano en el buscador oficial de HRSA (findahealthcenter.hrsa.gov)",
+      "Llama para confirmar qué documentos piden (usualmente no se exige comprobante de estatus migratorio)",
+      "Pregunta sobre la escala móvil de tarifas (sliding fee scale) según tus ingresos",
+      "Agenda tu primera cita como paciente nuevo",
+    ],
+    documentosNecesarios: [
+      "Identificación (no siempre se exige documento migratorio)",
+      "Comprobante de ingresos (para calificar a tarifa reducida, si aplica)",
+    ],
+    tiempoPromedio: "Varía según el centro; algunos ofrecen citas el mismo día para casos urgentes",
+    costo: "Según escala móvil de ingresos (sliding fee scale); puede ser gratuito o de bajo costo",
+    linksExternos: [
+      { texto: "Buscador de Centros de Salud - HRSA", url: "https://findahealthcenter.hrsa.gov/" },
+    ],
+    categoria: "Salud",
+    prioridad: "alto",
+  },
+  {
+    pais: "DO",
+    titulo: "Medicaid de emergencia sin importar el estatus migratorio",
+    slug: "medicaid-emergencia-do",
+    descripcion: "Qué es el Medicaid de emergencia y cómo puede cubrir tratamiento médico urgente independientemente del estatus migratorio.",
+    contenidoHtml: "<p>El Medicaid de emergencia es una disposición federal que permite cubrir el costo de una condición médica de emergencia (una que pone en peligro la vida, una función corporal o un órgano) para personas que de otro modo calificarían para Medicaid por sus ingresos, pero que no cumplen el requisito de estatus migratorio para el Medicaid completo. Esto incluye a inmigrantes indocumentados y a muchos otros con estatus migratorio limitado.</p><p>Es importante entender los límites de este beneficio: cubre únicamente la atención de la emergencia médica en sí (por ejemplo, una cirugía de emergencia, atención de parto de emergencia, o estabilización tras un accidente grave), no atención preventiva, chequeos de rutina ni tratamiento continuo de condiciones crónicas fuera del episodio de emergencia. Cada estado administra su propio programa de Medicaid, incluido el componente de emergencia, por lo que el proceso exacto de solicitud puede variar según el estado donde se recibió la atención.</p><p>Se recomienda que, ante cualquier emergencia médica real, la persona busque atención de inmediato en la sala de emergencias más cercana —las salas de emergencia de hospitales que reciben fondos federales están obligadas por la ley EMTALA a estabilizar a cualquier paciente sin importar su capacidad de pago o estatus migratorio— y que posteriormente el hospital o un trabajador social ayude a determinar si el caso califica para Medicaid de emergencia. NOTA IMPORTANTE: las políticas de elegibilidad y financiamiento de Medicaid para inmigrantes han estado sujetas a cambios normativos activos en 2025-2026 a nivel federal; conviene verificar el estado actual de este beneficio en tu estado con una fuente oficial reciente antes de asumir cobertura garantizada.</p>",
+    pasos: [
+      "En una emergencia real, acude de inmediato a la sala de emergencias (EMTALA obliga a estabilizarte sin importar estatus migratorio o capacidad de pago)",
+      "Pregunta al hospital si tienen un trabajador social o consejero financiero que ayude con la solicitud de Medicaid de emergencia",
+      "Reúne comprobantes de ingresos y residencia en el estado",
+      "Solicita Medicaid de emergencia a través de la oficina estatal correspondiente, usualmente con ayuda del hospital",
+    ],
+    documentosNecesarios: [
+      "Identificación",
+      "Comprobante de ingresos del hogar",
+      "Comprobante de residencia en el estado",
+      "Documentación del episodio médico de emergencia (usualmente provista por el hospital)",
+    ],
+    tiempoPromedio: "Varía según el estado; la atención de emergencia se brinda de inmediato, la aprobación de Medicaid puede tomar semanas",
+    costo: "Cubierto por el programa si se aprueba la elegibilidad; no se pide pago por adelantado para estabilizar una emergencia real",
+    linksExternos: [
+      { texto: "Cobertura de salud para inmigrantes - HealthCare.gov", url: "https://www.healthcare.gov/immigrants/lawfully-present-immigrants/" },
+    ],
+    categoria: "Salud",
+    prioridad: "critico",
+  },
+  {
+    pais: "DO",
+    titulo: "Apoyo de salud mental para la comunidad dominicana en Nueva York",
+    slug: "salud-mental-dominicanos-do",
+    descripcion: "Organizaciones que ofrecen servicios de salud mental y bienestar comunitario orientados a la población dominicana, como Alianza Dominicana en Washington Heights, Nueva York.",
+    contenidoHtml: "<p>Alianza Dominicana Inc. es una organización comunitaria sin fines de lucro fundada en 1988 y con sede en Washington Heights, Nueva York (el corazón histórico de la comunidad dominicana en EE.UU.), que ofrece programas de salud, salud mental, prevención de abuso de sustancias, servicios para jóvenes y familias, y apoyo comunitario dirigidos principalmente a la población dominicana y latina del norte de Manhattan. Es una de las organizaciones de servicios comunitarios de origen dominicano más antiguas y reconocidas en EE.UU., con registro verificable ante el IRS como organización sin fines de lucro.</p><p>Buscar apoyo de salud mental en organizaciones con arraigo cultural dominicano puede facilitar el acceso, ya que suelen ofrecer servicios en español, con personal familiarizado con las dinámicas culturales y migratorias específicas de la diáspora dominicana (choque cultural, separación familiar, estrés migratorio, duelo por la distancia con la isla). Estos servicios se suman a los recursos generales de salud mental disponibles en centros de salud comunitarios (ver trámite de clínicas comunitarias) y a líneas de crisis nacionales, que no requieren identificar estatus migratorio para brindar apoyo.</p><p>Para dominicanos fuera del área de Nueva York, se recomienda buscar organizaciones latinas de salud mental locales o centros de salud comunitarios (Community Health Centers) que ofrezcan servicios de salud conductual en español, ya que la disponibilidad específica de programas dirigidos a la comunidad dominicana varía mucho fuera de la costa este.</p>",
+    pasos: [
+      "Si estás en el área de Nueva York, contacta a Alianza Dominicana Inc. en Washington Heights para conocer sus programas de salud mental disponibles",
+      "Pregunta si el servicio se ofrece en español y si hay costo o es gratuito/de tarifa reducida",
+      "Si no estás en Nueva York, busca un centro de salud comunitario (HRSA) con servicios de salud conductual en español cerca de ti",
+      "En caso de crisis, considera llamar a la línea nacional de crisis 988 (disponible en español) mientras buscas seguimiento continuo",
+    ],
+    documentosNecesarios: [
+      "Ninguno específico para una consulta inicial de orientación",
+    ],
+    tiempoPromedio: "Varía según la organización y demanda de citas",
+    costo: "Varía; muchos programas comunitarios ofrecen tarifa reducida o gratuita",
+    linksExternos: [
+      { texto: "Alianza Dominicana Inc - ProPublica Nonprofit Explorer", url: "https://projects.propublica.org/nonprofits/organizations/133402057" },
+      { texto: "Buscador de Centros de Salud - HRSA", url: "https://findahealthcenter.hrsa.gov/" },
+    ],
+    categoria: "Salud",
+    prioridad: "relevante",
+  },
+  // ============================================================
+  // EDUCACIÓN
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Inscripción escolar de menores sin importar el estatus migratorio",
+    slug: "inscripcion-escolar-do",
+    descripcion: "Derecho de todo menor en EE.UU. a inscribirse en la escuela pública sin importar su estatus migratorio ni el de sus padres, según la decisión de la Corte Suprema en Plyler v. Doe (1982).",
+    contenidoHtml: "<p>La Corte Suprema de EE.UU. estableció en el caso Plyler v. Doe (1982) que todo niño y adolescente en el país tiene derecho a inscribirse y asistir a la escuela pública K-12 (desde kindergarten hasta el grado 12) sin importar su estatus migratorio ni el de sus padres o tutores. Ninguna escuela pública puede negar la inscripción, exigir un número de Seguro Social como requisito obligatorio, ni preguntar directamente sobre el estatus migratorio del estudiante o de su familia con el fin de negar el acceso a la educación.</p><p>Para inscribir a un menor, las escuelas suelen pedir comprobante de edad (acta de nacimiento u otro documento de identidad del menor), comprobante de domicilio dentro del distrito escolar (por ejemplo, una factura de servicios o contrato de alquiler) y registro de vacunas. Ninguno de estos requisitos exige revelar el estatus migratorio, y las familias tienen derecho a inscribir a sus hijos aunque no tengan aún todos los documentos, ya que los distritos deben ofrecer alternativas razonables cuando falta algún comprobante.</p><p>Este derecho aplica en los 50 estados por ser una decisión de la Corte Suprema federal, aunque el proceso administrativo de inscripción (documentos exactos solicitados, plazos, zonificación escolar) varía según el distrito escolar local.</p>",
+    pasos: [
+      "Contacta al distrito escolar correspondiente a tu domicilio para inscribir al menor",
+      "Lleva acta de nacimiento o documento de identidad del menor",
+      "Lleva comprobante de domicilio (recibo de servicios, contrato de alquiler, carta de un refugio si aplica)",
+      "Lleva récord de vacunas si está disponible (las escuelas suelen ofrecer opciones si falta alguna)",
+      "Si la escuela pide número de Seguro Social o pregunta por estatus migratorio de forma que te haga sentir incómodo, puedes negarte y contactar a una organización de derechos educativos o legal aid local",
+    ],
+    documentosNecesarios: [
+      "Acta de nacimiento o identificación del menor",
+      "Comprobante de domicilio",
+      "Récord de vacunas (si está disponible)",
+    ],
+    tiempoPromedio: "Generalmente días a un par de semanas según el distrito",
+    costo: "Gratis (educación pública K-12)",
+    linksExternos: [
+      { texto: "Departamento de Educación de EE.UU. - Derechos educativos de estudiantes inmigrantes", url: "https://www.ed.gov/laws-and-policy" },
+    ],
+    categoria: "Educación",
+    prioridad: "critico",
+  },
+  {
+    pais: "DO",
+    titulo: "Ir a la universidad siendo indocumentado: matrícula estatal (in-state tuition)",
+    slug: "universidad-indocumentados-do",
+    descripcion: "Qué estados permiten a estudiantes indocumentados pagar matrícula estatal (in-state tuition) en universidades públicas, con atención a los cambios recientes en Florida.",
+    contenidoHtml: "<p>No existe una ley federal que resuelva la matrícula universitaria para estudiantes indocumentados: cada estado decide si permite que estos estudiantes paguen la tarifa de matrícula estatal (in-state tuition, mucho más baja que la tarifa para estudiantes de fuera del estado o internacionales) en sus universidades públicas, y estas leyes cambian con el tiempo según la política de cada estado.</p><p>Nueva Jersey aprobó la 'NJ Tuition Equity Act' (2013), que permite a estudiantes indocumentados que cumplen ciertos requisitos de residencia y asistencia escolar en el estado pagar matrícula estatal en universidades públicas de Nueva Jersey, y el 'NJ Dream Act' amplió después el acceso a cierta ayuda financiera estatal para estos estudiantes. Nueva York, a través de la 'NY DREAM Act' (aprobada en 2019), permite a estudiantes indocumentados elegibles acceder tanto a matrícula estatal como a ciertos programas de ayuda financiera estatal (como el Tuition Assistance Program, TAP) en universidades públicas de Nueva York.</p><p>Florida es un caso distinto e importante de señalar: durante años permitió matrícula estatal a estudiantes indocumentados bajo ciertas condiciones, pero en febrero de 2025 el estado eliminó ese beneficio como parte de un paquete de leyes migratorias más amplio, según reportó Inside Higher Ed. Esto significa que, a la fecha de esta nota (26 ago 2026), estudiantes indocumentados en universidades públicas de Florida ya no califican automáticamente para la tarifa de matrícula estatal, un cambio relevante para la numerosa comunidad dominicana en el sur y centro de Florida. Debido a que estas leyes cambian con frecuencia y varían mucho por estado, se recomienda verificar la política vigente directamente con la oficina de admisiones o ayuda financiera de la universidad de interés antes de aplicar.</p>",
+    pasos: [
+      "Investiga la ley vigente de tu estado sobre matrícula estatal para estudiantes indocumentados antes de aplicar",
+      "Si estás en Nueva York o Nueva Jersey, pregunta específicamente por la NY DREAM Act o la NJ Tuition Equity Act al solicitar",
+      "Si estás en Florida, confirma directamente con la universidad la tarifa de matrícula que aplicará, dado el cambio de ley de 2025",
+      "Contacta a la oficina de ayuda financiera de la universidad para conocer becas privadas o estatales disponibles para estudiantes indocumentados",
+      "Busca organizaciones locales de apoyo a 'Dreamers' para orientación en el proceso de aplicación",
+    ],
+    documentosNecesarios: [
+      "Historial académico de escuela secundaria (transcript)",
+      "Comprobante de residencia y asistencia escolar en el estado (varía según la ley estatal)",
+    ],
+    tiempoPromedio: "Según calendario de admisión de cada universidad",
+    costo: "Varía según el estado y si califica para matrícula estatal o no",
+    linksExternos: [
+      { texto: "Higher Ed Immigration Portal - Florida", url: "https://www.higheredimmigrationportal.org/state/florida/" },
+      { texto: "Florida elimina matrícula estatal para indocumentados - Inside Higher Ed", url: "https://www.insidehighered.com/news/government/state-policy/2025/02/20/florida-ends-state-tuition-undocumented-students" },
+    ],
+    categoria: "Educación",
+    prioridad: "alto",
+  },
+  {
+    pais: "DO",
+    titulo: "Reconocimiento de un título dominicano en Estados Unidos (WES / NACES)",
+    slug: "reconocimiento-titulo-eeuu-do",
+    descripcion: "Cómo hacer evaluar un título o diploma dominicano para que sea reconocido por empleadores, universidades o juntas de licencia profesional en EE.UU., a través de un evaluador miembro de NACES como World Education Services (WES).",
+    contenidoHtml: "<p>Un título universitario o técnico obtenido en República Dominicana no es automáticamente 'traducido' a un equivalente estadounidense: para que un empleador, una universidad de posgrado o una junta de licencia profesional en EE.UU. reconozca ese título, generalmente se requiere una evaluación de credenciales extranjeras (foreign credential evaluation) realizada por una organización especializada, y no por el consulado ni por MESCYT (ese trámite dominicano, ver 'Homologación de estudios realizados en el extranjero', sirve para el uso del título dentro de República Dominicana, no en EE.UU.).</p><p>NACES (National Association of Credential Evaluation Services) es la asociación que agrupa a los principales evaluadores de credenciales reconocidos en EE.UU.; World Education Services (WES) es uno de sus miembros más utilizados, especialmente por quienes aplican a universidades, ciertos empleos, o programas de licencia profesional. El servicio típicamente requiere enviar los documentos académicos (título, récord de notas) directamente desde la institución dominicana o mediante copias certificadas, y produce un reporte que indica el equivalente aproximado del título en el sistema educativo estadounidense (por ejemplo, si una licenciatura dominicana equivale a un 'Bachelor's degree' en EE.UU.).</p><p>Es importante confirmar primero con la institución, empleador o junta de licencia que exige la evaluación cuál servicio de NACES aceptan específicamente, ya que algunos piden un evaluador en particular. El costo y tiempo de procesamiento varían según el tipo de evaluación (evaluación general de documento a documento vs. evaluación curso por curso) y el nivel de urgencia solicitado.</p>",
+    pasos: [
+      "Confirma con la institución, empleador o junta de licencia qué tipo de evaluación exige y si aceptan cualquier miembro de NACES o uno específico",
+      "Reúne tu título y récord de notas dominicano, generalmente en copia certificada o enviados directamente por la institución",
+      "Crea una cuenta con el evaluador elegido (por ejemplo, WES) y sube o envía la documentación requerida",
+      "Realiza el pago correspondiente al tipo de evaluación",
+      "Espera el reporte de evaluación y compártelo con la institución o empleador que lo solicitó",
+    ],
+    documentosNecesarios: [
+      "Título o diploma dominicano",
+      "Récord de notas (transcript) dominicano",
+      "Identificación",
+    ],
+    tiempoPromedio: "Varía según el evaluador y tipo de servicio; verificar plazos vigentes con el proveedor elegido",
+    costo: "Varía según el evaluador y tipo de evaluación - verificar tarifas vigentes en el sitio del proveedor",
+    linksExternos: [
+      { texto: "NACES - Directorio de evaluadores reconocidos", url: "https://naces.org/" },
+      { texto: "World Education Services (WES)", url: "https://www.wes.org/" },
+    ],
+    categoria: "Educación",
+    prioridad: "relevante",
+  },
+  // ============================================================
+  // TRABAJO
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Cómo conseguir tu primer empleo en EE.UU. sin documentos",
+    slug: "primer-empleo-sin-papeles-do",
+    descripcion: "Orientación práctica para dominicanos sin autorización de trabajo que buscan su primer empleo en EE.UU., incluyendo advertencias sobre documentos falsos.",
+    contenidoHtml: "<p>Trabajar en EE.UU. sin autorización migratoria conlleva riesgos legales tanto para el trabajador como, en teoría, para el empleador que a sabiendas contrata a alguien sin autorización de trabajo (bajo la ley federal de verificación I-9). En la práctica, muchos dominicanos sin papeles consiguen empleo en sectores como construcción, limpieza, cuidado de personas, restaurantes y pequeños negocios, frecuentemente a través de referencias familiares o comunitarias más que de procesos formales de contratación.</p><p>Es importante saber que usar un número de Seguro Social falso o de otra persona, o documentos de identidad falsificados, es un delito federal independiente del tema migratorio, con consecuencias legales propias que pueden ser más graves que las de trabajar sin autorización en sí. Muchos trabajadores indocumentados pagan impuestos usando un ITIN (Número de Identificación Individual del Contribuyente, emitido por el IRS) en vez de un Seguro Social, lo cual es legal y puede ser útil para historial fiscal futuro, incluso en procesos migratorios posteriores.</p><p>Sin importar el estatus migratorio, un trabajador tiene derecho a que se le pague por el trabajo realizado, al salario mínimo aplicable y a condiciones de trabajo seguras (ver trámite de derechos laborales). Organizaciones de trabajadores y centros de jornaleros (worker centers) en ciudades con alta población dominicana pueden orientar sobre qué empleadores respetan estos derechos y cómo evitar situaciones de explotación laboral o tráfico laboral.</p>",
+    pasos: [
+      "Evita usar documentos de identidad o números de Seguro Social falsos: es un delito federal aparte del estatus migratorio",
+      "Considera obtener un ITIN del IRS para fines fiscales si planeas trabajar de forma independiente o declarar impuestos",
+      "Busca referencias a través de familiares, la comunidad dominicana local, iglesias o centros de trabajadores (worker centers)",
+      "Antes de aceptar un empleo, pregunta cómo y cuándo se paga (cheque, efectivo, transferencia) y guarda cualquier comprobante de pago",
+      "Si sospechas de una situación de explotación o tráfico laboral, contacta a una organización de derechos laborales o la línea nacional de trata de personas",
+    ],
+    documentosNecesarios: [
+      "ITIN (opcional, para fines fiscales) - trámite ante el IRS",
+      "Identificación consular o pasaporte",
+    ],
+    tiempoPromedio: "Varía según el sector y la red de contactos",
+    costo: "Gratis buscar orientación en organizaciones comunitarias",
+    linksExternos: [
+      { texto: "Derechos de trabajadores inmigrantes - NLRB", url: "https://www.nlrb.gov/guidance/key-reference-materials/immigrant-worker-rights" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "importante",
+  },
+  {
+    pais: "DO",
+    titulo: "Derechos laborales sin importar tu estatus migratorio",
+    slug: "derechos-laborales-estatus-do",
+    descripcion: "Derechos laborales básicos (salario mínimo, seguridad, protección contra represalias) que aplican a todo trabajador en EE.UU. sin importar su estatus migratorio, según el Departamento de Trabajo y el NLRB.",
+    contenidoHtml: "<p>Las leyes laborales federales de EE.UU. —incluyendo el salario mínimo y las horas extra bajo la Fair Labor Standards Act (FLSA), la seguridad ocupacional bajo OSHA, y el derecho a organizarse bajo el National Labor Relations Act (NLRA)— generalmente aplican a todos los trabajadores presentes en el país, sin importar su estatus migratorio. El Departamento de Trabajo de EE.UU. (DOL) y el National Labor Relations Board (NLRB) han confirmado que un trabajador indocumentado conserva el derecho a reclamar salarios no pagados, denunciar condiciones de trabajo inseguras, y participar en actividades colectivas protegidas, aunque existen matices y limitaciones importantes en ciertos remedios legales (por ejemplo, en casos de despido injustificado relacionado con actividad sindical, la Corte Suprema limitó en el caso Hoffman Plastic Compounds v. NLRB (2002) el pago retroactivo de salarios a trabajadores indocumentados despedidos ilegalmente, aunque otros remedios siguen disponibles).</p><p>Reportar una violación laboral (salarios no pagados, condiciones peligrosas, acoso) generalmente no requiere revelar el estatus migratorio, y agencias como el DOL han indicado que su función es hacer cumplir la ley laboral, no la ley migratoria. Sin embargo, dado que las políticas de coordinación entre agencias pueden cambiar, quien tenga dudas sobre su caso particular debe consultar con una organización de derechos laborales o un abogado antes de presentar una queja formal.</p><p>Entre los derechos más reclamados por trabajadores dominicanos en sectores como construcción, limpieza y restaurantes están el pago del salario mínimo estatal (que puede ser más alto que el federal, como en Nueva York, Nueva Jersey o Massachusetts), el pago de horas extra por trabajar más de 40 horas semanales, y la protección contra represalias por quejarse de condiciones inseguras o salarios impagos.</p>",
+    pasos: [
+      "Si no te han pagado el salario acordado, documenta las horas trabajadas y cualquier comunicación con el empleador",
+      "Presenta una queja ante el Departamento de Trabajo de tu estado o el federal (Wage and Hour Division del DOL) por salarios no pagados",
+      "Si sufres una lesión laboral, reporta la condición insegura a OSHA",
+      "Si enfrentas represalias por organizarte con compañeros de trabajo, contacta al NLRB",
+      "Busca apoyo de una organización de derechos laborales local antes de presentar una queja si tienes dudas sobre tu situación particular",
+    ],
+    documentosNecesarios: [
+      "Comprobantes de horas trabajadas y pagos recibidos (si los hay)",
+      "Cualquier comunicación escrita con el empleador",
+    ],
+    tiempoPromedio: "Varía según el tipo de queja y la agencia",
+    costo: "Gratis presentar quejas ante DOL, OSHA o NLRB",
+    linksExternos: [
+      { texto: "Derechos de trabajadores inmigrantes - NLRB", url: "https://www.nlrb.gov/guidance/key-reference-materials/immigrant-worker-rights" },
+      { texto: "Wage and Hour Division - Departamento de Trabajo", url: "https://www.dol.gov/agencies/whd" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "critico",
+  },
+  {
+    pais: "DO",
+    titulo: "Organizaciones que apoyan a trabajadores dominicanos en Nueva York",
+    slug: "organizaciones-laborales-dominicanos-do",
+    descripcion: "Organizaciones comunitarias que ofrecen orientación laboral, defensa de derechos y servicios sociales a la comunidad dominicana y latina en Nueva York.",
+    contenidoHtml: "<p>Make the Road New York es una organización comunitaria sin fines de lucro con presencia en Bushwick (Brooklyn), Jackson Heights (Queens), Port Richmond (Staten Island) y el Bronx, que atiende a comunidades inmigrantes latinas —incluyendo a un número significativo de dominicanos— y ofrece programas de justicia laboral (workplace justice), orientación legal, clases de inglés y organización comunitaria. No es una organización exclusivamente dominicana, sino de servicio a la comunidad latina en general, pero es un recurso ampliamente utilizado por dominicanos en Nueva York para temas de derechos laborales y defensa contra el robo de salario (wage theft).</p><p>Alianza Dominicana Inc., con sede en Washington Heights, además de sus programas de salud (ver trámite de salud mental), también ha ofrecido históricamente servicios de apoyo comunitario y conexión con recursos de empleo y capacitación para la comunidad dominicana del norte de Manhattan y el Bronx. Se recomienda contactar directamente a cada organización para confirmar qué programas específicos de empleo o defensa laboral tienen activos en el momento, ya que la oferta de servicios puede cambiar según financiamiento disponible.</p><p>Para temas específicamente de defensa legal laboral (salarios no pagados, discriminación, condiciones inseguras), también es válido acudir directamente a la Wage and Hour Division del Departamento de Trabajo o a una clínica legal universitaria de la zona, que en Nueva York suelen ofrecer consultas gratuitas para casos laborales de bajos ingresos.</p>",
+    pasos: [
+      "Contacta a Make the Road New York si vives en Brooklyn, Queens, Staten Island o el Bronx y necesitas orientación laboral o legal",
+      "Contacta a Alianza Dominicana Inc. si estás en Washington Heights o el norte del Bronx para conexión con recursos comunitarios",
+      "Confirma directamente con cada organización qué servicios de empleo o defensa laboral tienen disponibles actualmente",
+      "Si tu caso es urgente (salario no pagado, despido reciente), considera también presentar queja directamente ante el DOL mientras buscas apoyo comunitario",
+    ],
+    documentosNecesarios: [
+      "Ninguno específico para una consulta inicial",
+    ],
+    tiempoPromedio: "Varía según la organización y disponibilidad de citas",
+    costo: "Generalmente gratuito",
+    linksExternos: [
+      { texto: "Make the Road New York", url: "https://maketheroadny.org/" },
+      { texto: "Alianza Dominicana Inc - ProPublica Nonprofit Explorer", url: "https://projects.propublica.org/nonprofits/organizations/133402057" },
+    ],
+    categoria: "Trabajo",
+    prioridad: "relevante",
+  },
+  // ============================================================
+  // TRANSPORTE
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Estados que dan licencia de conducir sin importar el estatus migratorio",
+    slug: "licencia-sin-estatus-do",
+    descripcion: "Lista de referencia de estados de EE.UU. que permiten obtener una licencia de conducir (estándar o especial) sin importar el estatus migratorio, según el National Immigration Law Center (NILC).",
+    contenidoHtml: "<p>Un número creciente pero limitado de estados de EE.UU. permite que residentes obtengan una licencia de conducir sin necesidad de comprobar su estatus migratorio. El National Immigration Law Center (NILC) mantiene una tabla actualizada de qué estados lo permiten y bajo qué condiciones, ya que este es un tema que cambia con cada sesión legislativa estatal —algunos estados han ampliado el acceso en años recientes y otros han considerado revertirlo—, por lo que cualquier lista específica de estados debe confirmarse contra la tabla vigente de NILC o el DMV del estado en cuestión antes de asumir que sigue vigente.</p><p>Nueva York es un ejemplo relevante para la diáspora dominicana: bajo la 'Green Light Law' (vigente desde 2019), el estado permite a residentes obtener una licencia de conducir estándar sin importar su estatus migratorio, usando documentos alternativos de identidad (como el pasaporte dominicano) en vez de un número de Seguro Social. Otros estados con alta concentración de dominicanos, como Nueva Jersey, también han implementado leyes similares, mientras que Florida no permite este tipo de licencia para personas sin estatus migratorio regular.</p><p>Es fundamental entender que estas licencias 'no estándar' (a veces llamadas 'licencias limitadas' o de conducir únicamente) suelen no ser válidas como identificación para abordar vuelos domésticos bajo REAL ID ni para todos los trámites federales, y su reconocimiento fuera del estado que la emitió puede ser limitado. Verifica siempre con el DMV de tu estado el tipo exacto de licencia disponible y sus usos permitidos.</p>",
+    pasos: [
+      "Consulta la tabla actualizada de estados en el sitio de NILC (nilc.org) para confirmar si tu estado permite licencia sin importar estatus migratorio",
+      "Si vives en Nueva York, investiga los requisitos de la Green Light Law en el DMV estatal",
+      "Reúne identificación alternativa aceptada (pasaporte dominicano, cédula, u otros documentos según el estado)",
+      "Agenda tu examen de manejo en el DMV correspondiente",
+      "Verifica si la licencia obtenida es válida para volar domésticamente bajo REAL ID o si necesitarás otro documento para eso",
+    ],
+    documentosNecesarios: [
+      "Pasaporte dominicano u otra identificación alternativa aceptada por el estado",
+      "Comprobante de domicilio en el estado",
+    ],
+    tiempoPromedio: "Varía según el DMV estatal",
+    costo: "Varía según el estado (tarifa estándar de licencia de conducir)",
+    linksExternos: [
+      { texto: "Tabla de acceso a licencias de conducir por estado - NILC", url: "https://www.nilc.org/resources/state-laws-providing-dl-access/" },
+    ],
+    categoria: "Transporte",
+    prioridad: "importante",
+  },
+  {
+    pais: "DO",
+    titulo: "Seguro de auto con licencia de conducir no estándar",
+    slug: "seguro-auto-licencia-no-estandar-do",
+    descripcion: "Cómo conseguir seguro de auto legalmente si tienes una licencia de conducir no estándar o limitada emitida sin comprobar estatus migratorio.",
+    contenidoHtml: "<p>Tener una licencia de conducir no estándar (emitida sin comprobar estatus migratorio, como bajo la Green Light Law de Nueva York) no impide, en general, obtener un seguro de auto: las aseguradoras evalúan principalmente el riesgo de manejo (historial de conducción, tipo de vehículo, dirección de residencia), no el estatus migratorio del conductor. Sin embargo, no todas las aseguradoras aceptan igualmente este tipo de licencia, por lo que conviene comparar cotizaciones entre varias compañías o usar un corredor de seguros (insurance broker) que trabaje específicamente con clientes que tienen licencias no estándar.</p><p>Manejar sin seguro es ilegal en prácticamente todos los estados y puede resultar en multas, suspensión de la licencia o del registro del vehículo, y responsabilidad financiera personal en caso de accidente, independientemente del estatus migratorio del conductor. Para alguien sin historial de crédito o de manejo en EE.UU., el costo inicial del seguro puede ser más alto hasta construir un historial, similar a lo que ocurre con el historial de crédito para vivienda.</p><p>Se recomienda solicitar cotizaciones a varias aseguradoras y verificar específicamente si aceptan la licencia no estándar de tu estado antes de comprar la póliza, ya que las políticas de cada compañía de seguros pueden variar y cambiar con el tiempo.</p>",
+    pasos: [
+      "Obtén tu licencia de conducir no estándar según las reglas de tu estado",
+      "Solicita cotizaciones de seguro de auto a varias aseguradoras, confirmando que aceptan tu tipo de licencia",
+      "Considera usar un corredor de seguros (insurance broker) con experiencia en clientes con licencias no estándar",
+      "Compra la póliza que cumpla al menos con el mínimo de cobertura obligatorio en tu estado antes de conducir",
+    ],
+    documentosNecesarios: [
+      "Licencia de conducir (estándar o no estándar según tu estado)",
+      "Información del vehículo a asegurar",
+    ],
+    tiempoPromedio: "Puede obtenerse el mismo día en la mayoría de los casos",
+    costo: "Varía según la aseguradora, el estado, el vehículo y el historial de manejo",
+    linksExternos: [
+      { texto: "Tabla de acceso a licencias de conducir por estado - NILC", url: "https://www.nilc.org/resources/state-laws-providing-dl-access/" },
+    ],
+    categoria: "Transporte",
+    prioridad: "relevante",
+  },
+  // ============================================================
+  // SEGURIDAD Y EMERGENCIAS
+  // ============================================================
+  {
+    pais: "DO",
+    titulo: "Estafas comunes contra dominicanos: notarios falsos y fraude migratorio",
+    slug: "estafas-dominicanos-do",
+    descripcion: "Cómo identificar y evitar estafas frecuentes contra la comunidad inmigrante, incluyendo el fraude de 'notarios' que prometen trámites migratorios falsos y estafas relacionadas con remesas.",
+    contenidoHtml: "<p>La Comisión Federal de Comercio de EE.UU. (FTC) advierte específicamente sobre el 'notario fraud' o fraude de notarios: en muchos países de América Latina, incluyendo República Dominicana, un 'notario público' tiene formación legal y puede asesorar en asuntos legales, pero en EE.UU. un 'notary public' es solo una persona autorizada para certificar firmas, sin ninguna formación ni autorización legal para dar asesoría migratoria. Personas sin licencia se hacen pasar por expertos en inmigración usando el título de 'notario' para cobrar por trámites migratorios que no pueden completar legalmente, a veces presentando formularios falsos o incompletos ante USCIS, lo que puede dañar gravemente el caso migratorio de la víctima.</p><p>Solo un abogado de inmigración con licencia o un representante acreditado por el Departamento de Justicia (Board of Immigration Appeals, BIA) puede dar asesoría legal migratoria y representar a alguien ante USCIS o una corte de inmigración. Antes de pagar por ayuda con cualquier trámite migratorio, se recomienda verificar la licencia del abogado ante el colegio de abogados del estado, o confirmar la acreditación del representante ante el Departamento de Justicia.</p><p>Otro tipo de fraude frecuente contra la comunidad dominicana involucra remesas: estafadores que se hacen pasar por familiares en emergencia pidiendo dinero urgente por transferencia, o esquemas de 'inversión' o 'préstamo' que prometen enviar dinero a República Dominicana con condiciones sospechosamente favorables. La FTC recomienda desconfiar de cualquier solicitud de dinero urgente sin poder verificar directamente (por llamada, no solo mensaje de texto) con la persona involucrada, y de cualquier servicio de envío de dinero que no sea una empresa de remesas reconocida y regulada.</p>",
+    pasos: [
+      "Antes de pagar por ayuda migratoria, verifica si la persona es abogado con licencia o representante acreditado por el Departamento de Justicia (BIA)",
+      "Desconfía de cualquiera que se llame 'notario' y ofrezca servicios migratorios sin ser abogado",
+      "Nunca envíes dinero de emergencia a un supuesto familiar sin verificar por llamada directa primero",
+      "Usa únicamente empresas de remesas reconocidas y reguladas para enviar dinero a República Dominicana",
+      "Reporta cualquier sospecha de fraude a la FTC (ftc.gov/complaint) o a la fiscalía general de tu estado",
+    ],
+    documentosNecesarios: [
+      "Ninguno; guarda evidencia (recibos, mensajes, contratos) si ya fuiste víctima de un posible fraude",
+    ],
+    tiempoPromedio: "Inmediato para reportar; la investigación de la FTC puede tomar tiempo",
+    costo: "Gratis reportar ante la FTC",
+    linksExternos: [
+      { texto: "Estafas contra inmigrantes - FTC", url: "https://www.consumer.ftc.gov/sites/www.consumer.ftc.gov/files/articles/pdf/800a-avoiding-scams-against-immigrants.pdf" },
+    ],
+    categoria: "Seguridad y Emergencias",
+    prioridad: "critico",
+  },
+  {
+    pais: "DO",
+    titulo: "Líneas de ayuda en español: 211, trata de personas y violencia doméstica",
+    slug: "lineas-ayuda-espanol-do",
+    descripcion: "Números de ayuda disponibles en español para necesidades sociales, trata de personas y violencia doméstica, sin importar el estatus migratorio de quien llama.",
+    contenidoHtml: "<p>El 211 es un número de ayuda gratuito y confidencial disponible en la mayoría de EE.UU. que conecta a la persona que llama con recursos locales de vivienda, alimentos, salud y asistencia social, generalmente con servicio en español disponible; no reporta el estatus migratorio de quien llama a ninguna autoridad. Es un buen primer punto de contacto cuando no se sabe a qué organización acudir para un problema específico (falta de vivienda, necesidad urgente de alimentos, orientación general de servicios).</p><p>La Línea Nacional de Trata de Personas (National Human Trafficking Hotline), al 1-888-373-7888, ofrece ayuda confidencial las 24 horas en español y otros idiomas para víctimas de trata laboral o sexual, o para reportar una situación sospechosa. La trata laboral puede afectar a trabajadores inmigrantes en situaciones de explotación extrema (confiscación de documentos, deudas impuestas, amenazas), y la línea puede conectar a la víctima con protecciones legales especiales (como la visa T) independientemente de su estatus migratorio actual.</p><p>La Línea Nacional de Violencia Doméstica (National Domestic Violence Hotline), al 1-800-799-7233, ofrece apoyo confidencial las 24 horas en español para víctimas de violencia doméstica, con orientación sobre seguridad, refugios y recursos legales. Además, la Ley de Violencia contra la Mujer (VAWA) permite a ciertas víctimas de violencia doméstica con estatus migratorio dependiente de su agresor solicitar protección migratoria propia, sin depender del agresor para su estatus legal.</p>",
+    pasos: [
+      "Llama al 211 para orientación general de servicios sociales en tu área (vivienda, alimentos, salud)",
+      "Llama al 1-888-373-7888 (Línea Nacional de Trata de Personas) si sospechas una situación de trata laboral o sexual, propia o de alguien más",
+      "Llama al 1-800-799-7233 (Línea Nacional de Violencia Doméstica) si tú o alguien que conoces vive violencia doméstica",
+      "Si es una emergencia inmediata que pone en peligro tu vida, llama al 911",
+    ],
+    documentosNecesarios: [
+      "Ninguno; estas líneas no exigen identificación ni preguntan por estatus migratorio para brindar ayuda",
+    ],
+    tiempoPromedio: "Disponibles 24/7",
+    costo: "Gratis",
+    linksExternos: [
+      { texto: "Línea Nacional de Trata de Personas", url: "https://humantraffickinghotline.org/en/get-help" },
+      { texto: "Líneas de ayuda federales - ACF", url: "https://acf.gov/acf-hotlines" },
+    ],
+    categoria: "Seguridad y Emergencias",
+    prioridad: "critico",
+  },
 ];
 
 // ============================================================
