@@ -151,7 +151,7 @@ export default function Navbar({ pais }: { pais?: string }) {
           <button
             type="button"
             onClick={() => setMobileMenuOpen((v) => !v)}
-            className="sm:hidden text-gray-600 p-1 -mr-1"
+            className="sm:hidden text-gray-600 p-2.5 -mr-2.5"
             aria-label="Abrir menú"
           >
             {mobileMenuOpen ? <IconX className="w-6 h-6" /> : <IconMenu className="w-6 h-6" />}

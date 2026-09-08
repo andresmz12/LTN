@@ -30,7 +30,7 @@ export default function AdminNav() {
       {/* Mobile top bar */}
       <div className="sm:hidden fixed top-0 inset-x-0 h-12 bg-gray-900 flex items-center justify-between px-4 z-40">
         <span className="text-white font-display font-semibold text-sm">Compa Admin</span>
-        <button type="button" onClick={() => setOpen(true)} aria-label="Abrir menú" className="text-white p-1">
+        <button type="button" onClick={() => setOpen(true)} aria-label="Abrir menú" className="text-white p-2.5 -mr-2.5">
           <IconMenu className="w-5 h-5" />
         </button>
       </div>
@@ -50,7 +50,7 @@ export default function AdminNav() {
             <span className="text-xl font-display font-semibold text-white">Compa</span>
             <span className="text-[11px] text-gray-500 tracking-wide">Admin</span>
           </Link>
-          <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú" className="sm:hidden text-gray-500 p-1">
+          <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú" className="sm:hidden text-gray-500 p-2.5 -mr-2.5">
             <IconX className="w-5 h-5" />
           </button>
         </div>
