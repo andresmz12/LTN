@@ -5,7 +5,8 @@ import Footer from '@/components/Footer'
 import AnuncioCard from '@/components/AnuncioCard'
 import LocationBanner from '@/components/LocationBanner'
 import { IconBuilding, IconClipboard, IconNewspaper, IconMapPin } from '@/components/icons'
-import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, ESTADOS_US } from '@/lib/utils'
+import { PAISES, PAIS_NOMBRES, ESTADOS_US } from '@/lib/utils'
+import Flag from '@/components/Flag'
 import { prisma } from '@/lib/db'
 import { getAnunciosPara } from '@/lib/ads'
 import { getEstadoCookie } from '@/lib/location'
@@ -43,13 +44,13 @@ export default async function PaisPage({ params }: { params: { pais: string } })
       <div className="bg-white border-b border-gray-100">
         <div className="max-w-5xl mx-auto px-4 py-10">
           <h1 className="text-3xl font-display font-semibold text-gray-900 flex items-center gap-3">
-            <span>{PAIS_FLAGS[pais]}</span> {PAIS_NOMBRES[pais]}
+            <Flag pais={pais} className="w-7 h-5" /> {PAIS_NOMBRES[pais]}
           </h1>
           <p className="text-gray-500 mt-1">Recursos y servicios para la comunidad de {PAIS_NOMBRES[pais]} en EE.UU.</p>
         </div>
       </div>
 
-      <main className="max-w-5xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 py-10">
         <div className="mb-8">
           <LocationBanner />
         </div>

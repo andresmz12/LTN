@@ -30,7 +30,7 @@ export default async function ConsultadosPage({ params }: { params: { pais: stri
   return (
     <>
       <Navbar pais={pais} />
-      <main className="max-w-5xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 py-10">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">
           Consulados de {PAIS_NOMBRES[pais]} en EE.UU.
         </h1>

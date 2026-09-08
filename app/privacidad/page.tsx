@@ -5,7 +5,7 @@ export default function PrivacidadPage() {
   return (
     <>
       <Navbar />
-      <main className="max-w-2xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-2xl mx-auto px-4 py-10">
         <h1 className="text-2xl font-bold text-gray-900 mb-2">Privacidad y tus datos</h1>
         <p className="text-gray-500 mb-8">Última actualización: agosto 2026</p>
 

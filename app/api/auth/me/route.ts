@@ -25,7 +25,21 @@ export async function PUT(req: NextRequest) {
   if (!session?.user) return NextResponse.json({ error: 'No autenticado' }, { status: 401 })
 
   const body = await req.json()
-  const { estadoUS, paisOrigen, alertaCategorias, alertaActiva } = body
+  const { estadoUS, paisOrigen, alertaCategorias, alertaActiva, toggleSavedConsulado } = body
+
+  let savedConsuladosUpdate: { savedConsulados: string[] } | {} = {}
+  if (typeof toggleSavedConsulado === 'string') {
+    const current = await prisma.user.findUnique({
+      where: { email: session.user.email! },
+      select: { savedConsulados: true },
+    })
+    const list = current?.savedConsulados ?? []
+    savedConsuladosUpdate = {
+      savedConsulados: list.includes(toggleSavedConsulado)
+        ? list.filter((id: string) => id !== toggleSavedConsulado)
+        : [...list, toggleSavedConsulado],
+    }
+  }
 
   const user = await prisma.user.update({
     where: { email: session.user.email! },
@@ -34,6 +48,7 @@ export async function PUT(req: NextRequest) {
       ...(paisOrigen !== undefined ? { paisOrigen } : {}),
       ...(Array.isArray(alertaCategorias) ? { alertaCategorias } : {}),
       ...(typeof alertaActiva === 'boolean' ? { alertaActiva } : {}),
+      ...savedConsuladosUpdate,
     },
     select: SELECT,
   })

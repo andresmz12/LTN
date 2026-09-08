@@ -4,7 +4,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
-import { PAISES, PAIS_NOMBRES, PAIS_FLAGS, formatDate } from '@/lib/utils'
+import { PAISES, PAIS_NOMBRES, formatDate } from '@/lib/utils'
+import Flag from '@/components/Flag'
 import { prisma } from '@/lib/db'
 import type { Metadata } from 'next'
 
@@ -39,12 +40,12 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
   return (
     <>
       <Navbar pais={pais} />
-      <main className="max-w-2xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-2xl mx-auto px-4 py-10">
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+        <div className="flex items-center gap-2 text-sm text-gray-500 mb-8">
           <Link href={`/${pais}`} className="hover:text-gray-700">
-            {PAIS_FLAGS[pais]} {PAIS_NOMBRES[pais]}
+            <Flag pais={pais} className="w-5 h-3.5" /> {PAIS_NOMBRES[pais]}
           </Link>
           <span>/</span>
           <Link href={`/${pais}/noticias`} className="hover:text-gray-700">Noticias</Link>
@@ -65,7 +66,7 @@ export default async function NoticiaDetailPage({ params }: { params: { pais: st
           </h1>
 
           {/* Meta */}
-          <div className="flex items-center gap-3 text-sm text-gray-400 mb-6 pb-6 border-b border-gray-100">
+          <div className="flex items-center gap-3 text-sm text-gray-500 mb-6 pb-6 border-b border-gray-100">
             <time>{formatDate(noticia.publishedAt)}</time>
             {noticia.fuente && (
               <>

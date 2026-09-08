@@ -48,9 +48,9 @@ export default function AdminNav() {
         <div className="flex items-center justify-between px-3 mb-6">
           <Link href="/" className="flex items-baseline gap-2">
             <span className="text-xl font-display font-semibold text-white">Compa</span>
-            <span className="text-[11px] text-gray-400 tracking-wide">Admin</span>
+            <span className="text-[11px] text-gray-500 tracking-wide">Admin</span>
           </Link>
-          <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú" className="sm:hidden text-gray-400 p-1">
+          <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú" className="sm:hidden text-gray-500 p-1">
             <IconX className="w-5 h-5" />
           </button>
         </div>
@@ -83,10 +83,10 @@ export default function AdminNav() {
         })}
 
         <div className="mt-auto px-3 pt-4 border-t border-white/10 space-y-1.5">
-          <Link href="/" className="block text-xs text-gray-400 hover:text-white transition py-1">
+          <Link href="/" className="block text-xs text-gray-500 hover:text-white transition py-1">
             Ver Recursos Generales
           </Link>
-          <Link href="/patrocinadores" className="block text-xs text-gray-400 hover:text-white transition py-1">
+          <Link href="/patrocinadores" className="block text-xs text-gray-500 hover:text-white transition py-1">
             Ver Patrocinadores
           </Link>
           <Link href="/" className="block text-xs text-gray-500 hover:text-white transition py-1">

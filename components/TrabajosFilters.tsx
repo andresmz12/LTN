@@ -45,7 +45,7 @@ export default function TrabajosFilters({ estado, categoria, estadoDetectado }: 
         <span className="text-xs text-brand-600 font-medium">📍 Mostrando trabajos cerca de ti</span>
       )}
       {(estado || categoria) && (
-        <button type="button" onClick={() => update({ estado: '', categoria: '' })} className="text-xs text-gray-400 hover:text-gray-600 underline">
+        <button type="button" onClick={() => update({ estado: '', categoria: '' })} className="text-xs text-gray-500 hover:text-gray-600 underline">
           Quitar filtros
         </button>
       )}

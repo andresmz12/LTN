@@ -57,7 +57,7 @@ export default async function PatrocinadoresPage() {
   return (
     <>
       <Navbar />
-      <main className="max-w-5xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 py-10">
 
         {/* Header */}
         <div className="mb-10">
@@ -91,7 +91,7 @@ export default async function PatrocinadoresPage() {
         </div>
 
         {clientes.length === 0 ? (
-          <div className="text-center py-24 text-gray-400">
+          <div className="text-center py-24 text-gray-500">
             <IconHandshake className="w-12 h-12 mx-auto mb-4 text-brand-300" />
             <p className="text-lg font-medium mb-2">Próximamente</p>
             <p className="text-sm">Estamos incorporando patrocinadores. Vuelve pronto.</p>
@@ -126,7 +126,7 @@ export default async function PatrocinadoresPage() {
                         {c.descripcion && (
                           <p className="text-sm text-gray-500 mb-3 flex-1">{c.descripcion}</p>
                         )}
-                        <div className="text-xs text-gray-400 mb-4 space-y-1.5">
+                        <div className="text-xs text-gray-500 mb-4 space-y-1.5">
                           {c.telefono && <div className="flex items-center gap-1.5"><IconPhone className="w-3.5 h-3.5" /> {c.telefono}</div>}
                           {c.emailContacto && <div className="flex items-center gap-1.5"><IconMail className="w-3.5 h-3.5" /> {c.emailContacto}</div>}
                           {c.paisServicio?.length > 0 && (

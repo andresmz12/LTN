@@ -45,10 +45,10 @@ export default function AlertasTrabajo({ estadoUS, alertaCategorias, alertaActiv
           Activar
         </label>
       </div>
-      <p className="text-xs text-gray-400 mb-4">Te mostramos aquí los trabajos nuevos que coincidan con tu estado y categorías.</p>
+      <p className="text-xs text-gray-500 mb-4">Te mostramos aquí los trabajos nuevos que coincidan con tu estado y categorías.</p>
 
-      <label className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">Tu estado en EE.UU.</label>
-      <select value={estado} onChange={e => setEstado(e.target.value)}
+      <label htmlFor="alerta-estado" className="block text-xs font-medium text-gray-500 mb-1 uppercase tracking-wide">Tu estado en EE.UU.</label>
+      <select id="alerta-estado" value={estado} onChange={e => setEstado(e.target.value)}
         className="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm mb-4 focus:outline-none focus:ring-2 focus:ring-brand-200">
         <option value="">Sin especificar</option>
         {Object.entries(ESTADOS_US).map(([code, name]) => (
@@ -56,10 +56,10 @@ export default function AlertasTrabajo({ estadoUS, alertaCategorias, alertaActiv
         ))}
       </select>
 
-      <label className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Categorías de interés</label>
-      <div className="flex flex-wrap gap-2 mb-4">
+      <span id="alerta-categorias-label" className="block text-xs font-medium text-gray-500 mb-2 uppercase tracking-wide">Categorías de interés</span>
+      <div role="group" aria-labelledby="alerta-categorias-label" className="flex flex-wrap gap-2 mb-4">
         {EMPLEO_CATEGORIAS.map(c => (
-          <button key={c} type="button" onClick={() => toggleCategoria(c)}
+          <button key={c} type="button" onClick={() => toggleCategoria(c)} aria-pressed={categorias.includes(c)}
             className={`text-xs px-3 py-1.5 rounded-full border transition ${
               categorias.includes(c)
                 ? 'bg-brand-500 border-brand-500 text-white'

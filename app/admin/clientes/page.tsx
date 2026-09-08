@@ -151,7 +151,7 @@ export default function AdminClientes() {
               </tr>
             ))}
             {clientes.length === 0 && (
-              <tr><td colSpan={6} className="px-6 py-10 text-center text-gray-400">No hay patrocinadores registrados</td></tr>
+              <tr><td colSpan={6} className="px-6 py-10 text-center text-gray-500">No hay patrocinadores registrados</td></tr>
             )}
           </tbody>
         </table>
@@ -163,43 +163,43 @@ export default function AdminClientes() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900">{editId ? 'Editar' : 'Nuevo'} Patrocinador</h2>
-                <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">×</button>
+                <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-gray-600 text-2xl leading-none">×</button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>Nombre de empresa</label>
-                  <input type="text" value={form.nombreEmpresa} onChange={set('nombreEmpresa')} required className={inputClass} />
+                  <label htmlFor="nombre-de-empresa" className={labelClass}>Nombre de empresa</label>
+                  <input id="nombre-de-empresa" type="text" value={form.nombreEmpresa} onChange={set('nombreEmpresa')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Tipo de servicio</label>
-                  <select value={form.tipo} onChange={set('tipo')} className={inputClass}>
+                  <label htmlFor="tipo-de-servicio" className={labelClass}>Tipo de servicio</label>
+                  <select id="tipo-de-servicio" value={form.tipo} onChange={set('tipo')} className={inputClass}>
                     {tipos.map(t => <option key={t} value={t}>{TIPO_LABELS[t]}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Email de contacto</label>
-                  <input type="email" value={form.emailContacto} onChange={set('emailContacto')} required className={inputClass} />
+                  <label htmlFor="email-de-contacto" className={labelClass}>Email de contacto</label>
+                  <input id="email-de-contacto" type="email" value={form.emailContacto} onChange={set('emailContacto')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Teléfono</label>
-                  <input type="tel" value={form.telefono} onChange={set('telefono')} className={inputClass} />
+                  <label htmlFor="telefono" className={labelClass}>Teléfono</label>
+                  <input id="telefono" type="tel" value={form.telefono} onChange={set('telefono')} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Sitio web</label>
-                  <input type="url" value={form.sitioWeb} onChange={set('sitioWeb')} className={inputClass} />
+                  <label htmlFor="sitio-web" className={labelClass}>Sitio web</label>
+                  <input id="sitio-web" type="url" value={form.sitioWeb} onChange={set('sitioWeb')} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Descripción</label>
-                  <textarea value={form.descripcion} onChange={set('descripcion')} rows={2} className={inputClass} />
+                  <label htmlFor="descripcion" className={labelClass}>Descripción</label>
+                  <textarea id="descripcion" value={form.descripcion} onChange={set('descripcion')} rows={2} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>URL del logo</label>
-                  <input type="url" value={form.logoUrl} onChange={set('logoUrl')} className={inputClass} />
+                  <label htmlFor="url-del-logo" className={labelClass}>URL del logo</label>
+                  <input id="url-del-logo" type="url" value={form.logoUrl} onChange={set('logoUrl')} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Países que sirve (ej: MX,CO,VE)</label>
-                  <input type="text" value={form.paisServicio} onChange={set('paisServicio')} className={inputClass} />
-                  <p className="text-xs text-gray-400 mt-1">Separados por coma. GENERAL = todos los países.</p>
+                  <label htmlFor="paises-que-sirve-ej-mx-co-ve" className={labelClass}>Países que sirve (ej: MX,CO,VE)</label>
+                  <input id="paises-que-sirve-ej-mx-co-ve" type="text" value={form.paisServicio} onChange={set('paisServicio')} className={inputClass} />
+                  <p className="text-xs text-gray-500 mt-1">Separados por coma. GENERAL = todos los países.</p>
                 </div>
                 <div className="flex gap-3 pt-2">
                   <button type="button" onClick={() => setShowModal(false)}

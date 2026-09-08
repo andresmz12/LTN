@@ -272,6 +272,14 @@ export function IconX(props: IconProps) {
   )
 }
 
+export function IconBookmark(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M6 3.5h12a1 1 0 0 1 1 1V21l-7-4.2L5 21V4.5a1 1 0 0 1 1-1Z" />
+    </svg>
+  )
+}
+
 export function IconTarget(props: IconProps) {
   return (
     <svg {...base} {...props}>

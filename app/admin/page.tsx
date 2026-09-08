@@ -84,7 +84,7 @@ export default async function AdminDashboard() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="text-left text-gray-400 border-b border-gray-100">
+                <tr className="text-left text-gray-500 border-b border-gray-100">
                   <th className="pb-3 font-medium">Nombre</th>
                   <th className="pb-3 font-medium">Email</th>
                   <th className="pb-3 font-medium">País</th>
@@ -101,7 +101,7 @@ export default async function AdminDashboard() {
                         {u.paisOrigen || '–'}
                       </span>
                     </td>
-                    <td className="py-3 text-gray-400 text-xs">{new Date(u.createdAt).toLocaleDateString('es')}</td>
+                    <td className="py-3 text-gray-500 text-xs">{new Date(u.createdAt).toLocaleDateString('es')}</td>
                   </tr>
                 ))}
               </tbody>
@@ -119,23 +119,23 @@ export default async function AdminDashboard() {
                 <div key={a.id} className="flex items-center justify-between p-3 rounded-lg bg-gray-50">
                   <div className="flex-1 min-w-0 mr-3">
                     <p className="font-medium text-gray-800 text-sm truncate">{a.titulo}</p>
-                    <p className="text-xs text-gray-400 mt-0.5">{(a.paisesTarget as string[]).join(', ')}</p>
+                    <p className="text-xs text-gray-500 mt-0.5">{(a.paisesTarget as string[]).join(', ')}</p>
                   </div>
                   <div className="flex gap-4 text-xs shrink-0">
                     <div className="text-center">
                       <div className="font-bold text-gray-700">{a.impresiones.toLocaleString()}</div>
-                      <div className="text-gray-400">imp</div>
+                      <div className="text-gray-500">imp</div>
                     </div>
                     <div className="text-center">
                       <div className="font-bold text-accent-600">{ctrVal}%</div>
-                      <div className="text-gray-400">CTR</div>
+                      <div className="text-gray-500">CTR</div>
                     </div>
                   </div>
                 </div>
               )
             })}
             {topAnuncios.length === 0 && (
-              <p className="text-gray-400 text-sm text-center py-4">Sin anuncios aún</p>
+              <p className="text-gray-500 text-sm text-center py-4">Sin anuncios aún</p>
             )}
           </div>
         </div>

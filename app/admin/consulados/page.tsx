@@ -142,7 +142,7 @@ export default function AdminConsulados() {
             ))}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-10 text-center text-gray-400">No hay consulados</td>
+                <td colSpan={5} className="px-6 py-10 text-center text-gray-500">No hay consulados</td>
               </tr>
             )}
           </tbody>
@@ -160,15 +160,15 @@ export default function AdminConsulados() {
                 </h2>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                  className="text-gray-500 hover:text-gray-600 text-2xl leading-none"
                 >
                   ×
                 </button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>País</label>
-                  <select value={form.pais} onChange={set('pais')} className={inputClass}>
+                  <label htmlFor="pais" className={labelClass}>País</label>
+                  <select id="pais" value={form.pais} onChange={set('pais')} className={inputClass}>
                     {Object.entries(PAIS_NOMBRES).map(([k, v]) => <option key={k} value={k}>{v as string}</option>)}
                   </select>
                 </div>
@@ -182,8 +182,9 @@ export default function AdminConsulados() {
                   { key: 'horarioSabado', label: 'Horario Sábado' },
                 ].map(({ key, label }) => (
                   <div key={key}>
-                    <label className={labelClass}>{label}</label>
+                    <label htmlFor={`consulado-${key}`} className={labelClass}>{label}</label>
                     <input
+                      id={`consulado-${key}`}
                       type="text"
                       value={(form as any)[key]}
                       onChange={set(key)}

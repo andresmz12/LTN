@@ -45,7 +45,7 @@ export default async function TrabajosPage({
         </div>
       </div>
 
-      <main className="max-w-5xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 py-10">
         <TrabajosFilters estado={estado} categoria={categoria} estadoDetectado={estadoDetectado} />
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-6">

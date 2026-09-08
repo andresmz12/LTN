@@ -114,7 +114,7 @@ export default function LocationBanner() {
         >
           {loading ? 'Buscando…' : 'Usar mi ubicación'}
         </button>
-        <button type="button" onClick={dismiss} className="text-sm text-gray-400 hover:text-gray-600">
+        <button type="button" onClick={dismiss} className="text-sm text-gray-500 hover:text-gray-600">
           Ahora no
         </button>
       </div>

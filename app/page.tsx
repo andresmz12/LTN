@@ -99,7 +99,7 @@ export default async function Home() {
         </div>
       </div>
 
-      <main className="max-w-5xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-5xl mx-auto px-4 py-10">
 
         <Link
           href="/derechos"
@@ -117,11 +117,11 @@ export default async function Home() {
         </div>
 
         {tramites.length === 0 ? (
-          <p className="text-gray-400 text-sm italic py-8">No hay recursos disponibles aún.</p>
+          <p className="text-gray-500 text-sm italic py-8">No hay recursos disponibles aún.</p>
         ) : (
           categorias.map(([categoria, items]) => (
             <div key={categoria} className="mb-10">
-              <h2 className="text-sm font-semibold text-gray-400 uppercase tracking-wider mb-4">
+              <h2 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-4">
                 {categoria}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

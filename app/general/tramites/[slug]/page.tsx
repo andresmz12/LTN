@@ -30,7 +30,7 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
   return (
     <>
       <Navbar />
-      <main className="max-w-3xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-3xl mx-auto px-4 py-10">
         <div className="mb-6">
           <Link href="/" className="flex items-center gap-1 text-sm text-brand-600 hover:underline w-fit">
             <IconArrowLeft className="w-4 h-4" /> Recursos Generales
@@ -54,13 +54,13 @@ export default async function TramiteGeneralPage({ params }: { params: { slug: s
           <div className="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-xl text-sm">
             {tramite.tiempoPromedio && (
               <div>
-                <span className="text-gray-400">Tiempo: </span>
+                <span className="text-gray-500">Tiempo: </span>
                 <span className="font-semibold text-gray-700">{tramite.tiempoPromedio}</span>
               </div>
             )}
             {tramite.costo && (
               <div>
-                <span className="text-gray-400">Costo: </span>
+                <span className="text-gray-500">Costo: </span>
                 <span className="font-semibold text-gray-700">{tramite.costo}</span>
               </div>
             )}

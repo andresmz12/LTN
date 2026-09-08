@@ -3,9 +3,7 @@
 import { useState } from 'react'
 import { useRouter } from 'next/navigation'
 import Link from 'next/link'
-import { PAIS_NOMBRES } from '@/lib/utils'
-
-const US_STATES = ['CA', 'TX', 'FL', 'NY', 'IL', 'AZ', 'NV', 'GA', 'NC', 'WA', 'Other']
+import { PAIS_NOMBRES, ESTADOS_US } from '@/lib/utils'
 
 export default function RegisterForm() {
   const router = useRouter()
@@ -42,43 +40,43 @@ export default function RegisterForm() {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
-      {error && <p className="text-red-600 text-sm bg-red-50 p-3 rounded-lg">{error}</p>}
+      {error && <p role="alert" className="text-red-600 text-sm bg-red-50 p-3 rounded-lg">{error}</p>}
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
-          <input type="text" value={form.nombre} onChange={set('nombre')} required
+          <label htmlFor="reg-nombre" className="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+          <input id="reg-nombre" type="text" autoComplete="given-name" value={form.nombre} onChange={set('nombre')} required
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
-          <input type="text" value={form.apellido} onChange={set('apellido')} required
+          <label htmlFor="reg-apellido" className="block text-sm font-medium text-gray-700 mb-1">Apellido</label>
+          <input id="reg-apellido" type="text" autoComplete="family-name" value={form.apellido} onChange={set('apellido')} required
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
         </div>
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
-        <input type="email" value={form.email} onChange={set('email')} required
+        <label htmlFor="reg-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <input id="reg-email" type="email" autoComplete="email" value={form.email} onChange={set('email')} required
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
-        <input type="password" value={form.password} onChange={set('password')} required minLength={8}
+        <label htmlFor="reg-password" className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+        <input id="reg-password" type="password" autoComplete="new-password" value={form.password} onChange={set('password')} required minLength={8}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Teléfono (opcional)</label>
-        <input type="tel" value={form.phone} onChange={set('phone')}
+        <label htmlFor="reg-phone" className="block text-sm font-medium text-gray-700 mb-1">Teléfono (opcional)</label>
+        <input id="reg-phone" type="tel" autoComplete="tel" value={form.phone} onChange={set('phone')}
           className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500" />
       </div>
 
       <div className="grid grid-cols-2 gap-3">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">País de origen</label>
-          <select value={form.paisOrigen} onChange={set('paisOrigen')}
+          <label htmlFor="reg-pais" className="block text-sm font-medium text-gray-700 mb-1">País de origen</label>
+          <select id="reg-pais" value={form.paisOrigen} onChange={set('paisOrigen')}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
             <option value="">Seleccionar</option>
             {Object.entries(PAIS_NOMBRES).map(([k, v]) => (
@@ -87,11 +85,13 @@ export default function RegisterForm() {
           </select>
         </div>
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-1">Estado en EE.UU.</label>
-          <select value={form.estadoUS} onChange={set('estadoUS')}
+          <label htmlFor="reg-estado" className="block text-sm font-medium text-gray-700 mb-1">Estado en EE.UU.</label>
+          <select id="reg-estado" value={form.estadoUS} onChange={set('estadoUS')}
             className="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
             <option value="">Seleccionar</option>
-            {US_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+            {Object.entries(ESTADOS_US).map(([code, name]) => (
+              <option key={code} value={code}>{name}</option>
+            ))}
           </select>
         </div>
       </div>

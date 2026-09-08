@@ -58,7 +58,7 @@ export default function DerechosPage() {
         </div>
       </div>
 
-      <main className="max-w-3xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-3xl mx-auto px-4 py-10">
         <div className="bg-amber-50 border border-amber-200 rounded-xl p-4 mb-8 text-sm text-amber-900">
           Esta página es información general, no asesoría legal. Cada caso es distinto — para tu situación
           específica, habla con un abogado de inmigración acreditado.

@@ -50,7 +50,7 @@ export default function NoticiaCard({ pais, titulo, slug, resumen, categoria, pu
           </p>
 
           {/* Footer */}
-          <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-50 text-xs text-gray-400">
+          <div className="flex items-center justify-between mt-4 pt-3 border-t border-gray-50 text-xs text-gray-500">
             <span>{formatDate(publishedAt)}</span>
             {fuente && <span className="truncate ml-2">{fuente}</span>}
           </div>

@@ -37,9 +37,11 @@ export default function LoginForm() {
       {error && <p className="text-red-600 text-sm bg-red-50 p-3 rounded-lg">{error}</p>}
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
+        <label htmlFor="login-email" className="block text-sm font-medium text-gray-700 mb-1">Email</label>
         <input
+          id="login-email"
           type="email"
+          autoComplete="email"
           value={email}
           onChange={e => setEmail(e.target.value)}
           required
@@ -49,9 +51,11 @@ export default function LoginForm() {
       </div>
 
       <div>
-        <label className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
+        <label htmlFor="login-password" className="block text-sm font-medium text-gray-700 mb-1">Contraseña</label>
         <input
+          id="login-password"
           type="password"
+          autoComplete="current-password"
           value={password}
           onChange={e => setPassword(e.target.value)}
           required

@@ -168,7 +168,7 @@ export default function AdminAnuncios() {
 
               <div className="flex flex-wrap gap-1 mb-4">
                 {((a.ubicaciones || []) as string[]).length === 0 ? (
-                  <span className="text-xs text-gray-400 italic">Todas las páginas de sus países</span>
+                  <span className="text-xs text-gray-500 italic">Todas las páginas de sus países</span>
                 ) : (
                   (a.ubicaciones as string[]).map((u: string) => (
                     <span key={u} className="text-xs border border-gray-200 text-gray-600 px-2 py-0.5 rounded-full">
@@ -181,15 +181,15 @@ export default function AdminAnuncios() {
               <div className="grid grid-cols-3 gap-2 mb-4 py-3 border-y border-gray-100">
                 <div className="text-center">
                   <div className="text-sm font-bold text-gray-800">{a.impresiones.toLocaleString()}</div>
-                  <div className="text-xs text-gray-400">Imp.</div>
+                  <div className="text-xs text-gray-500">Imp.</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-bold text-gray-800">{a.clicks.toLocaleString()}</div>
-                  <div className="text-xs text-gray-400">Clicks</div>
+                  <div className="text-xs text-gray-500">Clicks</div>
                 </div>
                 <div className="text-center">
                   <div className="text-sm font-bold text-accent-600">{ctr}%</div>
-                  <div className="text-xs text-gray-400">CTR</div>
+                  <div className="text-xs text-gray-500">CTR</div>
                 </div>
               </div>
 
@@ -217,7 +217,7 @@ export default function AdminAnuncios() {
           )
         })}
         {anuncios.length === 0 && (
-          <div className="col-span-3 text-center py-16 text-gray-400">No hay anuncios registrados</div>
+          <div className="col-span-3 text-center py-16 text-gray-500">No hay anuncios registrados</div>
         )}
       </div>
 
@@ -228,49 +228,49 @@ export default function AdminAnuncios() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-display font-semibold text-gray-900">{editId ? 'Editar' : 'Nuevo'} anuncio</h2>
-                <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">×</button>
+                <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-gray-600 text-2xl leading-none">×</button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>Tipo</label>
-                  <select value={form.tipo} onChange={set('tipo')} className={inputClass}>
+                  <label htmlFor="tipo" className={labelClass}>Tipo</label>
+                  <select id="tipo" value={form.tipo} onChange={set('tipo')} className={inputClass}>
                     {['banner', 'card', 'popup'].map((t) => <option key={t}>{t}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Título</label>
-                  <input type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
+                  <label htmlFor="titulo" className={labelClass}>Título</label>
+                  <input id="titulo" type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Descripción</label>
-                  <textarea value={form.descripcion} onChange={set('descripcion')} rows={2} required className={inputClass} />
+                  <label htmlFor="descripcion" className={labelClass}>Descripción</label>
+                  <textarea id="descripcion" value={form.descripcion} onChange={set('descripcion')} rows={2} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>URL Destino</label>
-                  <input type="url" value={form.enlaceDestino} onChange={set('enlaceDestino')} required className={inputClass} />
+                  <label htmlFor="url-destino" className={labelClass}>URL Destino</label>
+                  <input id="url-destino" type="url" value={form.enlaceDestino} onChange={set('enlaceDestino')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Cliente / Patrocinador</label>
-                  <select value={form.clienteId} onChange={set('clienteId')} required className={inputClass}>
+                  <label htmlFor="cliente-patrocinador" className={labelClass}>Cliente / Patrocinador</label>
+                  <select id="cliente-patrocinador" value={form.clienteId} onChange={set('clienteId')} required className={inputClass}>
                     <option value="">Seleccionar patrocinador</option>
                     {clientes.map((c: any) => <option key={c.id} value={c.id}>{c.nombreEmpresa}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Países (ej: MX,CO,VE o GENERAL)</label>
-                  <input type="text" value={form.paisesTarget} onChange={set('paisesTarget')} className={inputClass} />
-                  <p className="text-xs text-gray-400 mt-1">Separados por coma. Usa GENERAL para la página de Inicio.</p>
+                  <label htmlFor="paises-ej-mx-co-ve-o-general" className={labelClass}>Países (ej: MX,CO,VE o GENERAL)</label>
+                  <input id="paises-ej-mx-co-ve-o-general" type="text" value={form.paisesTarget} onChange={set('paisesTarget')} className={inputClass} />
+                  <p className="text-xs text-gray-500 mt-1">Separados por coma. Usa GENERAL para la página de Inicio.</p>
                 </div>
                 <div>
-                  <label className={labelClass}>Estados (opcional, ej: TX,CA,FL)</label>
-                  <input type="text" value={form.estadosTarget} onChange={set('estadosTarget')} className={inputClass} />
-                  <p className="text-xs text-gray-400 mt-1">
+                  <label htmlFor="estados-opcional-ej-tx-ca-fl" className={labelClass}>Estados (opcional, ej: TX,CA,FL)</label>
+                  <input id="estados-opcional-ej-tx-ca-fl" type="text" value={form.estadosTarget} onChange={set('estadosTarget')} className={inputClass} />
+                  <p className="text-xs text-gray-500 mt-1">
                     Déjalo vacío para mostrar en todo el país. Si lo llenas, solo se muestra a visitantes que compartieron su ubicación y están en uno de esos estados.
                   </p>
                 </div>
                 <div>
-                  <label className={labelClass}>Dónde aparece en el sitio</label>
-                  <div className="border border-gray-200 rounded-lg p-3 space-y-2">
+                  <span id="donde-aparece-en-el-sitio" className={labelClass}>Dónde aparece en el sitio</span>
+                  <div role="group" aria-labelledby="donde-aparece-en-el-sitio" className="border border-gray-200 rounded-lg p-3 space-y-2">
                     {UBICACIONES.map(u => (
                       <label key={u.value} className="flex items-center gap-2 text-sm text-gray-700 cursor-pointer">
                         <input
@@ -283,13 +283,13 @@ export default function AdminAnuncios() {
                       </label>
                     ))}
                   </div>
-                  <p className="text-xs text-gray-400 mt-1">
+                  <p className="text-xs text-gray-500 mt-1">
                     Sin marcar ninguna: aparece en cualquier página de los países elegidos arriba. Marca una o más para restringirlo a esas páginas exactas.
                   </p>
                 </div>
                 <div>
-                  <label className={labelClass}>Presupuesto $</label>
-                  <input type="number" value={form.presupuesto} onChange={set('presupuesto')} min="0" className={inputClass} />
+                  <label htmlFor="presupuesto" className={labelClass}>Presupuesto $</label>
+                  <input id="presupuesto" type="number" value={form.presupuesto} onChange={set('presupuesto')} min="0" className={inputClass} />
                 </div>
                 <div className="flex gap-3 pt-2">
                   <button type="button" onClick={() => setShowModal(false)}

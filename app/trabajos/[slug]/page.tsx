@@ -53,7 +53,7 @@ export default async function TrabajoDetailPage({ params }: { params: { slug: st
   return (
     <>
       <Navbar />
-      <main className="max-w-3xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-3xl mx-auto px-4 py-10">
         <Link href="/trabajos" className="flex items-center gap-1 text-sm text-brand-600 hover:underline mb-4 w-fit">
           <IconArrowLeft className="w-4 h-4" /> Volver a trabajos
         </Link>
@@ -69,14 +69,14 @@ export default async function TrabajoDetailPage({ params }: { params: { slug: st
 
           <div className="flex flex-wrap gap-4 mb-8 p-4 bg-gray-50 rounded-xl text-sm">
             <span className="flex items-center gap-1.5 text-gray-700">
-              <IconMapPin className="w-4 h-4 text-gray-400" /> {trabajo.ciudad ? `${trabajo.ciudad}, ` : ''}{ESTADOS_US[trabajo.estadoUS] || trabajo.estadoUS}
+              <IconMapPin className="w-4 h-4 text-gray-500" /> {trabajo.ciudad ? `${trabajo.ciudad}, ` : ''}{ESTADOS_US[trabajo.estadoUS] || trabajo.estadoUS}
             </span>
             <span className="flex items-center gap-1.5 text-gray-700">
-              <IconBriefcase className="w-4 h-4 text-gray-400" /> {trabajo.tipoEmpleo}
+              <IconBriefcase className="w-4 h-4 text-gray-500" /> {trabajo.tipoEmpleo}
             </span>
             {trabajo.salario && (
               <span className="flex items-center gap-1.5 text-gray-700">
-                <IconBanknote className="w-4 h-4 text-gray-400" /> {trabajo.salario}
+                <IconBanknote className="w-4 h-4 text-gray-500" /> {trabajo.salario}
               </span>
             )}
           </div>

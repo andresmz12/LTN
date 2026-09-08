@@ -18,10 +18,10 @@ export default function ConsultadoCard({ id, pais, ciudad, nombre, direccion, te
       <h3 className="font-bold text-gray-900 text-lg mb-1">{nombre}</h3>
       <p className="text-sm text-brand-600 font-medium mb-3">{ciudad}</p>
       <div className="text-sm text-gray-600 space-y-1.5">
-        <p className="flex items-center gap-2"><IconMapPin className="w-4 h-4 text-gray-400 shrink-0" /> {direccion}</p>
-        {telefono && <p className="flex items-center gap-2"><IconPhone className="w-4 h-4 text-gray-400 shrink-0" /> {telefono}</p>}
-        {email && <p className="flex items-center gap-2"><IconMail className="w-4 h-4 text-gray-400 shrink-0" /> {email}</p>}
-        {horarioLunes && <p className="flex items-center gap-2"><IconClock className="w-4 h-4 text-gray-400 shrink-0" /> {horarioLunes}</p>}
+        <p className="flex items-center gap-2"><IconMapPin className="w-4 h-4 text-gray-500 shrink-0" /> {direccion}</p>
+        {telefono && <p className="flex items-center gap-2"><IconPhone className="w-4 h-4 text-gray-500 shrink-0" /> {telefono}</p>}
+        {email && <p className="flex items-center gap-2"><IconMail className="w-4 h-4 text-gray-500 shrink-0" /> {email}</p>}
+        {horarioLunes && <p className="flex items-center gap-2"><IconClock className="w-4 h-4 text-gray-500 shrink-0" /> {horarioLunes}</p>}
       </div>
       <Link
         href={`/${pais}/consulados/${id}`}

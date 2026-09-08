@@ -4,7 +4,8 @@ import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
 import ShareButton from '@/components/ShareButton'
 import { IconArrowLeft } from '@/components/icons'
-import { PAISES, PAIS_NOMBRES, PAIS_FLAGS } from '@/lib/utils'
+import { PAISES, PAIS_NOMBRES } from '@/lib/utils'
+import Flag from '@/components/Flag'
 import { prisma } from '@/lib/db'
 import type { Metadata } from 'next'
 
@@ -31,12 +32,12 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
   return (
     <>
       <Navbar pais={pais} />
-      <main className="max-w-2xl mx-auto px-4 py-10">
+      <main id="main-content" className="max-w-2xl mx-auto px-4 py-10">
 
         {/* Breadcrumb */}
-        <div className="flex items-center gap-2 text-sm text-gray-400 mb-8">
+        <div className="flex items-center gap-2 text-sm text-gray-500 mb-8">
           <Link href={`/${pais}`} className="hover:text-gray-700">
-            {PAIS_FLAGS[pais]} {PAIS_NOMBRES[pais]}
+            <Flag pais={pais} className="w-5 h-3.5" /> {PAIS_NOMBRES[pais]}
           </Link>
           <span>/</span>
           <Link href={`/${pais}/tramites`} className="hover:text-gray-700">Trámites</Link>
@@ -135,7 +136,7 @@ export default async function TramiteDetailPage({ params }: { params: { pais: st
         )}
 
         <div className="mt-10">
-          <Link href={`/${pais}/tramites`} className="flex items-center gap-1 text-sm text-gray-400 hover:text-gray-700 w-fit">
+          <Link href={`/${pais}/tramites`} className="flex items-center gap-1 text-sm text-gray-500 hover:text-gray-700 w-fit">
             <IconArrowLeft className="w-4 h-4" /> Ver todos los trámites
           </Link>
         </div>

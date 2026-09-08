@@ -14,7 +14,7 @@ export default function Footer() {
           <Link href="/privacidad" className="hover:text-brand-700 transition">Privacidad</Link>
           <a href="mailto:contacto@compa.app" className="hover:text-brand-700 transition">Contacto</a>
         </nav>
-        <p className="text-xs text-gray-400">© 2026 Compa. Hecho con 🧡 para la comunidad latina.</p>
+        <p className="text-xs text-gray-500">© 2026 Compa. Hecho con 🧡 para la comunidad latina.</p>
       </div>
     </footer>
   )

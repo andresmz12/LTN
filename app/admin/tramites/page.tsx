@@ -140,7 +140,7 @@ export default function AdminTramites() {
             ))}
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-10 text-center text-gray-400">No hay trámites</td>
+                <td colSpan={5} className="px-6 py-10 text-center text-gray-500">No hay trámites</td>
               </tr>
             )}
           </tbody>
@@ -158,15 +158,15 @@ export default function AdminTramites() {
                 </h2>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                  className="text-gray-500 hover:text-gray-600 text-2xl leading-none"
                 >
                   ×
                 </button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>País</label>
-                  <select value={form.pais} onChange={set('pais')} className={inputClass}>
+                  <label htmlFor="pais" className={labelClass}>País</label>
+                  <select id="pais" value={form.pais} onChange={set('pais')} className={inputClass}>
                     <option value="GENERAL">🌎 Recursos Generales (todos los países)</option>
                     {Object.entries(PAIS_NOMBRES).filter(([k]) => k !== 'GENERAL').map(([k, v]) => (
                       <option key={k} value={k}>{v as string}</option>
@@ -181,8 +181,9 @@ export default function AdminTramites() {
                   { key: 'costo', label: 'Costo' },
                 ].map(({ key, label }) => (
                   <div key={key}>
-                    <label className={labelClass}>{label}</label>
+                    <label htmlFor={`tramite-${key}`} className={labelClass}>{label}</label>
                     <input
+                      id={`tramite-${key}`}
                       type="text"
                       value={(form as any)[key]}
                       onChange={set(key)}
@@ -191,8 +192,9 @@ export default function AdminTramites() {
                   </div>
                 ))}
                 <div>
-                  <label className={labelClass}>Contenido HTML</label>
+                  <label htmlFor="contenido-html" className={labelClass}>Contenido HTML</label>
                   <textarea
+                    id="contenido-html"
                     value={form.contenidoHtml}
                     onChange={set('contenidoHtml')}
                     rows={4}

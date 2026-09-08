@@ -186,7 +186,7 @@ export default function AdminTrabajos() {
           </div>
         ))}
         {trabajos.length === 0 && (
-          <div className="col-span-3 text-center py-16 text-gray-400">No hay trabajos registrados</div>
+          <div className="col-span-3 text-center py-16 text-gray-500">No hay trabajos registrados</div>
         )}
       </div>
 
@@ -197,75 +197,75 @@ export default function AdminTrabajos() {
             <div className="p-6">
               <div className="flex items-center justify-between mb-6">
                 <h2 className="text-xl font-bold text-gray-900">{editId ? 'Editar' : 'Nuevo'} Trabajo</h2>
-                <button onClick={() => setShowModal(false)} className="text-gray-400 hover:text-gray-600 text-2xl leading-none">×</button>
+                <button onClick={() => setShowModal(false)} className="text-gray-500 hover:text-gray-600 text-2xl leading-none">×</button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>Título del puesto</label>
-                  <input type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
+                  <label htmlFor="titulo-del-puesto" className={labelClass}>Título del puesto</label>
+                  <input id="titulo-del-puesto" type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Slug (URL)</label>
-                  <input type="text" value={form.slug} onChange={set('slug')} required className={inputClass} />
+                  <label htmlFor="slug-url" className={labelClass}>Slug (URL)</label>
+                  <input id="slug-url" type="text" value={form.slug} onChange={set('slug')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Empresa</label>
-                  <input type="text" value={form.empresa} onChange={set('empresa')} required className={inputClass} />
+                  <label htmlFor="empresa" className={labelClass}>Empresa</label>
+                  <input id="empresa" type="text" value={form.empresa} onChange={set('empresa')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Descripción</label>
-                  <textarea value={form.descripcion} onChange={set('descripcion')} rows={4} required className={inputClass} />
+                  <label htmlFor="descripcion" className={labelClass}>Descripción</label>
+                  <textarea id="descripcion" value={form.descripcion} onChange={set('descripcion')} rows={4} required className={inputClass} />
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className={labelClass}>Categoría</label>
-                    <select value={form.categoria} onChange={set('categoria')} className={inputClass}>
+                    <label htmlFor="categoria" className={labelClass}>Categoría</label>
+                    <select id="categoria" value={form.categoria} onChange={set('categoria')} className={inputClass}>
                       {EMPLEO_CATEGORIAS.map((c) => <option key={c}>{c}</option>)}
                     </select>
                   </div>
                   <div>
-                    <label className={labelClass}>Tipo de empleo</label>
-                    <select value={form.tipoEmpleo} onChange={set('tipoEmpleo')} className={inputClass}>
+                    <label htmlFor="tipo-de-empleo" className={labelClass}>Tipo de empleo</label>
+                    <select id="tipo-de-empleo" value={form.tipoEmpleo} onChange={set('tipoEmpleo')} className={inputClass}>
                       {EMPLEO_TIPOS.map((t) => <option key={t}>{t}</option>)}
                     </select>
                   </div>
                 </div>
                 <div className="grid grid-cols-2 gap-3">
                   <div>
-                    <label className={labelClass}>Estado</label>
-                    <select value={form.estadoUS} onChange={set('estadoUS')} required className={inputClass}>
+                    <label htmlFor="estado" className={labelClass}>Estado</label>
+                    <select id="estado" value={form.estadoUS} onChange={set('estadoUS')} required className={inputClass}>
                       {Object.entries(ESTADOS_US).map(([code, nombre]) => (
                         <option key={code} value={code}>{nombre}</option>
                       ))}
                     </select>
                   </div>
                   <div>
-                    <label className={labelClass}>Ciudad (opcional)</label>
-                    <input type="text" value={form.ciudad} onChange={set('ciudad')} className={inputClass} />
+                    <label htmlFor="ciudad-opcional" className={labelClass}>Ciudad (opcional)</label>
+                    <input id="ciudad-opcional" type="text" value={form.ciudad} onChange={set('ciudad')} className={inputClass} />
                   </div>
                 </div>
                 <div>
-                  <label className={labelClass}>Salario (opcional)</label>
-                  <input type="text" value={form.salario} onChange={set('salario')} placeholder="ej: $18-22/hora" className={inputClass} />
+                  <label htmlFor="salario-opcional" className={labelClass}>Salario (opcional)</label>
+                  <input id="salario-opcional" type="text" value={form.salario} onChange={set('salario')} placeholder="ej: $18-22/hora" className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Requisitos (separados por coma)</label>
-                  <input type="text" value={form.requisitos} onChange={set('requisitos')} className={inputClass} />
+                  <label htmlFor="requisitos-separados-por-coma" className={labelClass}>Requisitos (separados por coma)</label>
+                  <input id="requisitos-separados-por-coma" type="text" value={form.requisitos} onChange={set('requisitos')} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Cómo aplicar (email, teléfono o URL)</label>
-                  <input type="text" value={form.comoAplicar} onChange={set('comoAplicar')} required className={inputClass} />
+                  <label htmlFor="como-aplicar-email-telefono-o-url" className={labelClass}>Cómo aplicar (email, teléfono o URL)</label>
+                  <input id="como-aplicar-email-telefono-o-url" type="text" value={form.comoAplicar} onChange={set('comoAplicar')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Cliente / Empleador (opcional)</label>
-                  <select value={form.clienteId} onChange={set('clienteId')} className={inputClass}>
+                  <label htmlFor="cliente-empleador-opcional" className={labelClass}>Cliente / Empleador (opcional)</label>
+                  <select id="cliente-empleador-opcional" value={form.clienteId} onChange={set('clienteId')} className={inputClass}>
                     <option value="">Sin cliente asociado</option>
                     {clientes.map((c: any) => <option key={c.id} value={c.id}>{c.nombreEmpresa}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Precio cobrado $</label>
-                  <input type="number" value={form.presupuesto} onChange={set('presupuesto')} min="0" className={inputClass} />
+                  <label htmlFor="precio-cobrado" className={labelClass}>Precio cobrado $</label>
+                  <input id="precio-cobrado" type="number" value={form.presupuesto} onChange={set('presupuesto')} min="0" className={inputClass} />
                 </div>
                 <div className="flex items-center gap-4 pt-1">
                   <label className="flex items-center gap-2 text-sm text-gray-600">

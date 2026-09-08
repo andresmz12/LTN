@@ -134,7 +134,7 @@ export default function AdminNoticias() {
             ))}
             {noticias.length === 0 && (
               <tr>
-                <td colSpan={5} className="px-6 py-10 text-center text-gray-400">No hay noticias</td>
+                <td colSpan={5} className="px-6 py-10 text-center text-gray-500">No hay noticias</td>
               </tr>
             )}
           </tbody>
@@ -152,41 +152,41 @@ export default function AdminNoticias() {
                 </h2>
                 <button
                   onClick={() => setShowModal(false)}
-                  className="text-gray-400 hover:text-gray-600 text-2xl leading-none"
+                  className="text-gray-500 hover:text-gray-600 text-2xl leading-none"
                 >
                   ×
                 </button>
               </div>
               <form onSubmit={submit} className="space-y-4">
                 <div>
-                  <label className={labelClass}>Título</label>
-                  <input type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
+                  <label htmlFor="titulo" className={labelClass}>Título</label>
+                  <input id="titulo" type="text" value={form.titulo} onChange={set('titulo')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Slug</label>
-                  <input type="text" value={form.slug} onChange={set('slug')} required className={inputClass} />
+                  <label htmlFor="slug" className={labelClass}>Slug</label>
+                  <input id="slug" type="text" value={form.slug} onChange={set('slug')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Resumen</label>
-                  <input type="text" value={form.resumen} onChange={set('resumen')} required className={inputClass} />
+                  <label htmlFor="resumen" className={labelClass}>Resumen</label>
+                  <input id="resumen" type="text" value={form.resumen} onChange={set('resumen')} required className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Categoría</label>
-                  <select value={form.categoria} onChange={set('categoria')} className={inputClass}>
+                  <label htmlFor="categoria" className={labelClass}>Categoría</label>
+                  <select id="categoria" value={form.categoria} onChange={set('categoria')} className={inputClass}>
                     {categorias.map((c: any) => <option key={c}>{c}</option>)}
                   </select>
                 </div>
                 <div>
-                  <label className={labelClass}>Países (MX,CO,VE)</label>
-                  <input type="text" value={form.paises} onChange={set('paises')} className={inputClass} />
+                  <label htmlFor="paises-mx-co-ve" className={labelClass}>Países (MX,CO,VE)</label>
+                  <input id="paises-mx-co-ve" type="text" value={form.paises} onChange={set('paises')} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Contenido HTML</label>
-                  <textarea value={form.contenidoHtml} onChange={set('contenidoHtml')} rows={4} className={inputClass} />
+                  <label htmlFor="contenido-html" className={labelClass}>Contenido HTML</label>
+                  <textarea id="contenido-html" value={form.contenidoHtml} onChange={set('contenidoHtml')} rows={4} className={inputClass} />
                 </div>
                 <div>
-                  <label className={labelClass}>Fuente (opcional)</label>
-                  <input type="text" value={form.fuente} onChange={set('fuente')} className={inputClass} />
+                  <label htmlFor="fuente-opcional" className={labelClass}>Fuente (opcional)</label>
+                  <input id="fuente-opcional" type="text" value={form.fuente} onChange={set('fuente')} className={inputClass} />
                 </div>
                 <label className="flex items-center gap-3 cursor-pointer">
                   <input
