@@ -61,7 +61,7 @@ export default function SignupIncentivePopup() {
         No te pierdas nada
       </h3>
       <p className="text-sm text-gray-500 mb-4">
-        Crea tu cuenta gratis y recibe avisos de nuevos trámites, alertas de empleo y noticias de tu país apenas se publiquen — además de acceso temprano a descuentos de nuestros patrocinadores.
+        Crea tu cuenta gratis y recibe avisos de nuevos trámites, alertas de empleo y noticias de tu país apenas se publiquen.
       </p>
       <div className="flex gap-2">
         <Link

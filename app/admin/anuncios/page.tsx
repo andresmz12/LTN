@@ -7,12 +7,12 @@ import AdPlacementPreview from '@/components/AdPlacementPreview'
 interface Anuncio {
   id: string; titulo: string; tipo: string; activo: boolean; impresiones: number;
   clicks: number; paisesTarget: string[]; estadosTarget: string[]; ubicaciones: string[]; presupuesto?: number; descripcion?: string;
-  enlaceDestino?: string; clienteId?: string;
+  enlaceDestino?: string; clienteId?: string; imagenUrl?: string;
 }
 interface Cliente { id: string; nombreEmpresa: string }
 
 const emptyForm = {
-  tipo: 'banner', titulo: '', descripcion: '', enlaceDestino: 'https://',
+  tipo: 'banner', titulo: '', descripcion: '', imagenUrl: '', enlaceDestino: 'https://',
   clienteId: '', paisesTarget: 'MX', estadosTarget: '', ubicaciones: [] as string[], presupuesto: 0,
 }
 
@@ -67,6 +67,7 @@ export default function AdminAnuncios() {
       tipo: a.tipo,
       titulo: a.titulo,
       descripcion: a.descripcion || '',
+      imagenUrl: a.imagenUrl || '',
       enlaceDestino: a.enlaceDestino || 'https://',
       clienteId: a.clienteId || '',
       paisesTarget: a.paisesTarget.join(','),
@@ -140,6 +141,9 @@ export default function AdminAnuncios() {
           const tipoColor = TIPO_COLORS[a.tipo] || { bg: '#F3F4F6', text: '#374151' }
           return (
             <div key={a.id} className="bg-white rounded-lg border border-gray-200 p-5">
+              {a.imagenUrl && (
+                <img src={a.imagenUrl} alt="" className="w-full h-24 object-cover rounded-lg mb-3" />
+              )}
               <div className="flex items-start justify-between mb-3">
                 <div className="flex-1 min-w-0 mr-2">
                   <h3 className="font-semibold text-gray-800 text-sm truncate">{a.titulo}</h3>
@@ -245,6 +249,18 @@ export default function AdminAnuncios() {
                 <div>
                   <label htmlFor="descripcion" className={labelClass}>Descripción</label>
                   <textarea id="descripcion" value={form.descripcion} onChange={set('descripcion')} rows={2} required className={inputClass} />
+                </div>
+                <div>
+                  <label htmlFor="url-imagen" className={labelClass}>URL de imagen (opcional)</label>
+                  <input id="url-imagen" type="url" value={form.imagenUrl} onChange={set('imagenUrl')} placeholder="https://..." className={inputClass} />
+                  {form.imagenUrl && (
+                    <img
+                      src={form.imagenUrl}
+                      alt="Vista previa"
+                      className="mt-2 h-24 rounded-lg object-cover border border-gray-200"
+                      onError={(e) => { (e.target as HTMLImageElement).style.display = 'none' }}
+                    />
+                  )}
                 </div>
                 <div>
                   <label htmlFor="url-destino" className={labelClass}>URL Destino</label>
