@@ -289,3 +289,12 @@ export function IconTarget(props: IconProps) {
     </svg>
   )
 }
+
+export function IconLogout(props: IconProps) {
+  return (
+    <svg {...base} {...props}>
+      <path d="M15.5 8V6a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h7.5a2 2 0 0 0 2-2v-2" />
+      <path d="M9 12h11.5m0 0-3-3m3 3-3 3" />
+    </svg>
+  )
+}

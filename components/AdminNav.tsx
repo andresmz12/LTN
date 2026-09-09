@@ -2,9 +2,10 @@
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 import { useEffect, useState } from 'react'
+import { useSession, signOut } from 'next-auth/react'
 import {
   IconGrid, IconSparkles, IconBuilding, IconClipboard, IconNewspaper,
-  IconHandshake, IconMegaphone, IconBriefcase, IconUsers, IconMenu, IconX,
+  IconHandshake, IconMegaphone, IconBriefcase, IconUsers, IconMenu, IconX, IconLogout,
 } from '@/components/icons'
 
 const navItems = [
@@ -21,7 +22,16 @@ const navItems = [
 
 export default function AdminNav() {
   const pathname = usePathname()
+  const { data: session } = useSession()
   const [open, setOpen] = useState(false)
+  const nombre = session?.user?.name || 'Administrador'
+  const email = session?.user?.email || ''
+  const iniciales = nombre
+    .split(' ')
+    .map((p) => p[0])
+    .slice(0, 2)
+    .join('')
+    .toUpperCase()
 
   useEffect(() => { setOpen(false) }, [pathname])
 
@@ -52,6 +62,25 @@ export default function AdminNav() {
           </Link>
           <button type="button" onClick={() => setOpen(false)} aria-label="Cerrar menú" className="sm:hidden text-gray-500 p-2.5 -mr-2.5">
             <IconX className="w-5 h-5" />
+          </button>
+        </div>
+
+        <div className="flex items-center gap-2.5 px-3 mb-6">
+          <div className="w-8 h-8 rounded-full bg-brand-500 text-white text-xs font-semibold flex items-center justify-center shrink-0">
+            {iniciales || 'AD'}
+          </div>
+          <div className="min-w-0 flex-1">
+            <p className="text-sm font-medium text-white truncate">{nombre}</p>
+            <p className="text-xs text-gray-500 truncate">{email}</p>
+          </div>
+          <button
+            type="button"
+            onClick={() => signOut({ callbackUrl: '/' })}
+            title="Cerrar sesión"
+            aria-label="Cerrar sesión"
+            className="text-gray-500 hover:text-white p-1.5 rounded-md hover:bg-white/5 transition shrink-0"
+          >
+            <IconLogout className="w-4 h-4" />
           </button>
         </div>
 
