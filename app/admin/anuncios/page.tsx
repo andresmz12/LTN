@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { UBICACIONES, UBICACION_LABELS } from '@/lib/utils'
+import AdPlacementPreview from '@/components/AdPlacementPreview'
 
 interface Anuncio {
   id: string; titulo: string; tipo: string; activo: boolean; impresiones: number;
@@ -286,6 +287,7 @@ export default function AdminAnuncios() {
                   <p className="text-xs text-gray-500 mt-1">
                     Sin marcar ninguna: aparece en cualquier página de los países elegidos arriba. Marca una o más para restringirlo a esas páginas exactas.
                   </p>
+                  <AdPlacementPreview ubicaciones={form.ubicaciones} />
                 </div>
                 <div>
                   <label htmlFor="presupuesto" className={labelClass}>Presupuesto $</label>

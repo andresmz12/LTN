@@ -29,12 +29,12 @@ Devuelve SOLO un objeto JSON válido (sin markdown, sin explicaciones) con esta 
   "nombre": "Consulado General de [País] en [Ciudad]",
   "pais": "${pais}",
   "ciudad": "${ciudad}",
-  "estado": "Estado de EE.UU. donde está ubicado",
+  "estadoUS": "Código de 2 letras del estado de EE.UU. donde está ubicado (ej: CA, TX, FL)",
   "direccion": "Dirección completa real",
   "telefono": "+1-XXX-XXX-XXXX",
   "email": "email@ejemplo.com o null",
-  "horario": "Lunes a Viernes X:00am - X:00pm",
-  "sitioWeb": "https://... o null",
+  "horarioLunes": "Lunes a Viernes X:00am - X:00pm",
+  "horarioSabado": "Sábado X:00am - X:00pm o Cerrado",
   "servicios": ["Pasaportes", "Visas", "Registro civil", "..."]
 }`
 
@@ -52,12 +52,14 @@ Devuelve SOLO un objeto JSON válido (sin markdown, sin explicaciones) con esta 
   "titulo": "Título descriptivo del trámite",
   "slug": "titulo-en-slug-sin-acentos",
   "pais": "${pais}",
+  "categoria": "Una de: Migración y Estatus, Protección al Consumidor, Dinero e Impuestos, Trabajo, Transporte, Salud, Vivienda, Identidad y Documentos, Educación, Seguridad y Emergencias",
   "descripcion": "Descripción breve de 2-3 oraciones",
-  "requisitos": ["Requisito 1", "Requisito 2", "..."],
+  "contenidoHtml": "Contenido completo en HTML simple (párrafos <p>, listas <ul><li>) explicando el trámite en detalle",
+  "documentosNecesarios": ["Requisito 1", "Requisito 2", "..."],
   "pasos": ["Paso 1: ...", "Paso 2: ...", "..."],
-  "costoAprox": "$XX USD o Gratuito",
-  "tiempoEstimado": "X días hábiles",
-  "sitioOficial": "https://... o null"
+  "costo": "$XX USD o Gratuito",
+  "tiempoPromedio": "X días hábiles",
+  "linksExternos": [{ "nombre": "Sitio oficial", "url": "https://..." }]
 }`
 
   const text = await askClaude(prompt)
@@ -74,12 +76,13 @@ Devuelve SOLO un array JSON válido (sin markdown, sin explicaciones) con ${cant
   {
     "titulo": "Título de la noticia",
     "slug": "titulo-en-slug-sin-acentos",
-    "pais": "${pais}",
+    "categoria": "Categoría breve de la noticia (ej: Migración, Trabajo, Comunidad)",
+    "paises": ["${pais}"],
     "resumen": "Resumen de 2-3 oraciones",
-    "contenido": "Contenido completo de la noticia en 3-5 párrafos",
+    "contenidoHtml": "Contenido completo de la noticia en 3-5 párrafos, en HTML simple (<p>...</p>)",
     "fuente": "Nombre de la fuente",
-    "urlFuente": "https://... o null",
-    "imagen": null
+    "enlaceOriginal": "https://... o null",
+    "publicado": true
   }
 ]`
 

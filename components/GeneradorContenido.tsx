@@ -1,8 +1,14 @@
 'use client'
 
 import { useState } from 'react'
+import { PAISES as PAISES_CONST, PAIS_NOMBRES } from '@/lib/utils'
 
-const PAISES = ['MX', 'CO', 'VE', 'SV']
+const PAISES = [...PAISES_CONST]
+const PAISES_CON_GENERAL = ['GENERAL', ...PAISES]
+const CATEGORIAS_TRAMITE = [
+  'Migración y Estatus', 'Protección al Consumidor', 'Dinero e Impuestos', 'Trabajo',
+  'Transporte', 'Salud', 'Vivienda', 'Identidad y Documentos', 'Educación', 'Seguridad y Emergencias',
+]
 type Tab = 'consulados' | 'tramites' | 'noticias'
 
 const TAB_CONFIG = [
@@ -111,7 +117,7 @@ function GeneradorConsulados() {
           onChange={(e) => setPais(e.target.value)}
           className="border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white"
         >
-          {PAISES.map((p) => <option key={p}>{p}</option>)}
+          {PAISES.map((p) => <option key={p} value={p}>{PAIS_NOMBRES[p] || p}</option>)}
         </select>
         <input
           value={ciudad}
@@ -141,7 +147,7 @@ function GeneradorConsulados() {
       {editData && !loading && (
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#fbbf24' }}>
           <h3 className="font-bold text-lg text-gray-800">Vista previa — edita antes de publicar</h3>
-          {(['nombre', 'ciudad', 'estado', 'direccion', 'telefono', 'email', 'horario', 'sitioWeb'] as string[]).map((field) => (
+          {(['nombre', 'ciudad', 'estadoUS', 'direccion', 'telefono', 'email', 'horarioLunes', 'horarioSabado'] as string[]).map((field) => (
             <div key={field}>
               <label className={labelClass}>{field}</label>
               <input
@@ -175,7 +181,7 @@ function GeneradorConsulados() {
 }
 
 function GeneradorTramites() {
-  const [pais, setPais] = useState('MX')
+  const [pais, setPais] = useState('GENERAL')
   const [tipo, setTipo] = useState('')
   const [loading, setLoading] = useState(false)
   const [editData, setEditData] = useState<Record<string, unknown> | null>(null)
@@ -231,12 +237,12 @@ function GeneradorTramites() {
           onChange={(e) => setPais(e.target.value)}
           className="border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white"
         >
-          {PAISES.map((p) => <option key={p}>{p}</option>)}
+          {PAISES_CON_GENERAL.map((p) => <option key={p} value={p}>{PAIS_NOMBRES[p] || p}</option>)}
         </select>
         <input
           value={tipo}
           onChange={(e) => setTipo(e.target.value)}
-          placeholder="Tipo de trámite (ej: pasaporte, visa)"
+          placeholder="Tipo de trámite (ej: pasaporte, visa, ITIN)"
           className="border border-gray-200 rounded-xl px-4 py-2.5 text-sm flex-1 focus:outline-none focus:ring-2"
           onKeyDown={(e) => e.key === 'Enter' && generate()}
         />
@@ -261,7 +267,18 @@ function GeneradorTramites() {
       {editData && !loading && (
         <div className="bg-white rounded-lg border border-gray-200 p-6 space-y-4 border-2" style={{ borderColor: '#fbbf24' }}>
           <h3 className="font-bold text-lg text-gray-800">Vista previa — edita antes de publicar</h3>
-          {(['titulo', 'slug', 'descripcion', 'costoAprox', 'tiempoEstimado', 'sitioOficial'] as string[]).map((field) => (
+          <div>
+            <label className={labelClass}>categoria</label>
+            <select
+              value={(editData.categoria as string) || ''}
+              onChange={(e) => setEditData({ ...editData, categoria: e.target.value })}
+              className={inputClass}
+            >
+              <option value="">Sin categoría</option>
+              {CATEGORIAS_TRAMITE.map((c) => <option key={c} value={c}>{c}</option>)}
+            </select>
+          </div>
+          {(['titulo', 'slug', 'descripcion', 'costo', 'tiempoPromedio'] as string[]).map((field) => (
             <div key={field}>
               <label className={labelClass}>{field}</label>
               <input
@@ -272,10 +289,19 @@ function GeneradorTramites() {
             </div>
           ))}
           <div>
-            <label className={labelClass}>Requisitos (uno por línea)</label>
+            <label className={labelClass}>Contenido (HTML)</label>
             <textarea
-              value={((editData.requisitos as string[]) || []).join('\n')}
-              onChange={(e) => setEditData({ ...editData, requisitos: e.target.value.split('\n').filter(Boolean) })}
+              value={(editData.contenidoHtml as string) || ''}
+              onChange={(e) => setEditData({ ...editData, contenidoHtml: e.target.value })}
+              rows={6}
+              className={inputClass}
+            />
+          </div>
+          <div>
+            <label className={labelClass}>Documentos necesarios (uno por línea)</label>
+            <textarea
+              value={((editData.documentosNecesarios as string[]) || []).join('\n')}
+              onChange={(e) => setEditData({ ...editData, documentosNecesarios: e.target.value.split('\n').filter(Boolean) })}
               rows={4}
               className={inputClass}
             />
@@ -362,7 +388,7 @@ function GeneradorNoticias() {
           onChange={(e) => setPais(e.target.value)}
           className="border border-gray-200 rounded-xl px-4 py-2.5 text-sm bg-white"
         >
-          {PAISES.map((p) => <option key={p}>{p}</option>)}
+          {PAISES.map((p) => <option key={p} value={p}>{PAIS_NOMBRES[p] || p}</option>)}
         </select>
         <input
           value={busqueda}
@@ -416,6 +442,14 @@ function GeneradorNoticias() {
               />
             </div>
             <div>
+              <label className={labelClass}>Categoría</label>
+              <input
+                value={(n.categoria as string) || ''}
+                onChange={(e) => updateNoticia(idx, 'categoria', e.target.value)}
+                className={inputClass}
+              />
+            </div>
+            <div>
               <label className={labelClass}>Resumen</label>
               <textarea
                 value={(n.resumen as string) || ''}
@@ -425,10 +459,10 @@ function GeneradorNoticias() {
               />
             </div>
             <div>
-              <label className={labelClass}>Contenido</label>
+              <label className={labelClass}>Contenido (HTML)</label>
               <textarea
-                value={(n.contenido as string) || ''}
-                onChange={(e) => updateNoticia(idx, 'contenido', e.target.value)}
+                value={(n.contenidoHtml as string) || ''}
+                onChange={(e) => updateNoticia(idx, 'contenidoHtml', e.target.value)}
                 rows={5}
                 className={inputClass}
               />
